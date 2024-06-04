@@ -12,23 +12,22 @@ using ETABSv1;
 using VibrantBIM.Models.ShapeType;
 using VibrantBIM.Extensions;
 using VibrantBIM.Views;
-
 namespace VibrantBIM.Models
 {
     [Serializable]
     [XmlInclude(typeof(Rectangular))]
-    public class Beam  : INotifyPropertyChanged  
+    [XmlInclude(typeof(I))]
+    public class Beam  : ViewModelBase
     { 
-        // Sự kiện PropertyChanged để hỗ trợ việc thông báo thay đổi thuộc tính
-        public event PropertyChangedEventHandler PropertyChanged;
+        //// Sự kiện PropertyChanged để hỗ trợ việc thông báo thay đổi thuộc tính
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        // Phương thức để gọi sự kiện PropertyChanged
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        // Thuộc tính Name với thông báo thay đổi
+        //// Phương thức để gọi sự kiện PropertyChanged
+        //protected void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+        //// Thuộc tính Name với thông báo thay đổi
         [XmlElement("Name")]
         private string _name;
         public string Name
@@ -40,8 +39,6 @@ namespace VibrantBIM.Models
                 OnPropertyChanged(nameof(Name));
             }
         }
-
-        // Thuộc tính FirstPoint (không cần thông báo thay đổi)
         [XmlElement("FirstPoint")]
         private Point3D _firstPoint;
         public Point3D FirstPoint
@@ -52,8 +49,6 @@ namespace VibrantBIM.Models
                 _firstPoint = value;
             }
         }
-
-        // Thuộc tính LastPoint (không cần thông báo thay đổi)
         [XmlElement("LastPoint")]
         private Point3D _lastPoint;
         public Point3D LastPoint
@@ -64,8 +59,6 @@ namespace VibrantBIM.Models
                 _lastPoint = value;
             }
         }
-
-        // Thuộc tính PropName với thông báo thay đổi
         [XmlElement("PropName")]
         private string _propName;
         public string PropName
@@ -77,8 +70,6 @@ namespace VibrantBIM.Models
                 OnPropertyChanged(nameof(PropName));
             }
         }
-
-        // Thuộc tính StoryName với thông báo thay đổi
         [XmlElement("StoryName")]
         private string _storyName;
         public string StoryName
@@ -110,6 +101,5 @@ namespace VibrantBIM.Models
                 _shapeType = value;
             }
         }
-        
     }
 }

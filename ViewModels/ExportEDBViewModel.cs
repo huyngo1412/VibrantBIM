@@ -29,8 +29,6 @@ namespace VibrantBIM.ViewModels
         public List<GridLine> GridLine = new List<GridLine>();
         public List<Story> Stories = new List<Story>();
     }
-   
-
     public class ExportEDBViewModel
     {
         #region Etabs
@@ -125,7 +123,7 @@ namespace VibrantBIM.ViewModels
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.InitialDirectory = "C:\\";
-                saveFileDialog.Filter = "Text files (*.xml)|*.xml|All files (*.*)|*.*";
+                saveFileDialog.Filter = "Text files (*.cxv)|*.cxv|All files (*.*)|*.*";
                 saveFileDialog.Title = "Save your file";
                 if (saveFileDialog.ShowDialog() == true)
                 {
@@ -168,8 +166,7 @@ namespace VibrantBIM.ViewModels
                     Name = GridLineIDX[i],
                     FirstPoint = new Point3D(OrdinateX[i], OrdinateY.Min() - 1500, 0),
                     LastPoint = new Point3D(OrdinateX[i], OrdinateY.Max() + 1500, 0),
-                    GridOrientation = "X",
-                    
+                    GridOrientation = "X",      
                 };
                 yield return gridLineDX;
             }
@@ -185,7 +182,6 @@ namespace VibrantBIM.ViewModels
                 yield return gridLineDY;
             }
         }
-       
         private IEnumerable<Story> GetStoryData()
         {
             for (int i = 0;i < StoryNames.Length; i++ )
@@ -204,7 +200,6 @@ namespace VibrantBIM.ViewModels
             {
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
                 ret = _SapModel.PropFrame.GetRectangle(FrameName[i], ref filename, ref Mat, ref T3, ref T2, ref Color, ref Notes, ref GUID);
-
                 if (TypeFrame.ToString() == "Column")
                 {
                     Column column = new Column()
@@ -217,7 +212,6 @@ namespace VibrantBIM.ViewModels
                         FrameShapeType = eFramePropType.Rectangular,
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(eFramePropType.Rectangular),
                     };
-
                     yield return column;
                 }
             }

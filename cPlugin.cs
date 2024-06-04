@@ -13,7 +13,6 @@ namespace VibrantBIM
             cPluginEtabsWindow pluginEtabsWindow = new cPluginEtabsWindow(ref SapModel, ref ISapPlugin);
             pluginEtabsWindow.Show();
         }
-
         public long Info(ref string Text)
         {
             Text = "my first plugin using API Etabs\n";

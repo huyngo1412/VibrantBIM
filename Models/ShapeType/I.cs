@@ -10,6 +10,7 @@ namespace VibrantBIM.Models.ShapeType
     [XmlInclude(typeof(I))]
     public struct I
     {
+        [XmlElement("ShapeName")]
         private string _frameShapeName;
         public string FrameShapeName
         {
@@ -19,6 +20,7 @@ namespace VibrantBIM.Models.ShapeType
                 _frameShapeName = value;
             }
         }
+        [XmlElement("TotalDepth")]
         private double _totalDepth;
         public double TotalDepth
         {
@@ -28,6 +30,7 @@ namespace VibrantBIM.Models.ShapeType
                 _totalDepth = value;
             }
         }
+        [XmlElement("TopFlangeWidth")]
         private double _topFlangeWidth;
         public double TopFlangeWidth
         {
@@ -37,6 +40,7 @@ namespace VibrantBIM.Models.ShapeType
                 _topFlangeWidth = value;
             }
         }
+        [XmlElement("TopFlangeThickness")]
         private double _topFlangeThickness;
         public double TopFlangeThickness
         {
@@ -46,6 +50,7 @@ namespace VibrantBIM.Models.ShapeType
                 _topFlangeThickness = value;
             }
         }
+        [XmlElement("WebThickness")]
         private double _webThickness;
         public double WebThickness
         {
@@ -55,6 +60,7 @@ namespace VibrantBIM.Models.ShapeType
                 _webThickness = value;
             }
         }
+        [XmlElement("BottomFlangeWidth")]
         private double _bottomFlangeWidth;
         public double BottomFlangeWidth
         {
@@ -64,6 +70,7 @@ namespace VibrantBIM.Models.ShapeType
                 _bottomFlangeWidth = value;
             }
         }
+        [XmlElement("BottomFlangeThickness")]
         private double _bottomFlangeThickness;
         public double BottomFlangeThickness
         {
@@ -73,6 +80,7 @@ namespace VibrantBIM.Models.ShapeType
                 _bottomFlangeThickness = value;
             }
         }
+        [XmlElement("FilletRadius")]
         private double _filletRadius;
         public double FilletRadius
         {

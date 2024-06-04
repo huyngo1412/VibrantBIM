@@ -15,7 +15,6 @@ using System.Xml.Serialization;
 using VibrantBIM.Models;
 using VibrantBIM.Views;
 using VibrantBIM.Extensions;
-
 namespace VibrantBIM.ViewModels
 {
     public class ImportEDBViewModel
@@ -25,11 +24,11 @@ namespace VibrantBIM.ViewModels
         private Document _document;
         #endregion
         private DataContainer _container;
-        public int countLevel { get; set; }
-        public int countGrid { get; set; }
-        public int countBeam { get; set; }
-        public int countColumn { get; set; }
-        public int countSlab { get; set; }
+        private int countLevel { get; set; }
+        private int countGrid { get; set; }
+        private int countBeam { get; set; }
+        private int countColumn { get; set; }
+        private int countSlab { get; set; }
         private ImportEDBWindow _importEDBView;
         public ImportEDBWindow ImportEDBView
         {
@@ -70,7 +69,7 @@ namespace VibrantBIM.ViewModels
             {
                 OpenFileDialog OpenEDB = new OpenFileDialog();
                 OpenEDB.InitialDirectory = "C:\\";
-                OpenEDB.Filter = " (*.xml)|*.xml|All Files (*.*)|*.*";
+                OpenEDB.Filter = " (*.cxv)|*.cxv|All Files (*.*)|*.*";
                 OpenEDB.Multiselect = true;
                 if (OpenEDB.ShowDialog() == true)
                 {
@@ -85,10 +84,10 @@ namespace VibrantBIM.ViewModels
                     }
                     catch (InvalidOperationException ex)
                     {
-                        Console.WriteLine($"Deserialization error: {ex.Message}");
+                        MessageBox.Show($"Deserialization error: {ex.Message}");
                         if (ex.InnerException != null)
                         {
-                            Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                            MessageBox.Show($"Inner Exception: {ex.InnerException.Message}");
                         }
                     }
                     countBeam = _container.Beams.Count();
@@ -106,6 +105,7 @@ namespace VibrantBIM.ViewModels
         }
         private void CreateLevel()
         {
+            string Message = "";
             FilteredElementCollector viewTypesCollector = new FilteredElementCollector(_document).OfClass(typeof(ViewFamilyType));
             List<ViewFamilyType> viewTypes = new List<ViewFamilyType>();
             foreach (Element elem in viewTypesCollector)
@@ -129,19 +129,39 @@ namespace VibrantBIM.ViewModels
                         paraelevation.Set(ConvertUnit.MmToFoot(_container.Stories[i].Elevation));
                         continue;
                     }
-                    Level level = Level.Create(_document, ConvertUnit.MmToFoot(_container.Stories[i].Elevation));
-
-                    if (null == level)
+                    try
                     {
-                        throw new Exception("Create a new level failed.");
-                    }
-                    // Change the level name
-                    level.Name = _container.Stories[i].StoryName;
-                    foreach (ViewFamilyType viewType in viewTypes)
-                    {
-                        if (viewType.ViewFamily == ViewFamily.FloorPlan || viewType.ViewFamily == ViewFamily.CeilingPlan)
+                        Level level = Level.Create(_document, ConvertUnit.MmToFoot(_container.Stories[i].Elevation));
+                        if (null == level)
                         {
-                            ViewPlan view = ViewPlan.Create(_document, viewType.Id, level.Id);
+                            throw new Exception("Create a new level failed.");
+                        }
+                        // Thay đổi tên của level
+                        level.Name = _container.Stories[i].StoryName;
+                        foreach (ViewFamilyType viewType in viewTypes)
+                        {
+                            if (viewType.ViewFamily == ViewFamily.FloorPlan || viewType.ViewFamily == ViewFamily.CeilingPlan)
+                            {
+                                ViewPlan view = ViewPlan.Create(_document, viewType.Id, level.Id);
+                            }
+                        }
+                    }
+                    catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
+                    {
+                        Message = exceptionCanceled.Message;
+                        TaskDialog.Show("Error", Message);
+                        if(transaction.HasStarted())
+                        {
+                            transaction.RollBack();
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        Message = ex.Message;
+                        TaskDialog.Show("Error", Message);
+                        if (transaction.HasStarted())
+                        {
+                            transaction.RollBack();
                         }
                     }
                 }
@@ -150,6 +170,7 @@ namespace VibrantBIM.ViewModels
         }
         private void CreateGrid()
         {
+            string Message = "";
             using (Transaction transaction = new Transaction(_document, "Tạo lưới"))
             {
                 transaction.Start();
@@ -161,19 +182,39 @@ namespace VibrantBIM.ViewModels
                     double X2 = Grid.LastPoint.X;
                     double Y2 = Grid.LastPoint.Y;
                     double Z2 = Grid.LastPoint.Z;
-                    XYZ start = new XYZ(ConvertUnit.MmToFoot(X1), ConvertUnit.MmToFoot(Y1), ConvertUnit.MmToFoot(Z1));
-                    XYZ end = new XYZ(ConvertUnit.MmToFoot(X2), ConvertUnit.MmToFoot(Y2), ConvertUnit.MmToFoot(Z2));
-                    Line geomLine = Line.CreateBound(start, end);
-                    Autodesk.Revit.DB.Grid lineGrid = Autodesk.Revit.DB.Grid.Create(_document, geomLine);
-                    if (null == lineGrid)
+                    try
                     {
-                        throw new Exception("Create a new straight grid failed.");
+                        XYZ start = new XYZ(ConvertUnit.MmToFoot(X1), ConvertUnit.MmToFoot(Y1), ConvertUnit.MmToFoot(Z1));
+                        XYZ end = new XYZ(ConvertUnit.MmToFoot(X2), ConvertUnit.MmToFoot(Y2), ConvertUnit.MmToFoot(Z2));
+                        Line geomLine = Line.CreateBound(start, end);
+                        Autodesk.Revit.DB.Grid lineGrid = Autodesk.Revit.DB.Grid.Create(_document, geomLine);
+                        if (null == lineGrid)
+                        {
+                            throw new Exception("Create a new straight grid failed.");
+                        }
+                        lineGrid.Name = Grid.Name;
                     }
-                    lineGrid.Name = Grid.Name;
+                    catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
+                    {
+                        Message = exceptionCanceled.Message;
+                        TaskDialog.Show("Error", Message);
+                        if (transaction.HasStarted())
+                        {
+                            transaction.RollBack();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Message = ex.Message;
+                        TaskDialog.Show("Error", Message);
+                        if (transaction.HasStarted())
+                        {
+                            transaction.RollBack();
+                        }
+                    }
                 }
                 transaction.Commit();
             }
-        }
-        
+        }    
     }
 }
