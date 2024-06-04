@@ -1,0 +1,63 @@
+﻿<Window x:Class="VibrantBIM.Views.cPluginEtabsWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VibrantBIM.Views"
+             mc:Ignorable="d" 
+                 Background="#FFF7F5F5"
+    WindowStartupLocation="CenterScreen"
+    x:Name="cPluginEtabs"
+    Title="Export EDB To RVT"
+    SizeToContent="WidthAndHeight"
+        Closed="cPluginEtabs_Closed">
+    <Grid Height="80"
+      Width="400">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="-0" Color="#FF9A9AE6" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="#FF5791ED"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Height" Value="25"></Setter>
+                <Setter Property="Width" Value="75"></Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#FF5791ED" BorderThickness="1" CornerRadius="0" Margin="10,10,-5,10">
+            <TextBlock  x:Name="tb_Brose" Foreground="Black" Background="#FFEDE8E8"/>
+        </Border>
+        <Button Grid.Column="1"
+            Grid.Row="0"
+            Content="Browse"
+                x:Name="btn_Browse"
+                Command="{Binding BrowseEDB}"
+                CommandParameter="{Binding ElementName=tb_Brose}"></Button>
+        <StackPanel Grid.Row="1"
+                Margin="0,-5,0,0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+            <Button x:Name="btn_Export" Click ="btn_Export_Click"  Command="{Binding ExportEDB}" Margin="0,0,10,0"  Content="Export"></Button>
+            <Button Margin="10,0,-0.3,0"  Content="Cancel"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

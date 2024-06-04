@@ -1,0 +1,16 @@
+E:\ProjectAddin\VibrantBIM\bin\Debug\VibrantBIM.dll
+E:\ProjectAddin\VibrantBIM\bin\Debug\VibrantBIM.pdb
+E:\ProjectAddin\VibrantBIM\bin\Debug\ETABSv1.dll
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM.csproj.AssemblyReference.cache
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM.csproj.CoreCompileInputs.cache
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM.csproj.CopyComplete
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM.dll
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM.pdb
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\cPluginEtabsWindow.g.cs
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM_MarkupCompile.cache
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM_MarkupCompile.lref
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\cPluginEtabsWindow.baml
+E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM.g.resources
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ImportEDBWindow.g.cs
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ImportEDBWindow.baml
+E:\ProjectAddin\VibrantBIM\bin\Debug\VibrantBIM.Addin

@@ -1,0 +1,248 @@
+﻿using Autodesk.Revit.DB;
+using ETABSv1;
+using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Data.Common;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Media3D;
+using System.Xml.Linq;
+using System.Xml.Serialization;
+using VibrantBIM.Extensions;
+using VibrantBIM.Models;
+using VibrantBIM.Models.ShapeType;
+
+namespace VibrantBIM.ViewModels
+{
+    public class DataContainer
+    {
+        public List<Column> Columns = new List<Column>();
+        public List<Beam> Beams = new List<Beam>();
+        public List<GridLine> GridLine = new List<GridLine>();
+        public List<Story> Stories = new List<Story>();
+    }
+   
+
+    public class ExportEDBViewModel
+    {
+        #region Etabs
+        private cSapModel _SapModel { get; set; }
+        private cOAPI _EtabsObject { get; set; }
+        internal int ret = -1;
+        #endregion
+        #region Data Grid ETABS
+        private string filename = "";
+        private int _numberNames = 1;
+        private string[] _gridNames = null;
+        private double Xo = 0;
+        private double Yo = 0;
+        private double RZ = 0;
+        private string GridSysType = null;
+        private int NumXLines = 0;
+        private int NumYLines = 0;
+        private string[] GridLineIDX = null;
+        private string[] GridLineIDY = null;
+        private double[] OrdinateX = null;
+        private double[] OrdinateY = null;
+        private bool[] VisibleX = null;
+        private bool[] VisibleY = null;
+        private string[] BubbleLocX = null;
+        private string[] BubbleLocY = null;
+        #endregion
+        #region Data Level ETABS
+        private int NumberStories = 0;
+        private string[] StoryNames = null;
+        private double[] StoryElevations = null;
+        private double[] StoryHeights = null;
+        private bool[] IsMasterStory = null;
+        private string[] SimilarToStory = null;
+        private bool[] SpliceAbove = null;
+        private double[] SpliceHeight = null;
+        #endregion
+        #region Thông tin của các element ETABS
+        private int NumberNames = 0;
+        private string[] FrameName = null;
+        private string[] PropName = null;
+        private string[] StoryName = null;
+        private string[] PointName1 = null;
+        private string[] PointName2 = null;
+        private double[] Point1X = null;
+        private double[] Point1Y = null;
+        private double[] Point1Z = null;
+        private double[] Point2X = null;
+        private double[] Point2Y = null;
+        private double[] Point2Z = null;
+        private double[] Angle = null;
+        private double[] Offset1X = null;
+        private double[] Offset2X = null;
+        private double[] Offset1Y = null;
+        private double[] Offset2Y = null;
+        private double[] Offset1Z = null;
+        private double[] Offset2Z = null;
+        private int[] CardinalPoint = null;
+        private string csys = "Global";
+        #endregion
+        #region Thông tin hình dạng và kiểu kết cấu
+        private string Mat = "";
+        private double T3 = 0;
+        private double T2 = 0;
+        private int Color = 1;
+        private string Notes = null;
+        private string GUID = null;
+        private eFrameDesignOrientation TypeFrame = eFrameDesignOrientation.Null;
+        #endregion
+        #region Lấy thông tin các tiết diện
+        private int NumberNamesProp = 0;
+        private string[] SCProName = null;
+        #endregion
+        #region GetShapeType
+        private int NumberShapeType = 0;
+        private string[] FrameNameSP = null;
+        private eFramePropType[] PropType = null;
+        private double[] t3 = null;
+        private double[] t2 = null;
+        private double[] tf = null;
+        private double[] tw = null;
+        private double[] t2b = null;
+        private double[] tfb = null;
+        #endregion
+        DataContainer dataContainer = new DataContainer();
+        public ICommand BrowseEDB { get; set; }
+        public ICommand ExportEDB { get;set; }
+        public ExportEDBViewModel(ref cSapModel _sapModel, ref cOAPI _etabsObject) {
+            this._SapModel = _sapModel;
+            this._EtabsObject = _etabsObject;
+            string savedFilePath = "";
+            BrowseEDB = new RelayCommand<object>((p) => true, (p) =>
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = "C:\\";
+                saveFileDialog.Filter = "Text files (*.xml)|*.xml|All files (*.*)|*.*";
+                saveFileDialog.Title = "Save your file";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    savedFilePath = saveFileDialog.FileName;
+                    ret = _SapModel.FrameObj.GetAllFrames(ref NumberNames, ref FrameName, ref PropName, ref StoryName, ref PointName1, ref PointName2,
+                         ref Point1X, ref Point1Y, ref Point1Z, ref Point2X, ref Point2Y, ref Point2Z, ref Angle,
+                         ref Offset1X, ref Offset2X, ref Offset1Y, ref Offset2Y, ref Offset1Z, ref Offset2Z, ref CardinalPoint, csys);
+                    ret = _SapModel.GridSys.GetNameList(ref _numberNames, ref _gridNames);//Lấy thông tin Grid System
+                    ret = _SapModel.GridSys.GetGridSys_2(_gridNames.FirstOrDefault(), ref Xo, ref Yo, ref RZ, ref GridSysType, ref NumXLines, ref NumYLines, ref GridLineIDX, ref GridLineIDY, ref OrdinateX, ref OrdinateY,
+                       ref VisibleX, ref VisibleY, ref BubbleLocX, ref BubbleLocY);//Lấy hệ lưới XYZ
+                    ret = _SapModel.Story.GetStories(ref NumberStories, ref StoryNames, ref StoryElevations, ref StoryHeights, ref IsMasterStory,
+                       ref SimilarToStory, ref SpliceAbove, ref SpliceHeight);//Lấy Story Data
+                    //ret = _SapModel.PropFrame.GetAllFrameProperties(ref NumberShapeType, ref FrameNameSP, ref PropType, ref t3, ref t2, ref tf, ref tw, ref t2b, ref tfb);
+                    dataContainer.Columns = new List<Column>(GetColumnEDB(filename).ToList());
+                    dataContainer.Beams = new List<Beam>(GetBeamEDB(filename).ToList());
+                    dataContainer.GridLine = new List<GridLine>(GetGridData().ToList());
+                    dataContainer.Stories = new List<Story>(GetStoryData().ToList());
+                    TextBlock textBlock = p as TextBlock;
+                    if(textBlock != null )
+                    {
+                        textBlock.Text = savedFilePath;
+                    }    
+                }
+            });
+            ExportEDB = new RelayCommand<object>((p)=>true,(p)=>
+            {
+                var xmlSerializer = new XmlSerializer(typeof(DataContainer));
+                using (var write = new StreamWriter(savedFilePath))
+                {
+                    xmlSerializer.Serialize(write, dataContainer);
+                }
+                MessageBox.Show("Export Successful");
+            });
+        }
+        private IEnumerable<GridLine> GetGridData()
+        {
+            for (int i = 0; i < GridLineIDX.Length; i++)
+            {
+                GridLine gridLineDX = new GridLine() {
+                    Name = GridLineIDX[i],
+                    FirstPoint = new Point3D(OrdinateX[i], OrdinateY.Min() - 1500, 0),
+                    LastPoint = new Point3D(OrdinateX[i], OrdinateY.Max() + 1500, 0),
+                    GridOrientation = "X",
+                    
+                };
+                yield return gridLineDX;
+            }
+            for (int i = 0; i < GridLineIDY.Length; i++)
+            {
+                GridLine gridLineDY = new GridLine()
+                {
+                    Name = GridLineIDY[i],
+                    FirstPoint = new Point3D(OrdinateX.Min() - 1500, OrdinateY[i], 0),
+                    LastPoint = new Point3D(OrdinateX.Max() + 1500, OrdinateY[i], 0),
+                    GridOrientation = "Y",
+                };
+                yield return gridLineDY;
+            }
+        }
+       
+        private IEnumerable<Story> GetStoryData()
+        {
+            for (int i = 0;i < StoryNames.Length; i++ )
+            {
+                Story story = new Story()
+                {
+                    StoryName = StoryNames[i],
+                    Elevation = StoryElevations[i],
+                };
+                yield return story;
+            }
+        }
+        private IEnumerable<Column> GetColumnEDB(string filename)
+        {
+            for (int i = 0; i < FrameName.Length; i++)
+            {
+                ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
+                ret = _SapModel.PropFrame.GetRectangle(FrameName[i], ref filename, ref Mat, ref T3, ref T2, ref Color, ref Notes, ref GUID);
+
+                if (TypeFrame.ToString() == "Column")
+                {
+                    Column column = new Column()
+                    {
+                        Name = FrameName[i],
+                        FirstPoint = new Point3D(Point1X[i], Point1Y[i], Point1Z[i]),
+                        LastPoint = new Point3D(Point2X[i], Point2Y[i], Point2Z[i]),
+                        PropName = PropName[i],
+                        StoryName = StoryName[i],
+                        FrameShapeType = eFramePropType.Rectangular,
+                        ShapeType = Get_SetShapeInstance.SetShapeInstance(eFramePropType.Rectangular),
+                    };
+
+                    yield return column;
+                }
+            }
+        }
+        private IEnumerable<Beam> GetBeamEDB(string filename) 
+        {
+            for (int i = 0; i < FrameName.Length; i++)
+            {
+                ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
+                ret = _SapModel.PropFrame.GetRectangle(FrameName[i], ref filename, ref Mat, ref T3, ref T2, ref Color, ref Notes, ref GUID);
+                if (TypeFrame.ToString() == "Beam")
+                {
+                    Beam beam = new Beam()
+                    {
+                        Name = FrameName[i],
+                        FirstPoint = new Point3D(Point1X[i], Point1Y[i], Point1Z[i]),
+                        LastPoint = new Point3D(Point2X[i], Point2Y[i], Point2Z[i]),
+                        PropName = PropName[i],
+                        StoryName = StoryName[i],
+                        FrameShapeType = eFramePropType.Rectangular,
+                        ShapeType = Get_SetShapeInstance.SetShapeInstance(eFramePropType.Rectangular),
+                    };
+                    yield return beam;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+
+	<AddIn Type="Application">
+		<Name>VibrantBIMExtension</Name>
+		<Assembly>VibrantBIM.dll</Assembly>
+		<AddInId>
+			E9A27E11-723E-4F89-9F07-2261C8D2331F
+				
+			</AddInId>
+		<FullClassName>VibrantBIM.App</FullClassName>
+		<VendorId>THXD</VendorId>
+		<VendorDescription>THXD, www.dut.udn.vn</VendorDescription>
+		<VisibilityMode>NotVisibleWhenNoActiveDocument</VisibilityMode>
+	</AddIn>
+</RevitAddIns>
