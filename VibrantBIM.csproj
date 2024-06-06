@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VibrantBIM</RootNamespace>
     <AssemblyName>VibrantBIM</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,12 +61,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abtract\RebarShape.cs" />
+    <Compile Include="Abtract\IRebarShape.cs" />
+    <Compile Include="Abtract\IShapeTypeFrame.cs" />
     <Compile Include="App.cs" />
     <Compile Include="cPlugin.cs" />
     <Compile Include="CreateModelRevit.cs" />
     <Compile Include="Extensions\ConvertUnit.cs" />
     <Compile Include="Extensions\Get_SetShapeInstance.cs" />
+    <Compile Include="Extensions\CXVCruid.cs" />
+    <Compile Include="Models\Material\Concrete.cs" />
+    <Compile Include="Models\Material\Steel.cs" />
     <Compile Include="Models\ShapeType\Rectangular.cs" />
     <Compile Include="Models\ShapeType\I.cs" />
     <Compile Include="Models\StructuralFrame\Beam.cs" />
@@ -73,12 +78,16 @@
     <Compile Include="Models\GridLine.cs" />
     <Compile Include="Models\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ExportEDBViewModel.cs" />
-    <Compile Include="ViewModels\ImportEDBViewModel.cs" />
+    <Compile Include="ViewModels\ChangeSectionBeamVM.cs" />
+    <Compile Include="ViewModels\ExportEDBVM.cs" />
+    <Compile Include="ViewModels\ImportEDBVM.cs" />
     <Compile Include="ViewModels\ModelBase.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\cPluginEtabsWindow.xaml.cs">
       <DependentUpon>cPluginEtabsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrameSTBeamWindow.xaml.cs">
+      <DependentUpon>FrameSTBeamWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImportEDBWindow.xaml.cs">
       <DependentUpon>ImportEDBWindow.xaml</DependentUpon>
@@ -91,6 +100,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\cPluginEtabsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrameSTBeamWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

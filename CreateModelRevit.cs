@@ -20,7 +20,7 @@ namespace VibrantBIM
             Document _document = _uidoc.Document;
             try
             {
-                var vm = new ImportEDBViewModel(_uidoc, _document);
+                var vm = new ImportEDBVM(_uidoc, _document);
                 vm.ImportEDBView.ShowDialog();
                 return Result.Succeeded;
             }

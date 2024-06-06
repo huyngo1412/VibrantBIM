@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace VibrantBIM.Models.ShapeType
 {
     [XmlInclude(typeof(I))]
-    public struct I
+    public class I
     {
         [XmlElement("ShapeName")]
         private string _frameShapeName;

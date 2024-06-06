@@ -229,7 +229,7 @@
                             Width="90"
                             Content="Mặt cắt dầm"
                             x:Name="btn_BeamSection"
-                            Command="{Binding OpenBeamSectionView}"></Button>
+                            Command="{Binding ChangeSectionBeam}"></Button>
                         <Button Grid.Column="1"
                             Grid.Row="0"
                             Width="90"

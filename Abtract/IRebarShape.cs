@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VibrantBIM.Abtract
 {
-    public interface RebarShape
+    public interface IRebarShape
     {
 
     }

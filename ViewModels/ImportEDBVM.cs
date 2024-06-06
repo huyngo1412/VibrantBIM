@@ -17,7 +17,7 @@ using VibrantBIM.Views;
 using VibrantBIM.Extensions;
 namespace VibrantBIM.ViewModels
 {
-    public class ImportEDBViewModel
+    public class ImportEDBVM
     {
         #region Revit
         private UIDocument _uidoc;
@@ -47,13 +47,19 @@ namespace VibrantBIM.ViewModels
         }
         #region ICommand
         public ICommand ImportEDB { get; set; }
+        public ICommand ChangeSectionBeam { get; set; }
         public ICommand CreateProject { get; set; }
         #endregion
-        public ImportEDBViewModel(UIDocument doc, Document getdoc)
+        public ImportEDBVM(UIDocument doc, Document getdoc)
         {
             this._uidoc = doc;
             this._document = getdoc;
             _container = new DataContainer();
+            ChangeSectionBeam = new RelayCommand<object>((p) => true, (p) =>
+            {
+                var vm = new ChangeSectionBeamVM(doc, getdoc );
+                vm.FrameSTBeamView.ShowDialog();
+            });
             CreateProject = new RelayCommand<object>((p) => true, async (p) =>
             {
                 if (_importEDBView.chk_GridLine.IsChecked == true)
@@ -73,23 +79,8 @@ namespace VibrantBIM.ViewModels
                 OpenEDB.Multiselect = true;
                 if (OpenEDB.ShowDialog() == true)
                 {
-                    string filename = OpenEDB.FileName;
-                    var xmlSerializer = new XmlSerializer(typeof(DataContainer));
-                    try
-                    {
-                        using (TextReader reader = new StreamReader(filename))
-                        {
-                            _container = (DataContainer)xmlSerializer.Deserialize(reader);
-                        }
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        MessageBox.Show($"Deserialization error: {ex.Message}");
-                        if (ex.InnerException != null)
-                        {
-                            MessageBox.Show($"Inner Exception: {ex.InnerException.Message}");
-                        }
-                    }
+                    string filename = OpenEDB.FileName;               
+                    _container = CXVCruid.ReadFile(filename);
                     countBeam = _container.Beams.Count();
                     countColumn = _container.Columns.Count();
                     countGrid = _container.GridLine.Count();
@@ -101,7 +92,6 @@ namespace VibrantBIM.ViewModels
                     _importEDBView.chk_Level.Content = _importEDBView.chk_Level.Content + " " + "(" + countLevel.ToString() + ")";
                 };
             });
-            
         }
         private void CreateLevel()
         {
@@ -149,8 +139,8 @@ namespace VibrantBIM.ViewModels
                     catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                     {
                         Message = exceptionCanceled.Message;
-                        TaskDialog.Show("Error", Message);
-                        if(transaction.HasStarted())
+                        MessageBox.Show("Error : " + Message);
+                        if (transaction.HasStarted())
                         {
                             transaction.RollBack();
                         }
@@ -158,7 +148,7 @@ namespace VibrantBIM.ViewModels
                     catch(Exception ex)
                     {
                         Message = ex.Message;
-                        TaskDialog.Show("Error", Message);
+                        MessageBox.Show("Error : "+ Message);
                         if (transaction.HasStarted())
                         {
                             transaction.RollBack();
@@ -197,7 +187,7 @@ namespace VibrantBIM.ViewModels
                     catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                     {
                         Message = exceptionCanceled.Message;
-                        TaskDialog.Show("Error", Message);
+                        MessageBox.Show("Error : " + Message);
                         if (transaction.HasStarted())
                         {
                             transaction.RollBack();
@@ -206,7 +196,7 @@ namespace VibrantBIM.ViewModels
                     catch (Exception ex)
                     {
                         Message = ex.Message;
-                        TaskDialog.Show("Error", Message);
+                        MessageBox.Show("Error : " + Message);
                         if (transaction.HasStarted())
                         {
                             transaction.RollBack();
@@ -216,5 +206,6 @@ namespace VibrantBIM.ViewModels
                 transaction.Commit();
             }
         }    
+
     }
 }

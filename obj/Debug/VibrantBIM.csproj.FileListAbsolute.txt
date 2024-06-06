@@ -14,3 +14,5 @@ E:\ProjectAddin\VibrantBIM\obj\Debug\VibrantBIM.g.resources
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ImportEDBWindow.g.cs
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ImportEDBWindow.baml
 E:\ProjectAddin\VibrantBIM\bin\Debug\VibrantBIM.Addin
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameSTBeamWindow.g.cs
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameSTBeamWindow.baml

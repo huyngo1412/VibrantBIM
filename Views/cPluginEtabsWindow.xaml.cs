@@ -25,7 +25,7 @@ namespace VibrantBIM.Views
         private cPluginCallback _Plugin = null;
         private cSapModel _SapModel = null;
         private cOAPI _EtabsObject = null;
-        private ExportEDBViewModel _ExportEDBViewModel {  get; set; }
+        private ExportEDBVM _ExportEDBViewModel {  get; set; }
         public cPluginEtabsWindow(ref cSapModel SapModel, ref cPluginCallback Plugin)
         {
             _Plugin = Plugin;
@@ -34,7 +34,7 @@ namespace VibrantBIM.Views
             _EtabsObject = myHelper.CreateObjectProgID("CSI.ETABS.API.ETABSObject");
             try
             {
-                this.DataContext = _ExportEDBViewModel = new ExportEDBViewModel(ref _SapModel, ref _EtabsObject);
+                this.DataContext = _ExportEDBViewModel = new ExportEDBVM(ref _SapModel, ref _EtabsObject);
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using ETABSv1;
 using Microsoft.Win32;
 using System;
@@ -29,7 +30,7 @@ namespace VibrantBIM.ViewModels
         public List<GridLine> GridLine = new List<GridLine>();
         public List<Story> Stories = new List<Story>();
     }
-    public class ExportEDBViewModel
+    public class ExportEDBVM
     {
         #region Etabs
         private cSapModel _SapModel { get; set; }
@@ -89,12 +90,6 @@ namespace VibrantBIM.ViewModels
         private string csys = "Global";
         #endregion
         #region Thông tin hình dạng và kiểu kết cấu
-        private string Mat = "";
-        private double T3 = 0;
-        private double T2 = 0;
-        private int Color = 1;
-        private string Notes = null;
-        private string GUID = null;
         private eFrameDesignOrientation TypeFrame = eFrameDesignOrientation.Null;
         #endregion
         #region Lấy thông tin các tiết diện
@@ -102,23 +97,16 @@ namespace VibrantBIM.ViewModels
         private string[] SCProName = null;
         #endregion
         #region GetShapeType
-        private int NumberShapeType = 0;
-        private string[] FrameNameSP = null;
-        private eFramePropType[] PropType = null;
-        private double[] t3 = null;
-        private double[] t2 = null;
-        private double[] tf = null;
-        private double[] tw = null;
-        private double[] t2b = null;
-        private double[] tfb = null;
+        private eFramePropType PropTypeOAPI = eFramePropType.I;
         #endregion
         DataContainer dataContainer = new DataContainer();
         public ICommand BrowseEDB { get; set; }
         public ICommand ExportEDB { get;set; }
-        public ExportEDBViewModel(ref cSapModel _sapModel, ref cOAPI _etabsObject) {
+        public ExportEDBVM(ref cSapModel _sapModel, ref cOAPI _etabsObject) {
             this._SapModel = _sapModel;
             this._EtabsObject = _etabsObject;
             string savedFilePath = "";
+
             BrowseEDB = new RelayCommand<object>((p) => true, (p) =>
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -136,9 +124,8 @@ namespace VibrantBIM.ViewModels
                        ref VisibleX, ref VisibleY, ref BubbleLocX, ref BubbleLocY);//Lấy hệ lưới XYZ
                     ret = _SapModel.Story.GetStories(ref NumberStories, ref StoryNames, ref StoryElevations, ref StoryHeights, ref IsMasterStory,
                        ref SimilarToStory, ref SpliceAbove, ref SpliceHeight);//Lấy Story Data
-                    //ret = _SapModel.PropFrame.GetAllFrameProperties(ref NumberShapeType, ref FrameNameSP, ref PropType, ref t3, ref t2, ref tf, ref tw, ref t2b, ref tfb);
-                    dataContainer.Columns = new List<Column>(GetColumnEDB(filename).ToList());
-                    dataContainer.Beams = new List<Beam>(GetBeamEDB(filename).ToList());
+                    dataContainer.Columns = new List<Column>(GetColumnEDB().ToList());
+                    dataContainer.Beams = new List<Beam>(GetBeamEDB().ToList());
                     dataContainer.GridLine = new List<GridLine>(GetGridData().ToList());
                     dataContainer.Stories = new List<Story>(GetStoryData().ToList());
                     TextBlock textBlock = p as TextBlock;
@@ -150,12 +137,7 @@ namespace VibrantBIM.ViewModels
             });
             ExportEDB = new RelayCommand<object>((p)=>true,(p)=>
             {
-                var xmlSerializer = new XmlSerializer(typeof(DataContainer));
-                using (var write = new StreamWriter(savedFilePath))
-                {
-                    xmlSerializer.Serialize(write, dataContainer);
-                }
-                MessageBox.Show("Export Successful");
+                CXVCruid.CreateFile(dataContainer, savedFilePath);               
             });
         }
         private IEnumerable<GridLine> GetGridData()
@@ -194,14 +176,14 @@ namespace VibrantBIM.ViewModels
                 yield return story;
             }
         }
-        private IEnumerable<Column> GetColumnEDB(string filename)
+        private IEnumerable<Column> GetColumnEDB()
         {
             for (int i = 0; i < FrameName.Length; i++)
             {
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
-                ret = _SapModel.PropFrame.GetRectangle(FrameName[i], ref filename, ref Mat, ref T3, ref T2, ref Color, ref Notes, ref GUID);
                 if (TypeFrame.ToString() == "Column")
                 {
+                    ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Column column = new Column()
                     {
                         Name = FrameName[i],
@@ -209,21 +191,23 @@ namespace VibrantBIM.ViewModels
                         LastPoint = new Point3D(Point2X[i], Point2Y[i], Point2Z[i]),
                         PropName = PropName[i],
                         StoryName = StoryName[i],
-                        FrameShapeType = eFramePropType.Rectangular,
-                        ShapeType = Get_SetShapeInstance.SetShapeInstance(eFramePropType.Rectangular),
+                        FrameShapeType = PropTypeOAPI,
+                        ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
                     };
+                    column.GetSectionPro(_SapModel, PropName[i]);
                     yield return column;
                 }
             }
         }
-        private IEnumerable<Beam> GetBeamEDB(string filename) 
+
+        private IEnumerable<Beam> GetBeamEDB() 
         {
             for (int i = 0; i < FrameName.Length; i++)
             {
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
-                ret = _SapModel.PropFrame.GetRectangle(FrameName[i], ref filename, ref Mat, ref T3, ref T2, ref Color, ref Notes, ref GUID);
-                if (TypeFrame.ToString() == "Beam")
+                if (TypeFrame.ToString() == "Beam" )
                 {
+                    ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Beam beam = new Beam()
                     {
                         Name = FrameName[i],
@@ -231,9 +215,10 @@ namespace VibrantBIM.ViewModels
                         LastPoint = new Point3D(Point2X[i], Point2Y[i], Point2Z[i]),
                         PropName = PropName[i],
                         StoryName = StoryName[i],
-                        FrameShapeType = eFramePropType.Rectangular,
-                        ShapeType = Get_SetShapeInstance.SetShapeInstance(eFramePropType.Rectangular),
+                        FrameShapeType = PropTypeOAPI,
+                        ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
                     };
+                    beam.GetSectionPro(_SapModel, PropName[i]);
                     yield return beam;
                 }
             }
