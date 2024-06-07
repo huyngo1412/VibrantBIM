@@ -1,11 +1,11 @@
-﻿<Window x:Class="VibrantBIM.Views.FrameSTBeamWindow"
+﻿<Window x:Class="VibrantBIM.Views.FrameSTColumnWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VibrantBIM.Views"
              mc:Ignorable="d" 
-              SizeToContent ="WidthAndHeight">
+                          SizeToContent ="WidthAndHeight">
     <Grid Width="610"
    Height="300">
         <Grid.Resources>
@@ -34,7 +34,7 @@
    Foreground="#FF33558A"
                   Margin="10"
       x:Name="Dg_FrameSection"
-          ItemsSource="{Binding LstframeSTBeam}"
+          ItemsSource="{Binding LstframeSTColumn}"
           CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="280"  Header="ETABS/SAP2000 Section">
@@ -52,7 +52,6 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-
         </DataGrid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -60,7 +59,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Width="100" Margin="180,0,0,0" Content="OK"
-       x:Name="btn_CreateProject" Command="{Binding ChangeSectionBeam}" CommandParameter="{Binding ElementName=Dg_FrameSection}" Click="btn_CreateProject_Click"></Button>
+       x:Name="btn_CreateProject" Command="{Binding ChangeSectionColumn}" CommandParameter="{Binding ElementName=Dg_FrameSection}" Click="btn_CreateProject_Click"></Button>
             <Button Grid.Column="1" Width="100" Margin="0,0,180,0" Content="Cancel"
        x:Name="btn_Cancel"></Button>
         </Grid>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-3-1430045558
+4-742434754
 
-25905878574
+262106119365
 172048214736
-Views\cPluginEtabsWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\ImportEDBWindow.xaml;
+Views\cPluginEtabsWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\FrameSTColumnWindow.xaml;Views\ImportEDBWindow.xaml;
 
 False
 

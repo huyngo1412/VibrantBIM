@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace VibrantBIM.Views
 {
     /// <summary>
-    /// Interaction logic for FrameSTBeamWindow.xaml
+    /// Interaction logic for FrameSTColumnWindow.xaml
     /// </summary>
-    public partial class FrameSTBeamWindow : Window
+    public partial class FrameSTColumnWindow : Window
     {
-        public FrameSTBeamWindow()
+        public FrameSTColumnWindow()
         {
             InitializeComponent();
         }

@@ -78,7 +78,7 @@
     <Compile Include="Models\GridLine.cs" />
     <Compile Include="Models\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ChangeSectionBeamVM.cs" />
+    <Compile Include="ViewModels\ChangeSectionVM.cs" />
     <Compile Include="ViewModels\ExportEDBVM.cs" />
     <Compile Include="ViewModels\ImportEDBVM.cs" />
     <Compile Include="ViewModels\ModelBase.cs" />
@@ -88,6 +88,9 @@
     </Compile>
     <Compile Include="Views\FrameSTBeamWindow.xaml.cs">
       <DependentUpon>FrameSTBeamWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrameSTColumnWindow.xaml.cs">
+      <DependentUpon>FrameSTColumnWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImportEDBWindow.xaml.cs">
       <DependentUpon>ImportEDBWindow.xaml</DependentUpon>
@@ -104,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FrameSTBeamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrameSTColumnWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

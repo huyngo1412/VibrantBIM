@@ -15,6 +15,7 @@ using System.Xml.Serialization;
 using VibrantBIM.Models;
 using VibrantBIM.Views;
 using VibrantBIM.Extensions;
+using Autodesk.Revit.DB.Structure;
 namespace VibrantBIM.ViewModels
 {
     public class ImportEDBVM
@@ -48,6 +49,7 @@ namespace VibrantBIM.ViewModels
         #region ICommand
         public ICommand ImportEDB { get; set; }
         public ICommand ChangeSectionBeam { get; set; }
+        public ICommand ChangeSectionColumn { get;set; }
         public ICommand CreateProject { get; set; }
         #endregion
         public ImportEDBVM(UIDocument doc, Document getdoc)
@@ -57,11 +59,17 @@ namespace VibrantBIM.ViewModels
             _container = new DataContainer();
             ChangeSectionBeam = new RelayCommand<object>((p) => true, (p) =>
             {
-                var vm = new ChangeSectionBeamVM(doc, getdoc );
+                var vm = new ChangeSectionVM(doc, getdoc );
                 vm.FrameSTBeamView.ShowDialog();
+            });
+            ChangeSectionColumn = new RelayCommand<object>((p) => true, (p) =>
+            {
+                var vm = new ChangeSectionVM(doc, getdoc);
+                vm.FrameSTColumnView.ShowDialog();
             });
             CreateProject = new RelayCommand<object>((p) => true, async (p) =>
             {
+                _container = CXVCruid.ReadFile(CXVCruid.FilePathCXV);
                 if (_importEDBView.chk_GridLine.IsChecked == true)
                 {
                     CreateGrid();
@@ -69,6 +77,10 @@ namespace VibrantBIM.ViewModels
                 if (_importEDBView.chk_Level.IsChecked == true)
                 {
                     CreateLevel();
+                }
+                if(_importEDBView.chk_Beam.IsChecked == true)
+                {
+                    CreateBeam();
                 }
             });
             ImportEDB = new RelayCommand<object>((p) => true, p =>
@@ -205,7 +217,41 @@ namespace VibrantBIM.ViewModels
                 }
                 transaction.Commit();
             }
-        }    
-
+        }
+        private void CreateBeam()
+        {
+            string Message = "";
+            Level level = _document.ActiveView.GenLevel;
+            FilteredElementCollector collector = new FilteredElementCollector(_document);
+            collector.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
+            using (Transaction transaction = new Transaction(_document, "Tạo dầm"))
+            {
+                transaction.Start();
+                for (int i = 0; i < _container.Beams.Count; i++)
+                {
+                    XYZ Start = new XYZ(_container.Beams[i].FirstPoint.X, _container.Beams[i].FirstPoint.Y, _container.Beams[i].FirstPoint.Z);
+                    XYZ End = new XYZ(_container.Beams[i].LastPoint.X, _container.Beams[i].LastPoint.Y, _container.Beams[i].LastPoint.Z);
+                    Autodesk.Revit.DB.Curve beamLine = Line.CreateBound(ConvertUnit.MmToFoot(Start), ConvertUnit.MmToFoot(End));
+                    try
+                    {
+                        FamilySymbol gotSymbol = collector.Where(x => x.Name == _container.Beams[i].RevitFamily).FirstOrDefault() as FamilySymbol;
+                        //create a new beam
+                        FamilyInstance instance = _document.Create.NewFamilyInstance(beamLine, gotSymbol,
+                                                                                    level, StructuralType.Beam);
+                    }
+                    catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
+                    {
+                        Message = exceptionCanceled.Message;
+                        MessageBox.Show("Error : " + Message);
+                        if (transaction.HasStarted())
+                        {
+                            transaction.RollBack();
+                        }
+                    }
+                    
+                }
+                transaction.Commit();
+            }
+        }
     }
 }

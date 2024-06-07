@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Xml;
 using System.Xml.Serialization;
 using VibrantBIM.ViewModels;
 
@@ -12,6 +14,7 @@ namespace VibrantBIM.Extensions
 {
     public class CXVCruid
     {
+        private static XmlDocument _xmlDocument;
         public static string FilePathCXV = "";
         public static void CreateFile(DataContainer dataContainer, string FilePath)
         {
@@ -22,8 +25,21 @@ namespace VibrantBIM.Extensions
             }
             MessageBox.Show("Export Successful");
         }
-        public static void UpdateFile()
+        public static void UpdateFile(string filename,string XPath, string check,string NodeCheck,string NodeEdit,string value)
         {
+            _xmlDocument = new XmlDocument();
+            _xmlDocument.Load(filename);
+            XmlNodeList NodeList = _xmlDocument.SelectNodes(XPath);
+            foreach (XmlNode Node in NodeList)
+            {
+                XmlNode GetNodeEdit = Node.SelectSingleNode(NodeEdit);
+                XmlNode GetNodeCheck = Node.SelectSingleNode(NodeCheck);
+                if (GetNodeCheck.InnerText == check)
+                {
+                    GetNodeEdit.InnerText = value;
+                }
+            }
+            _xmlDocument.Save(filename);
 
         }
         public static DataContainer ReadFile(string FilePath)

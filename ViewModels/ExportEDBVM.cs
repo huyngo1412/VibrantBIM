@@ -116,6 +116,7 @@ namespace VibrantBIM.ViewModels
                 if (saveFileDialog.ShowDialog() == true)
                 {
                     savedFilePath = saveFileDialog.FileName;
+                    CXVCruid.FilePathCXV = saveFileDialog.FileName;
                     ret = _SapModel.FrameObj.GetAllFrames(ref NumberNames, ref FrameName, ref PropName, ref StoryName, ref PointName1, ref PointName2,
                          ref Point1X, ref Point1Y, ref Point1Z, ref Point2X, ref Point2Y, ref Point2Z, ref Angle,
                          ref Offset1X, ref Offset2X, ref Offset1Y, ref Offset2Y, ref Offset1Z, ref Offset2Z, ref CardinalPoint, csys);
@@ -137,7 +138,7 @@ namespace VibrantBIM.ViewModels
             });
             ExportEDB = new RelayCommand<object>((p)=>true,(p)=>
             {
-                CXVCruid.CreateFile(dataContainer, savedFilePath);               
+                CXVCruid.CreateFile(dataContainer, savedFilePath);
             });
         }
         private IEnumerable<GridLine> GetGridData()
@@ -193,6 +194,7 @@ namespace VibrantBIM.ViewModels
                         StoryName = StoryName[i],
                         FrameShapeType = PropTypeOAPI,
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
+                        RevitFamily = ""
                     };
                     column.GetSectionPro(_SapModel, PropName[i]);
                     yield return column;
@@ -217,6 +219,7 @@ namespace VibrantBIM.ViewModels
                         StoryName = StoryName[i],
                         FrameShapeType = PropTypeOAPI,
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
+                        RevitFamily = ""
                     };
                     beam.GetSectionPro(_SapModel, PropName[i]);
                     yield return beam;
