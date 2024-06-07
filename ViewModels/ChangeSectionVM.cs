@@ -129,7 +129,7 @@ namespace VibrantBIM.ViewModels
             //Lọc dữ liệu cột
             FilteredElementCollector collectorColumn = new FilteredElementCollector(_document);
             collectorColumn.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralColumns);
-            List<string> Columnrevitfamilyname = collectorBeam.Select(x => x.Name).ToList();
+            List<string> Columnrevitfamilyname = collectorColumn.Select(x => x.Name).ToList();
             List<string> etabsSTColumn = new List<string>();
             foreach (var item in _dataContainer.Columns)
             {
