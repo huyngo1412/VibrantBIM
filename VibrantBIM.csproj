@@ -69,6 +69,8 @@
     <Compile Include="Extensions\ConvertUnit.cs" />
     <Compile Include="Extensions\Get_SetShapeInstance.cs" />
     <Compile Include="Extensions\CXVCruid.cs" />
+    <Compile Include="FrameForceTable.cs" />
+    <Compile Include="Models\ElementOutput\ElementForces.cs" />
     <Compile Include="Models\Material\Concrete.cs" />
     <Compile Include="Models\Material\Steel.cs" />
     <Compile Include="Models\ShapeType\Rectangular.cs" />
@@ -80,11 +82,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ChangeSectionVM.cs" />
     <Compile Include="ViewModels\ExportEDBVM.cs" />
+    <Compile Include="ViewModels\FrameForceVM.cs" />
     <Compile Include="ViewModels\ImportEDBVM.cs" />
     <Compile Include="ViewModels\ModelBase.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\cPluginEtabsWindow.xaml.cs">
       <DependentUpon>cPluginEtabsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrameForceDataWindow.xaml.cs">
+      <DependentUpon>FrameForceDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FrameSTBeamWindow.xaml.cs">
       <DependentUpon>FrameSTBeamWindow.xaml</DependentUpon>
@@ -103,6 +109,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\cPluginEtabsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrameForceDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

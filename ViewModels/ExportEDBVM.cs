@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 using ETABSv1;
 using Microsoft.Win32;
@@ -19,16 +20,17 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using VibrantBIM.Extensions;
 using VibrantBIM.Models;
+using VibrantBIM.Models.ElementOutput;
 using VibrantBIM.Models.ShapeType;
 
 namespace VibrantBIM.ViewModels
 {
     public class DataContainer
     {
-        public List<Column> Columns = new List<Column>();
-        public List<Beam> Beams = new List<Beam>();
-        public List<GridLine> GridLine = new List<GridLine>();
-        public List<Story> Stories = new List<Story>();
+        public ObservableCollection<Column> Columns = new ObservableCollection<Column>();
+        public ObservableCollection<Beam> Beams = new ObservableCollection<Beam>();
+        public ObservableCollection<GridLine> GridLine = new ObservableCollection<GridLine>();
+        public ObservableCollection<Story> Stories = new ObservableCollection<Story>();
     }
     public class ExportEDBVM
     {
@@ -99,6 +101,26 @@ namespace VibrantBIM.ViewModels
         #region GetShapeType
         private eFramePropType PropTypeOAPI = eFramePropType.I;
         #endregion
+        #region NameCombo 
+        private int NumberCombo = 0;
+        private string[] NameCombo = null;
+        #endregion
+        #region FrameForce
+        int NumberResults = 0;
+        string[] Obj = null;
+        double[] ObjSta = null;
+        string[] Elm = null;
+        double[] ElmSta = null;
+        string[] LoadCase = null;
+        string[] StepType = null;
+        double[] StepNum = null;
+        double[] P = null;
+        double[] V2 = null;
+        double[] V3 = null;
+        double[] T = null;
+        double[] M2 = null;
+        double[] M3 = null;
+        #endregion
         DataContainer dataContainer = new DataContainer();
         public ICommand BrowseEDB { get; set; }
         public ICommand ExportEDB { get;set; }
@@ -106,7 +128,9 @@ namespace VibrantBIM.ViewModels
             this._SapModel = _sapModel;
             this._EtabsObject = _etabsObject;
             string savedFilePath = "";
-
+            ret = _SapModel.RespCombo.GetNameList(ref NumberCombo, ref NameCombo);
+            ret = _SapModel.SetPresentUnits(eUnits.kN_mm_C);
+            LoadDistributed();
             BrowseEDB = new RelayCommand<object>((p) => true, (p) =>
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -125,10 +149,10 @@ namespace VibrantBIM.ViewModels
                        ref VisibleX, ref VisibleY, ref BubbleLocX, ref BubbleLocY);//Lấy hệ lưới XYZ
                     ret = _SapModel.Story.GetStories(ref NumberStories, ref StoryNames, ref StoryElevations, ref StoryHeights, ref IsMasterStory,
                        ref SimilarToStory, ref SpliceAbove, ref SpliceHeight);//Lấy Story Data
-                    dataContainer.Columns = new List<Column>(GetColumnEDB().ToList());
-                    dataContainer.Beams = new List<Beam>(GetBeamEDB().ToList());
-                    dataContainer.GridLine = new List<GridLine>(GetGridData().ToList());
-                    dataContainer.Stories = new List<Story>(GetStoryData().ToList());
+                    dataContainer.Columns = new ObservableCollection<Column>(GetColumnEDB().ToList());
+                    dataContainer.Beams = new ObservableCollection<Beam>(GetBeamEDB().ToList());
+                    dataContainer.GridLine = new ObservableCollection<GridLine>(GetGridData().ToList());
+                    dataContainer.Stories = new ObservableCollection<Story>(GetStoryData().ToList());
                     TextBlock textBlock = p as TextBlock;
                     if(textBlock != null )
                     {
@@ -138,8 +162,19 @@ namespace VibrantBIM.ViewModels
             });
             ExportEDB = new RelayCommand<object>((p)=>true,(p)=>
             {
+                MessageBox.Show("Đợi anh 1 tí nhé");
                 CXVCruid.CreateFile(dataContainer, savedFilePath);
+         
             });
+        }
+        private void LoadDistributed()
+        {
+            foreach (var loadcase in NameCombo)
+            {
+                ret = _SapModel.Results.Setup.SetComboSelectedForOutput(loadcase);
+            }
+            ret = _SapModel.Analyze.RunAnalysis();
+
         }
         private IEnumerable<GridLine> GetGridData()
         {
@@ -179,11 +214,17 @@ namespace VibrantBIM.ViewModels
         }
         private IEnumerable<Column> GetColumnEDB()
         {
+            var lstFrameForce = new List<ElementForces>();
+            int count = 0;
             for (int i = 0; i < FrameName.Length; i++)
             {
+                
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
                 if (TypeFrame.ToString() == "Column")
                 {
+                    ret = _SapModel.Results.FrameForce(FrameName[i], eItemTypeElm.ObjectElm, ref NumberResults, ref Obj, ref ObjSta, ref Elm, ref ElmSta, ref LoadCase, ref StepType, ref StepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
+                    lstFrameForce = FrameForce().ToList();
+
                     ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Column column = new Column()
                     {
@@ -194,7 +235,8 @@ namespace VibrantBIM.ViewModels
                         StoryName = StoryName[i],
                         FrameShapeType = PropTypeOAPI,
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
-                        RevitFamily = ""
+                        RevitFamily = "",
+                        FrameForce = lstFrameForce,
                     };
                     column.GetSectionPro(_SapModel, PropName[i]);
                     yield return column;
@@ -204,11 +246,15 @@ namespace VibrantBIM.ViewModels
 
         private IEnumerable<Beam> GetBeamEDB() 
         {
+            var lstFrameForce = new List<ElementForces>();
             for (int i = 0; i < FrameName.Length; i++)
             {
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
                 if (TypeFrame.ToString() == "Beam" )
                 {
+                    ret = _SapModel.Results.FrameForce(FrameName[i], eItemTypeElm.ObjectElm, ref NumberResults, ref Obj, ref ObjSta, ref Elm, ref ElmSta, ref LoadCase, ref StepType, ref StepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
+
+                    lstFrameForce = FrameForce().ToList();
                     ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Beam beam = new Beam()
                     {
@@ -219,11 +265,20 @@ namespace VibrantBIM.ViewModels
                         StoryName = StoryName[i],
                         FrameShapeType = PropTypeOAPI,
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
-                        RevitFamily = ""
+                        RevitFamily = "",
+                        FrameForce = lstFrameForce,
                     };
                     beam.GetSectionPro(_SapModel, PropName[i]);
                     yield return beam;
                 }
+            }
+        }
+        private IEnumerable<ElementForces> FrameForce()
+        {
+            for (int j = 0; j < LoadCase.Length; j++)
+            {
+                var force = new ElementForces() { OutputCase = LoadCase[j], Station = ElmSta[j], P = P[j], V2 = V2[j], V3 = V3[j], M2 = M2[j], M3 = M3[j] };
+                yield return force;
             }
         }
     }

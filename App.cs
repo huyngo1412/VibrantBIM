@@ -21,16 +21,26 @@ namespace VibrantBIM
             try
             {
                 application.CreateRibbonTab("VibrantBIMExtension");
-                RibbonPanel panelImportEDB = application.CreateRibbonPanel("VibrantBIMExtension", "ImportEDB");
-                PushButtonData btnDataImportEDB = new PushButtonData(
-                    "ImportETABS",
-                    "ImportETABS",
+                RibbonPanel panelEtabs_SapModel = application.CreateRibbonPanel("VibrantBIMExtension", "Etabs/Sap2000 Model");
+                PushButtonData btnImportEDB = new PushButtonData(
+                    "Import ETABS",
+                    "Import ETABS",
                     Assembly.GetExecutingAssembly().Location, "VibrantBIM.CreateModelRevit")
                 {
                    
                 };
-                PushButton buttonImportEDB = panelImportEDB.AddItem(btnDataImportEDB) as PushButton;
-                buttonImportEDB.Enabled = true;
+                PushButton pushbtnImportEDB = panelEtabs_SapModel.AddItem(btnImportEDB) as PushButton;
+                pushbtnImportEDB.Enabled = true;
+
+                PushButtonData btnFrameForces = new PushButtonData(
+                    "Frame Force",
+                    "Frame Force",
+                    Assembly.GetExecutingAssembly().Location, "VibrantBIM.FrameForceTable")
+                {
+
+                };
+                PushButton pushbtnFrameForces = panelEtabs_SapModel.AddItem(btnFrameForces) as PushButton;
+
             }
             catch (Exception)
             {

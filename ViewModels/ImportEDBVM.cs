@@ -32,6 +32,7 @@ namespace VibrantBIM.ViewModels
         private int countBeam { get; set; }
         private int countColumn { get; set; }
         private int countSlab { get; set; }
+      
         private ImportEDBWindow _importEDBView;
         public ImportEDBWindow ImportEDBView
         {
@@ -245,6 +246,7 @@ namespace VibrantBIM.ViewModels
                         //create a new beam
                         FamilyInstance instance = _document.Create.NewFamilyInstance(beamLine, gotSymbol,
                                                                                     level, StructuralType.Beam);
+                        
                     }
                     catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                     {

@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace VibrantBIM.Models.Material
 {
     [XmlInclude(typeof(Concrete))]
-    public struct Concrete
+    public class Concrete
     {
 
     }
