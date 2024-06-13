@@ -6,7 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
+using VibrantBIM.Extensions;
 using VibrantBIM.ViewModels;
 
 namespace VibrantBIM
@@ -18,10 +21,22 @@ namespace VibrantBIM
         {
             UIDocument _uidoc = commandData.Application.ActiveUIDocument;
             Document _document = _uidoc.Document;
+            UIApplication _uiApp = commandData.Application;
+           
             try
             {
                 var vm = new ImportEDBVM(_uidoc, _document);
-                vm.ImportEDBView.ShowDialog();
+                Thread newWindowThread = new Thread(() =>
+                {                   
+                    vm.ImportEDBView.Dispatcher.Invoke(() =>
+                    {
+                        vm.ImportEDBView.ShowDialog();
+                    });
+                 
+                    Dispatcher.Run();
+                });
+                newWindowThread.SetApartmentState(ApartmentState.STA);
+                newWindowThread.Start();
                 return Result.Succeeded;
             }
             catch (Exception ex)

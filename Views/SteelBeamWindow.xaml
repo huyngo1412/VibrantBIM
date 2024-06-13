@@ -4,8 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VibrantBIM.Views"
+        SizeToContent="WidthAndHeight"
              >
     <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="Blue"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="Button">
             <Setter Property="Effect">
                 <Setter.Value>
@@ -20,8 +36,10 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="Black"></Setter>
+                    <Setter Property="Foreground" Value="Transparent"></Setter>
                 </Trigger>
+                
+               
             </Style.Triggers>
         </Style>
         <Style x:Key="CustomComboBoxStyleColors" TargetType="ComboBox">
@@ -68,7 +86,7 @@
                            Focusable="False">
                                     <Border Width="145"
                                     Height="150"
-                                    Background="#FF10195D" BorderBrush="Blue" CornerRadius="5" BorderThickness="1" Margin="0,-5,0,0">
+                                    Background="#FF70BFFA" BorderBrush="Blue" CornerRadius="5" BorderThickness="1" Margin="0,-5,0,0">
                                         <ScrollViewer>
                                             <ItemsPresenter />
                                         </ScrollViewer>
@@ -222,17 +240,23 @@
            Text="Đường kính thép chủ:"
            VerticalAlignment="Center"
            Margin="20,5,0,0"></TextBlock>
-                            <ComboBox Grid.Column="1"
+                            <ComboBox Grid.Column="1" ItemsSource="{Binding Rebardimension}"
+                                      x:Name="cb_RebarDim1"
            Margin="5"
            Grid.Row="3"
              Width="150"
          Style="{StaticResource CustomComboBoxStyleColors}"
              ></ComboBox>
                             <TextBlock Grid.Column="0" Grid.Row="4" 
-Text="Hình dạng thép:"
-VerticalAlignment="Center"
-Margin="20,5,0,0"></TextBlock>
+
+                                       
+                                       Text="Hình dạng thép:"
+
+                                       VerticalAlignment="Center"
+
+                                       Margin="20,5,0,0"></TextBlock>
                             <ComboBox Grid.Column="1"
+                                      ItemsSource="{Binding RebarShapeName}"
              Margin="5"
            Grid.Row="4"
              Width="150"
@@ -289,7 +313,7 @@ Margin="20,5,0,0"></TextBlock>
                 VerticalAlignment="Center"
                 Margin="20,5,0,0"></TextBlock>
                             <Border Width="150" Grid.Column="1" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                                <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"
+                                <TextBox 
                 />
                             </Border>
 
@@ -391,17 +415,110 @@ Margin="10">
 
             <TabItem Header="Thép đai" Style="{StaticResource TabItemStyle}">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Image Grid.Column="0"
-                           Grid.Row="0"
-                           Source="pack://application:,,,/VibrantBIM;component/Assets/Stirrups.png"></Image>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <ComboBox Grid.Column="1"
+                        Margin="0,10,0,0"
+                                  HorizontalAlignment="Left"
+                        Grid.Row="0"
+                        Width="150"
+                        Style="{StaticResource CustomComboBoxStyleColors}"
+                        ></ComboBox>
+                        <TextBlock Grid.Row="0"
+                                   Height="15"
+                                   Grid.Column="1" 
+                                   Text="Hình dạng thép"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Stretch"
+                                   Foreground="Blue"></TextBlock>
+
+                        <ComboBox 
+                            Grid.Column="1"
+                            Margin="0,10,0,0"
+                            HorizontalAlignment="Left"
+                            Grid.Row="1"
+                            Width="150"
+                            Style="{StaticResource CustomComboBoxStyleColors}"
+                            ></ComboBox>
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1" 
+                                   Text="Đường kính thép"
+                                   Height="15"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Stretch"
+                                   Foreground="Blue"></TextBlock>
+                        <TextBlock Grid.Row="0"
+                                   VerticalAlignment="Bottom"
+                                   Margin="5,10,0,10"
+                                    Grid.Column="2" 
+                                    Text="Chiều dài"
+                                    Foreground="Blue"></TextBlock>
+                        <TextBlock Grid.Row="1"
+                                   VerticalAlignment="Bottom"
+                                   Margin="5,10,0,10"
+                                   Grid.Column="2" 
+                                   Text="Khoảng cách bố trí"
+                                   Foreground="Blue"></TextBlock>
+                        <TextBlock Grid.Row="0"
+                                   VerticalAlignment="Top"
+                                   Grid.Column="3" 
+                                   Text="L1"
+                                   HorizontalAlignment="Center"
+                                   Foreground="Blue"></TextBlock>
+                        <Border Width="70" Grid.Row="0" Grid.Column="3" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
+                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                        </Border>
+                        <Border Width="70" Grid.Row="1" Grid.Column="3" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
+                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                        </Border>
+
+                        <TextBlock Grid.Row="0"
+                                   VerticalAlignment="Top"
+                                   Grid.Column="4" 
+                                   Text="L2"
+                                   HorizontalAlignment="Center"
+                                   Foreground="Blue"></TextBlock>
+                        <Border Width="70" Grid.Row="0" Grid.Column="4" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
+                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                        </Border>
+                        <Border Width="70" Grid.Row="1" Grid.Column="4" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
+                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                        </Border>
+
+                        <TextBlock Grid.Row="0"
+           VerticalAlignment="Top"
+           Grid.Column="5" 
+           Text="L3"
+           HorizontalAlignment="Center"
+           Foreground="Blue"></TextBlock>
+                        <Border Width="70" Grid.Row="0" Grid.Column="5" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
+                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                        </Border>
+                        <Border Width="70" Grid.Row="1" Grid.Column="5" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
+                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                        </Border>
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Height="60"
+                               Source="pack://application:,,,/VibrantBIM;component/Assets/Stirrups.png"></Image>
+                    </Grid>
+                    
                 </Grid>
             </TabItem>
         </TabControl>
@@ -421,10 +538,11 @@ Margin="10">
         Grid.Row="0"
         x:Name="btn_InsertLinkCXV"
         Content=" Insert Link CXV" Margin="10,0,0,0"></Button>
-            <Border Grid.Column="1" Margin="15,10,0,5" HorizontalAlignment="Right"  BorderBrush="Blue" BorderThickness="0,0,0,1.5" CornerRadius="0">
-                <TextBlock Width="360" x:Name="tb_LinkCXV" Foreground="Black" Background="Transparent"
-                           />
+            <Border Width="150" Grid.Column="1" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
+                <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"
+/>
             </Border>
+
             <TextBlock Grid.Column="2"
                        FontSize="15"
                        Foreground="Blue"
@@ -444,6 +562,7 @@ Margin="10">
             HorizontalAlignment="Left"
             Margin="15,0,10,0"></TextBlock>
             <ComboBox Grid.Column="5"
+                      ItemsSource="{Binding LoadCombo}"
            Width="150"
            Style="{StaticResource CustomComboBoxStyleColors}"
            ></ComboBox>
@@ -456,6 +575,7 @@ Content="Thiết lập" Margin="10,0,0,0"></Button>
         <Button Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Grid.Row="3"
+                Height="30"
                 Content="Thiết lập cho dầm"></Button>
     </Grid>
 </Window>

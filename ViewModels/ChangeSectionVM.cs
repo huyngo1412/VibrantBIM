@@ -168,6 +168,8 @@ namespace VibrantBIM.ViewModels
                 NodePath = "//Beams/Beam";
             if(TypeFrame.ToLower() == "column")
                 NodePath = "//Columns/Column";
+            XmlDocument _xmlDocument = new XmlDocument();
+            _xmlDocument.Load(CXVCruid.FilePathCXV);
             foreach (var item in dataGrid.Items)
             {
                 DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromItem(item);
@@ -193,12 +195,13 @@ namespace VibrantBIM.ViewModels
                             {
                                 string RevitFamily = comboBox.SelectedValue.ToString();
                                 string EtasbSTName = textBlock.Text;
-                                CXVCruid.UpdateFile(CXVCruid.FilePathCXV, NodePath, EtasbSTName, "PropName", "RevitFamily", RevitFamily);
+                                CXVCruid.UpdateFile(ref _xmlDocument, NodePath, EtasbSTName, "PropName", "RevitFamily", RevitFamily);
                             }
                         }
                     }
                 }
             }
+            _xmlDocument.Save(CXVCruid.FilePathCXV);
         }
         private T GetVisualChild<T>(Visual parent) where T : Visual
         {

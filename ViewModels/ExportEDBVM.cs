@@ -236,6 +236,7 @@ namespace VibrantBIM.ViewModels
                         FrameShapeType = PropTypeOAPI,
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
                         RevitFamily = "",
+                        ElementID = "",
                         FrameForce = lstFrameForce,
                     };
                     column.GetSectionPro(_SapModel, PropName[i]);
@@ -266,6 +267,7 @@ namespace VibrantBIM.ViewModels
                         FrameShapeType = PropTypeOAPI,
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
                         RevitFamily = "",
+                        ElementID = "",
                         FrameForce = lstFrameForce,
                     };
                     beam.GetSectionPro(_SapModel, PropName[i]);

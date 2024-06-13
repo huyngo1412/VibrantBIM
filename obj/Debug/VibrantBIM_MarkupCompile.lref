@@ -5,4 +5,6 @@ FE:\ProjectAddin\VibrantBIM\Views\FrameForceDataWindow.xaml;;
 FE:\ProjectAddin\VibrantBIM\Views\FrameSTBeamWindow.xaml;;
 FE:\ProjectAddin\VibrantBIM\Views\FrameSTColumnWindow.xaml;;
 FE:\ProjectAddin\VibrantBIM\Views\ImportEDBWindow.xaml;;
+FE:\ProjectAddin\VibrantBIM\Views\ProgressWindow.xaml;;
+FE:\ProjectAddin\VibrantBIM\Views\SteelBeamWindow.xaml;;
 

@@ -14,7 +14,6 @@ namespace VibrantBIM.Extensions
 {
     public class CXVCruid
     {
-        private static XmlDocument _xmlDocument;
         public static string FilePathCXV = "";
         public static void CreateFile(DataContainer dataContainer, string FilePath)
         {
@@ -25,21 +24,27 @@ namespace VibrantBIM.Extensions
             }
             MessageBox.Show("Export Successful");
         }
-        public static void UpdateFile(string filename,string XPath, string check,string NodeCheck,string NodeEdit,string value)
+        public static void UpdateFile(ref XmlDocument xmlDocument/*, string filename*/,string XPath, string check,string NodeCheck,string NodeEdit,string value)
         {
-            _xmlDocument = new XmlDocument();
-            _xmlDocument.Load(filename);
-            XmlNodeList NodeList = _xmlDocument.SelectNodes(XPath);
-            foreach (XmlNode Node in NodeList)
+            try
             {
-                XmlNode GetNodeEdit = Node.SelectSingleNode(NodeEdit);
-                XmlNode GetNodeCheck = Node.SelectSingleNode(NodeCheck);
-                if (GetNodeCheck.InnerText == check)
+                XmlNodeList NodeList = xmlDocument.SelectNodes(XPath);
+                foreach (XmlNode Node in NodeList)
                 {
-                    GetNodeEdit.InnerText = value;
+                    XmlNode GetNodeEdit = Node.SelectSingleNode(NodeEdit);
+                    XmlNode GetNodeCheck = Node.SelectSingleNode(NodeCheck);
+                    if (GetNodeCheck.InnerText == check)
+                    {
+                        GetNodeEdit.InnerText = value;
+                    }
                 }
             }
-            _xmlDocument.Save(filename);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi" + ex.Message);
+            }
+            
+            //_xmlDocument.Save(filename);
 
         }
         public static DataContainer ReadFile(string FilePath)
