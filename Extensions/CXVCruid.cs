@@ -44,8 +44,6 @@ namespace VibrantBIM.Extensions
                 MessageBox.Show("Đã xảy ra lỗi" + ex.Message);
             }
             
-            //_xmlDocument.Save(filename);
-
         }
         public static DataContainer ReadFile(string FilePath)
         {

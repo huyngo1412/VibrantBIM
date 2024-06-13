@@ -9,7 +9,8 @@
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="Transparent"/>
-
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Foreground" Value="Blue"></Setter>
@@ -206,7 +207,7 @@
                 VerticalAlignment="Center"
                 Margin="20,5,0,0"></TextBlock>
                             <Border Width="150" Grid.Column="1" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                                <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"
+                                <TextBox BorderBrush="Transparent"  Background="Transparent"
                 />
                             </Border>
 
@@ -481,10 +482,10 @@ Margin="10">
                                    HorizontalAlignment="Center"
                                    Foreground="Blue"></TextBlock>
                         <Border Width="70" Grid.Row="0" Grid.Column="3" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                            <TextBox BorderBrush="Transparent"  Background="Transparent"/>
                         </Border>
                         <Border Width="70" Grid.Row="1" Grid.Column="3" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                            <TextBox BorderBrush="Transparent"   Background="Transparent"/>
                         </Border>
 
                         <TextBlock Grid.Row="0"
@@ -494,10 +495,10 @@ Margin="10">
                                    HorizontalAlignment="Center"
                                    Foreground="Blue"></TextBlock>
                         <Border Width="70" Grid.Row="0" Grid.Column="4" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                            <TextBox BorderBrush="Transparent"   Background="Transparent"/>
                         </Border>
                         <Border Width="70" Grid.Row="1" Grid.Column="4" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                            <TextBox BorderBrush="Transparent"   Background="Transparent"/>
                         </Border>
 
                         <TextBlock Grid.Row="0"
@@ -507,16 +508,16 @@ Margin="10">
            HorizontalAlignment="Center"
            Foreground="Blue"></TextBlock>
                         <Border Width="70" Grid.Row="0" Grid.Column="5" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                            <TextBox BorderBrush="Transparent"   Background="Transparent"/>
                         </Border>
                         <Border Width="70" Grid.Row="1" Grid.Column="5" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                            <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"/>
+                            <TextBox BorderBrush="Transparent"   Background="Transparent"/>
                         </Border>
                         <Image Grid.Column="0"
                                Grid.Row="0"
                                Grid.RowSpan="2"
                                Height="60"
-                               Source="pack://application:,,,/VibrantBIM;component/Assets/Stirrups.png"></Image>
+                               Source="E:\ProjectAddin\VibrantBIM\Assets\Stirrups.png"></Image>
                     </Grid>
                     
                 </Grid>
@@ -539,7 +540,7 @@ Margin="10">
         x:Name="btn_InsertLinkCXV"
         Content=" Insert Link CXV" Margin="10,0,0,0"></Button>
             <Border Width="150" Grid.Column="1" Margin="5" BorderBrush="Blue" BorderThickness="0,0,0,1" CornerRadius="0">
-                <TextBox BorderBrush="Transparent"  Foreground="Black" Background="Transparent"
+                <TextBox BorderBrush="Transparent" Background="Transparent"
 />
             </Border>
 
