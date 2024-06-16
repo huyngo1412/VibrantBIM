@@ -7,7 +7,7 @@ This project provides a solution for converting structural models from ETABS to 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Configuration](#nocopyright)
+- [No Copyright](#nocopyright)
 
 ## Introduction
 
