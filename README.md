@@ -7,7 +7,7 @@ This project provides a solution for converting structural models from ETABS to 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-
+- [Documentation](#documentation)
 ## Introduction
 
 The ETABS to Revit Model Converter allows users to convert structural models created in ETABS to Revit format. This tool streamlines the workflow for structural engineers and BIM professionals, enabling seamless data exchange and reducing the need for manual rework.
@@ -60,6 +60,12 @@ The ETABS to Revit Model Converter allows users to convert structural models cre
 **5**. Configure the mapping settings if necessary, and start the conversion process.
 
 **6**. The converted model will be imported into Revit.
+
+## Documentation
+
+[Revit API Documentation](https://www.revitapidocs.com/)
+
+[ETABS/ SAP2000 API Documentation](https://www.csiamerica.com/developer)
 
 ## No Copyright
 
