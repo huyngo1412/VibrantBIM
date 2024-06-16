@@ -7,7 +7,7 @@ This project provides a solution for converting structural models from ETABS to 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Configuration](#NoCopyright)
+- [Configuration](#nocopyright)
 
 ## Introduction
 
@@ -63,4 +63,8 @@ The ETABS to Revit Model Converter allows users to convert structural models cre
 6. The converted model will be imported into Revit.
 
 ## No Copyright
+
 This project is provided "as is" without any copyright. You are free to use, modify, and distribute this project as you see fit.
+
+If you use any part of this code in your own work and wish to monetize it, we kindly ask for a mention or acknowledgment, but it is not legally required. This is a request, not a condition of the license.
+
