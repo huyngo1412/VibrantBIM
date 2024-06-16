@@ -50,17 +50,17 @@ The ETABS to Revit Model Converter allows users to convert structural models cre
     ```
 ## Usage
 
-1. Launch Revit and load the ETABS to Revit Converter add-in.
+**STEP 1**. Launch Revit and load the ETABS to Revit Converter add-in.
 
-2. Open the ETABS model you want to convert in ETABS.
+**STEP 2**. Open the ETABS model you want to convert in ETABS.
 
-3. Export the ETABS model to an CXV file using the provided ETABS script:
+**STEP 3**. Export the ETABS model to an CXV file using the provided ETABS script:
 
-4. In Revit, open the ETABS to Revit Converter add-in and select the exported CXV file.
+**STEP 4**. In Revit, open the ETABS to Revit Converter add-in and select the exported CXV file.
 
-5. Configure the mapping settings if necessary, and start the conversion process.
+**STEP 5**. Configure the mapping settings if necessary, and start the conversion process.
 
-6. The converted model will be imported into Revit.
+**STEP 6**. The converted model will be imported into Revit.
 
 ## No Copyright
 
