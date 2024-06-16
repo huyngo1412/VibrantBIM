@@ -31,13 +31,12 @@ The ETABS to Revit Model Converter allows users to convert structural models cre
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/etabs-to-revit-converter.git
-    cd etabs-to-revit-converter
+    git clone https://github.com/huyngo1412/VibrantBIM.git
     ```
 
 2. Open the solution in Visual Studio:
     ```sh
-    start etabs-to-revit-converter.sln
+    start VibrantBIM.sln
     ```
 
 3. Restore the NuGet packages:
