@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-7-2146730649
+5-4138813
 4413383275
-39-572180260
+32-460346320
 191095115106
-Views\cPluginEtabsWindow.xaml;Views\FrameForceDataWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\FrameSTColumnWindow.xaml;Views\ImportEDBWindow.xaml;Views\ProgressWindow.xaml;Views\SteelBeamWindow.xaml;
+Views\cPluginEtabsWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\FrameSTColumnWindow.xaml;Views\ImportEDBWindow.xaml;Views\ProgressWindow.xaml;
 
 False
 

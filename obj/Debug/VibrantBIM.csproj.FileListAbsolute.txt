@@ -18,9 +18,5 @@ E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameSTBeamWindow.g.cs
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameSTBeamWindow.baml
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameSTColumnWindow.g.cs
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameSTColumnWindow.baml
-E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameForceDataWindow.g.cs
-E:\ProjectAddin\VibrantBIM\obj\Debug\Views\FrameForceDataWindow.baml
-E:\ProjectAddin\VibrantBIM\obj\Debug\Views\SteelBeamWindow.g.cs
-E:\ProjectAddin\VibrantBIM\obj\Debug\Views\SteelBeamWindow.baml
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ProgressWindow.g.cs
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ProgressWindow.baml

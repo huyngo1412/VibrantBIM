@@ -15,6 +15,11 @@ namespace VibrantBIM.Extensions
     public class CXVCruid
     {
         public static string FilePathCXV = "";
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataContainer"></param>
+        /// <param name="FilePath"></param>
         public static void CreateFile(DataContainer dataContainer, string FilePath)
         {
             var xmlSerializer = new XmlSerializer(typeof(DataContainer));

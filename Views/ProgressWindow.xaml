@@ -10,21 +10,21 @@
              AllowsTransparency="True"
              Background="{x:Null}"
              >
-    <Grid Background="AliceBlue" Height="200" Width="350">
+    <Grid Background="AliceBlue" Height="400" Width="750">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="350"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <StackPanel  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                    Margin="25,0,0,0">
+                    Margin="10,0,0,0">
             <WrapPanel>
-                <Image Source="E:\ProjectAddin\VibrantBIM\Assets\Wref.jpg" Width="15" Height="15"></Image>
-                <TextBlock Text="VIBRANT BIM" FontSize="20" FontWeight="Bold" Foreground="LightSkyBlue" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                <Image Source="E:\ProjectAddin\VibrantBIM\Assets\Wref.jpg" Width="65" Height="65"></Image>
+                <TextBlock Text="VIBRANT BIM" FontSize="45" FontWeight="Bold" Foreground="LightSkyBlue" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
             </WrapPanel>
-            <TextBlock Text="Loading Model" FontSize="10" FontWeight="DemiBold" Foreground="LightSkyBlue" HorizontalAlignment="Left" Margin="0,5,0,0"></TextBlock>
+            <TextBlock Text="Loading Model" FontSize="20" FontWeight="DemiBold" Foreground="LightSkyBlue" HorizontalAlignment="Left" Margin="0,5,0,0"></TextBlock>
             <ProgressBar Orientation="Horizontal" 
-              Height="2.5"
+              Height="5"
                          BorderThickness="0"
               Background="LightBlue"        
               IsIndeterminate="True" Foreground="#FF4892F9"

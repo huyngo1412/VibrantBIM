@@ -5,11 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VibrantBIM.Views"
              mc:Ignorable="d" 
-                 Background="#FFF7F5F5"
-    WindowStartupLocation="CenterScreen"
-    x:Name="cPluginEtabs"
-    Title="Export EDB To RVT"
-    SizeToContent="WidthAndHeight"
+             WindowStyle="None"
+             Background="#FFF7F5F5"
+            WindowStartupLocation="CenterScreen"
+            x:Name="cPluginEtabs"
+            Title="Export EDB To RVT"
+            SizeToContent="WidthAndHeight"
         Closed="cPluginEtabs_Closed">
     <Grid Height="80"
       Width="400">

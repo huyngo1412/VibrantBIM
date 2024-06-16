@@ -16,7 +16,6 @@ namespace VibrantBIM.Extensions
         private Document _document;
         private DataContainer _container;
         private static TaskCompletionSource<bool> _taskCompletionSource = new TaskCompletionSource<bool>();
-
         public static Task<bool> Task => _taskCompletionSource.Task;
         public CreateColumnEventHandle(Document document)
         {
@@ -62,7 +61,10 @@ namespace VibrantBIM.Extensions
                         {
                             FamilySymbol gotSymbol = collector.Where(x => x.Name == _container.Columns[i].RevitFamily).FirstOrDefault() as FamilySymbol;
                             gotSymbol.Activate();
-
+                            if(gotSymbol == null)
+                            {
+                                throw new Exception("Create a new column (" + _container.Columns[i].Name + ") false");
+                            }    
                             FamilyInstance instance = _document.Create.NewFamilyInstance(columnLine, gotSymbol,
                                                                                         level, StructuralType.Column);
                             CXVCruid.UpdateFile(ref _xmlDocument, "//Columns/Column", _container.Columns[i].Name, "Name", "ElementID", instance.Id.ToString());

@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VibrantBIM.Views"
              mc:Ignorable="d" 
-                          SizeToContent ="WidthAndHeight">
+             WindowStyle="None"
+             SizeToContent ="WidthAndHeight">
     <Grid Width="610"
    Height="300">
         <Grid.Resources>

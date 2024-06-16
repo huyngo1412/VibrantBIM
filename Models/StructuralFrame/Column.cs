@@ -15,15 +15,13 @@ using VibrantBIM.Abtract;
 using VibrantBIM.Extensions;
 using VibrantBIM.Models.ShapeType;
 using VibrantBIM.ViewModels;
-using VibrantBIM.Models.ElementOutput;
 
 namespace VibrantBIM.Models
 {
     [Serializable]
     [XmlInclude(typeof(Rectangular))]
     [XmlInclude(typeof(I))]
-    [XmlInclude(typeof(ElementForces))]
-    public class Column : ViewModelBase, IShapeTypeFrame, IRebarShape
+    public class Column : ViewModelBase, IShapeTypeFrame
     {
         private string filename = "";
         private string Mat = "";
@@ -126,16 +124,7 @@ namespace VibrantBIM.Models
                 _elementID = value;
             }
         }
-        [XmlElement("FrameForce")]
-        private List<ElementForces> _frameForce;
-        public List<ElementForces> FrameForce
-        {
-            get { return _frameForce; }
-            set
-            {
-                _frameForce = value;
-            }
-        }
+       
 
         public void GetSectionPro(cSapModel _SapModel, string ProName)
         {

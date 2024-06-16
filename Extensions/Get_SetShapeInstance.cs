@@ -17,7 +17,11 @@ namespace VibrantBIM.Extensions
 {
     public static class Get_SetShapeInstance
     {
-      
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shapeType"></param>
+        /// <returns></returns>
         public static  object SetShapeInstance(eFramePropType shapeType)
         {
             switch (shapeType)

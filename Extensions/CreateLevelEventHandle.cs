@@ -27,9 +27,9 @@ namespace VibrantBIM.Extensions
         }
         public void Execute(UIApplication app)
         {
+            string Message = "";
             try
             {
-                string Message = "";
                 FilteredElementCollector viewTypesCollector = new FilteredElementCollector(_document).OfClass(typeof(ViewFamilyType));
                 List<ViewFamilyType> viewTypes = new List<ViewFamilyType>();
                 foreach (Element elem in viewTypesCollector)
@@ -60,7 +60,6 @@ namespace VibrantBIM.Extensions
                             {
                                 throw new Exception("Create a new level failed.");
                             }
-                            // Thay đổi tên của level
                             level.Name = _container.Stories[i].StoryName;
                             foreach (ViewFamilyType viewType in viewTypes)
                             {
@@ -95,7 +94,7 @@ namespace VibrantBIM.Extensions
             }
             catch (Exception ex)
             {
-                TaskDialog.Show("Error", ex.Message);
+                MessageBox.Show("Error", ex.Message);
                 _taskCompletionSource.SetResult(false);
             }
         }

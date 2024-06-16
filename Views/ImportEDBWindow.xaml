@@ -5,13 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VibrantBIM.Views"
              mc:Ignorable="d" 
-                      x:Name="ImportEDBForm"
-         Title="Tạo dự án Revit từ ETABS/SAP2000"
-         SizeToContent="WidthAndHeight"
-         ResizeMode="NoResize"
-         WindowStyle="SingleBorderWindow"
-         
-         WindowStartupLocation="CenterScreen" Background="#FFF7F5F5" Foreground="White">
+             x:Name="ImportEDBForm"
+             Title="Tạo dự án Revit từ ETABS/SAP2000"
+             SizeToContent="WidthAndHeight"
+             ResizeMode="NoResize"
+             WindowStyle="None"
+             WindowStartupLocation="CenterScreen" Background="#FFF7F5F5" Foreground="White">
 
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -247,7 +246,6 @@
                             Content="Mặt cắt tường"
                             x:Name="btn_WallSection"></Button>
                     </Grid>
-
                 </GroupBox>
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
@@ -260,7 +258,6 @@
                     <Button Grid.Column="1" Width="100" Margin="0,0,20,0" Content="Cancel"
                         x:Name="btn_Cancel"></Button>
                 </Grid>
-
             </Grid>
         </Border>
     </Grid>

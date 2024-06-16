@@ -15,7 +15,6 @@ namespace VibrantBIM.Extensions
         private Document _document;
         private DataContainer _container;
         private static TaskCompletionSource<bool> _taskCompletionSource = new TaskCompletionSource<bool>();
-
         public static Task<bool> Task => _taskCompletionSource.Task;
         public CreateGridEventHandle(Document document)
         {
@@ -82,7 +81,6 @@ namespace VibrantBIM.Extensions
                 _taskCompletionSource.SetResult(false);
             }
         }
-
         public string GetName()
         {
             return "";

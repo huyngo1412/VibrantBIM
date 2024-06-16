@@ -49,7 +49,10 @@ namespace VibrantBIM.Extensions
                         {
                             FamilySymbol gotSymbol = collector.Where(x => x.Name == _container.Beams[i].RevitFamily).FirstOrDefault() as FamilySymbol;
                             gotSymbol.Activate();
-                            //create a new beam
+                            if(gotSymbol == null)
+                            {
+                                throw new Exception("Create a new beam (" + _container.Beams[i].Name+ ") false ");
+                            }    
                             FamilyInstance instance = _document.Create.NewFamilyInstance(beamLine, gotSymbol,
                                                                                         level, StructuralType.Beam);
                             CXVCruid.UpdateFile(ref _xmlDocument, "//Beams/Beam", _container.Beams[i].Name, "Name", "ElementID", instance.Id.ToString());

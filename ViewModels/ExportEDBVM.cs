@@ -20,7 +20,6 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using VibrantBIM.Extensions;
 using VibrantBIM.Models;
-using VibrantBIM.Models.ElementOutput;
 using VibrantBIM.Models.ShapeType;
 
 namespace VibrantBIM.ViewModels
@@ -162,7 +161,6 @@ namespace VibrantBIM.ViewModels
             });
             ExportEDB = new RelayCommand<object>((p)=>true,(p)=>
             {
-                MessageBox.Show("Đợi anh 1 tí nhé");
                 CXVCruid.CreateFile(dataContainer, savedFilePath);
          
             });
@@ -214,7 +212,6 @@ namespace VibrantBIM.ViewModels
         }
         private IEnumerable<Column> GetColumnEDB()
         {
-            var lstFrameForce = new List<ElementForces>();
             int count = 0;
             for (int i = 0; i < FrameName.Length; i++)
             {
@@ -223,7 +220,6 @@ namespace VibrantBIM.ViewModels
                 if (TypeFrame.ToString() == "Column")
                 {
                     ret = _SapModel.Results.FrameForce(FrameName[i], eItemTypeElm.ObjectElm, ref NumberResults, ref Obj, ref ObjSta, ref Elm, ref ElmSta, ref LoadCase, ref StepType, ref StepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
-                    lstFrameForce = FrameForce().ToList();
 
                     ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Column column = new Column()
@@ -237,7 +233,6 @@ namespace VibrantBIM.ViewModels
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
                         RevitFamily = "",
                         ElementID = "",
-                        FrameForce = lstFrameForce,
                     };
                     column.GetSectionPro(_SapModel, PropName[i]);
                     yield return column;
@@ -247,7 +242,6 @@ namespace VibrantBIM.ViewModels
 
         private IEnumerable<Beam> GetBeamEDB() 
         {
-            var lstFrameForce = new List<ElementForces>();
             for (int i = 0; i < FrameName.Length; i++)
             {
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
@@ -255,7 +249,6 @@ namespace VibrantBIM.ViewModels
                 {
                     ret = _SapModel.Results.FrameForce(FrameName[i], eItemTypeElm.ObjectElm, ref NumberResults, ref Obj, ref ObjSta, ref Elm, ref ElmSta, ref LoadCase, ref StepType, ref StepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
 
-                    lstFrameForce = FrameForce().ToList();
                     ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Beam beam = new Beam()
                     {
@@ -268,20 +261,12 @@ namespace VibrantBIM.ViewModels
                         ShapeType = Get_SetShapeInstance.SetShapeInstance(PropTypeOAPI),
                         RevitFamily = "",
                         ElementID = "",
-                        FrameForce = lstFrameForce,
                     };
                     beam.GetSectionPro(_SapModel, PropName[i]);
                     yield return beam;
                 }
             }
         }
-        private IEnumerable<ElementForces> FrameForce()
-        {
-            for (int j = 0; j < LoadCase.Length; j++)
-            {
-                var force = new ElementForces() { OutputCase = LoadCase[j], Station = ElmSta[j], P = P[j], V2 = V2[j], V3 = V3[j], M2 = M2[j], M3 = M3[j] };
-                yield return force;
-            }
-        }
+       
     }
 }
