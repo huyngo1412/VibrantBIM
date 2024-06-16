@@ -22,9 +22,9 @@ The ETABS to Revit Model Converter allows users to convert structural models cre
 
 ## Requirements
 
-- .NET Framework 4.8 or later
-- Revit 2021 or later
-- ETABS 2018 or later
+- .NET Framework 4.8 or newer
+- Revit 2021 or newer
+- ETABS 2020 or later
 - Visual Studio 2019 or later (for development)
 ## Installation
 
