@@ -152,7 +152,7 @@ namespace VibrantBIM.ViewModels
                     _container = CXVCruid.ReadFile(filename);
                     countBeam = _container.Beams.Count();
                     countColumn = _container.Columns.Count();
-                    countGrid = _container.GridLine.Count();
+                    countGrid = _container.GridLines.Count();
                     countLevel = _container.Stories.Count;
                     _importEDBView.tb_PathEDB.Text = filename;
                     _importEDBView.chk_Beam.Content = _importEDBView.chk_Beam.Content + " " + "(" + countBeam.ToString() + ")";

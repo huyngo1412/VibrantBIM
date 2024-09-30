@@ -75,12 +75,14 @@
     <Compile Include="Extensions\CreateLevelEventHandle.cs" />
     <Compile Include="Extensions\Get_SetShapeInstance.cs" />
     <Compile Include="Extensions\CXVCruid.cs" />
+    <Compile Include="Models\AreaDesignOrientation\Floor.cs" />
+    <Compile Include="Models\AreaDesignOrientation\Wall.cs" />
     <Compile Include="Models\Material\Concrete.cs" />
     <Compile Include="Models\Material\Steel.cs" />
     <Compile Include="Models\ShapeType\Rectangular.cs" />
     <Compile Include="Models\ShapeType\I.cs" />
-    <Compile Include="Models\StructuralFrame\Beam.cs" />
-    <Compile Include="Models\StructuralFrame\Column.cs" />
+    <Compile Include="Models\FrameDesignOrientation\Beam.cs" />
+    <Compile Include="Models\FrameDesignOrientation\Column.cs" />
     <Compile Include="Models\GridLine.cs" />
     <Compile Include="Models\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,8 +137,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Assets\Buiding.png" />
-    <Content Include="Assets\Pregress.png" />
-    <Content Include="Assets\Stirrups.png" />
     <Content Include="Assets\Wref.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

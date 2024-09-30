@@ -1,25 +1,27 @@
-﻿using System;
+﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Visual;
+using ETABSv1;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VibrantBIM.ViewModels;
-using Autodesk.Revit.DB;
-using System.Xml.Serialization;
-using System.ComponentModel;
-using System.Windows.Media.Media3D;
-using ETABSv1;
-using VibrantBIM.Models.ShapeType;
-using VibrantBIM.Extensions;
-using VibrantBIM.Views;
-using VibrantBIM.Abtract;
+using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Media.Media3D;
+using System.Xml.Serialization;
+using VibrantBIM.Abtract;
+using VibrantBIM.Extensions;
+using VibrantBIM.Models.ShapeType;
+using VibrantBIM.ViewModels;
+
 namespace VibrantBIM.Models
 {
     [Serializable]
     [XmlInclude(typeof(Rectangular))]
     [XmlInclude(typeof(I))]
-    public class Beam  : ViewModelBase, IShapeTypeFrame
+    public class Column : ViewModelBase, IShapeTypeFrame
     {
         private string filename = "";
         private string Mat = "";
@@ -122,8 +124,9 @@ namespace VibrantBIM.Models
                 _elementID = value;
             }
         }
-      
-        public void GetSectionPro(cSapModel _SapModel, string ProName)
+       
+
+        public void GetSection(cSapModel _SapModel, string ProName)
         {
             if (this.ShapeType is Rectangular)
             {

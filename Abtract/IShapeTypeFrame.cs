@@ -11,7 +11,8 @@ namespace VibrantBIM.Abtract
 {
     public interface IShapeTypeFrame
     {
-        void GetSectionPro(cSapModel _SapModel, string ProName);
+        void GetSection(cSapModel _SapModel, string ProName);
         void Rectangular(cSapModel _SapModel, string ProName);
+        //void GetMaterial();
     }
 }

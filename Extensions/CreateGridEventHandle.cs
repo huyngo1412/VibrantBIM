@@ -32,7 +32,7 @@ namespace VibrantBIM.Extensions
                 using (Transaction trans = new Transaction(_document, "Create Grid"))
                 {
                     trans.Start();
-                    foreach (var Grid in _container.GridLine)
+                    foreach (var Grid in _container.GridLines)
                     {
                         double X1 = Grid.FirstPoint.X;
                         double Y1 = Grid.FirstPoint.Y;
@@ -48,14 +48,14 @@ namespace VibrantBIM.Extensions
                             Autodesk.Revit.DB.Grid lineGrid = Autodesk.Revit.DB.Grid.Create(_document, geomLine);
                             if (null == lineGrid)
                             {
-                                throw new Exception("Create a new straight grid failed.");
+                                throw new Exception("Tạo mới lưới thất bại.");
                             }
                             lineGrid.Name = Grid.Name;
                         }
                         catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                         {
                             Message = exceptionCanceled.Message;
-                            MessageBox.Show("Error : " + Message);
+                            MessageBox.Show("Đã xảy ra lỗi : " + Message);
                             if (trans.HasStarted())
                             {
                                 trans.RollBack();
@@ -64,7 +64,7 @@ namespace VibrantBIM.Extensions
                         catch (Exception ex)
                         {
                             Message = ex.Message;
-                            MessageBox.Show("Error : " + Message);
+                            MessageBox.Show("Đã xảy ra lỗi : " + Message);
                             if (trans.HasStarted())
                             {
                                 trans.RollBack();
@@ -77,7 +77,7 @@ namespace VibrantBIM.Extensions
             }
             catch (Exception ex)
             {
-                TaskDialog.Show("Error", ex.Message);
+                TaskDialog.Show("Đã xảy ra lỗi", ex.Message);
                 _taskCompletionSource.SetResult(false);
             }
         }

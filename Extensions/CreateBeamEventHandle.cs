@@ -37,7 +37,7 @@ namespace VibrantBIM.Extensions
                 Level level = _document.ActiveView.GenLevel;
                 FilteredElementCollector collector = new FilteredElementCollector(_document);
                 collector.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
-                using (Transaction transaction = new Transaction(_document, "Tạo dầm"))
+                using (Transaction transaction = new Transaction(_document, "Create Beam"))
                 {
                     transaction.Start();
                     for (int i = 0; i < _container.Beams.Count; i++)

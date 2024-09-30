@@ -39,7 +39,7 @@ namespace VibrantBIM.Extensions
                 }
                 FilteredElementCollector filterLevel = new FilteredElementCollector(_document).OfClass(typeof(Level));
                 IList<Element> filters = filterLevel.ToList();
-                using (Transaction transaction = new Transaction(_document, "Tạo level"))
+                using (Transaction transaction = new Transaction(_document, "Create Level"))
                 {
                     transaction.Start();
                     for (int i = 0; i < _container.Stories.Count; i++)
