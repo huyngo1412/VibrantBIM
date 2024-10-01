@@ -7,9 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Data.Common;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -160,11 +162,12 @@ namespace VibrantBIM.ViewModels
                        ref VisibleX, ref VisibleY, ref BubbleLocX, ref BubbleLocY);//Lấy hệ lưới XYZ
                     ret = _SapModel.Story.GetStories(ref NumberStories, ref StoryNames, ref StoryElevations, ref StoryHeights, ref IsMasterStory,
                        ref SimilarToStory, ref SpliceAbove, ref SpliceHeight);//Lấy dữ liệu tầng
-                    dataContainer.Columns = new ObservableCollection<Column>(GetColumnEDB().ToList());
+                    dataContainer.Columns = new ObservableCollection<Column>(GetColumnETABS().ToList());
                     dataContainer.Beams = new ObservableCollection<Beam>(GetBeamEDB().ToList());
-                    dataContainer.GridLines = new ObservableCollection<GridLine>(GetGridData().ToList());
-                    dataContainer.Stories = new ObservableCollection<Story>(GetStoryData().ToList());
-                    dataContainer.Floors = new ObservableCollection<Models.AreaDesignOrientation.Floor>(GetFloorEDB().ToList());
+                    dataContainer.GridLines = new ObservableCollection<GridLine>(GetGridETABS().ToList());
+                    dataContainer.Stories = new ObservableCollection<Story>(GetStoryETABS().ToList());
+                    dataContainer.Floors = new ObservableCollection<Models.AreaDesignOrientation.Floor>(GetFloorETABS().ToList());
+                    dataContainer.Walls = new ObservableCollection<Models.AreaDesignOrientation.Wall>(GetWallETABS().ToList());
                     TextBlock textBlock = p as TextBlock;
                     if(textBlock != null )
                     {
@@ -178,7 +181,7 @@ namespace VibrantBIM.ViewModels
          
             });
         }
-        private IEnumerable<GridLine> GetGridData()
+        private IEnumerable<GridLine> GetGridETABS()
         {
             for (int i = 0; i < GridLineIDX.Length; i++)
             {
@@ -202,7 +205,7 @@ namespace VibrantBIM.ViewModels
                 yield return gridLineDY;
             }
         }
-        private IEnumerable<Story> GetStoryData()
+        private IEnumerable<Story> GetStoryETABS()
         {
             for (int i = 0;i < StoryNames.Length; i++ )
             {
@@ -214,7 +217,7 @@ namespace VibrantBIM.ViewModels
                 yield return story;
             }
         }
-        private IEnumerable<Column> GetColumnEDB()
+        private IEnumerable<Column> GetColumnETABS()
         {
             int count = 0;
             for (int i = 0; i < FrameName.Length; i++)
@@ -243,37 +246,83 @@ namespace VibrantBIM.ViewModels
                 }
             }
         }
-        private IEnumerable<Models.AreaDesignOrientation.Floor> GetFloorEDB()
+        private IEnumerable<Models.AreaDesignOrientation.Wall> GetWallETABS()
         {
-            eSlabType SlabType = eSlabType.Slab;
-            eShellType ShellType = eShellType.ShellThick;
-            string MatProp = null;
-            double Thickness = -1;
-            int color = -1;
-            string notes = null;
-            string GUI = null;
+            
+            if(AreaName!=null)
+            {
+                for (int i = 0; i < AreaName.Length; i++)
+                {
+                    if (TypeAreaArray[i] == eAreaDesignOrientation.Wall)
+                    {
+                        eWallPropType WallType = eWallPropType.Specified;
+                        eShellType ShellType = eShellType.ShellThick;
+                        string MatProp = null;
+                        double Thickness = -1;
+                        int Color = -1;
+                        string Notes = null;
+                        string GUI = null;
+                        string WallName = AreaName[i];
+                        int NumberPoint = -1;
+                        string[] PointNames = null;
+                        int NumberNames = -1;
+                        string[] MyName = null;
+                        string PropName = null;
+                        _SapModel.AreaObj.GetProperty(AreaName[i], ref PropName);//Lấy tên property area object 
+                        _SapModel.AreaObj.GetPoints(AreaName[i], ref NumberPoint, ref PointNames);
+                        _SapModel.PropArea.GetWall(PropName, ref WallType, ref ShellType, ref MatProp, ref Thickness, ref Color, ref Notes, ref GUI);
+                        Point3D[] point3Ds = new Point3D[PointNames.Length];//Khởi tạo giá trị point của wall
+                        for (int j = 0; j < PointNames.Length; j++)
+                        {
+                            double x = 0, y = 0, z = 0;
+                            _SapModel.PointObj.GetCoordCartesian(PointNames[j], ref x, ref y, ref z);//Lấy giá trị x,y,z với mỗi namepoint
+                            point3Ds[j] = new Point3D(x, y, z);
+                        }
+                        Models.AreaDesignOrientation.Wall wall = new Models.AreaDesignOrientation.Wall()
+                        {
+                            Name = WallName,
+                            Thickness = Thickness,
+                            MaterialName = MatProp,
+                            Point = point3Ds
+                        };
+                        yield return wall;
+                    }
+                }
+            }    
+        }
+        private IEnumerable<Models.AreaDesignOrientation.Floor> GetFloorETABS()
+        {
+            
             if (AreaName!= null)
             {
                 for (int i = 0; i < AreaName.Length; i++)
                 {
                     if (TypeAreaArray[i] == eAreaDesignOrientation.Floor)
                     {
-                        string slabName = AreaName[i];
+                        eSlabType SlabType = eSlabType.Slab;
+                        eShellType ShellType = eShellType.ShellThick;
+                        string MatProp = null;
+                        double Thickness = -1;
+                        int Color = -1;
+                        string Notes = null;
+                        string GUI = null;
+                        string SlabName = AreaName[i];
                         int NumberPoint = -1;
                         string[] pointNames = null;
-                        _SapModel.AreaObj.GetPoints(slabName, ref NumberPoint, ref pointNames);
-                        _SapModel.PropArea.GetSlab(slabName, ref SlabType,ref ShellType, ref MatProp, ref Thickness,ref color,ref notes,ref GUI);
-
+                        string PropName = null;
+                        _SapModel.AreaObj.GetProperty(AreaName[i], ref PropName);//Lấy tên property area object  
+                        _SapModel.AreaObj.GetPoints(SlabName, ref NumberPoint, ref pointNames);
+                        ret = _SapModel.PropArea.GetSlab(PropName, ref SlabType,ref ShellType, ref MatProp, ref Thickness,ref Color, ref Notes, ref GUI);
                         Point3D[] point3Ds = new Point3D[pointNames.Length];//Khởi tạo giá trị point của slab
                         for (int j = 0; j < pointNames.Length; j++)
                         {
                             double x = 0, y = 0, z = 0;
-                            _SapModel.PointObj.GetCoordCartesian(pointNames[j], ref x, ref y, ref z);
+                            _SapModel.PointObj.GetCoordCartesian(pointNames[j], ref x, ref y, ref z);//Lấy giá trị x,y,z với mỗi namepoint
                             point3Ds[j] = new Point3D(x, y, z);
                         }
                         Models.AreaDesignOrientation.Floor floor = new Models.AreaDesignOrientation.Floor()
                         {
-                            Name = slabName,
+                            Name = SlabName,
                             Thickness = Thickness,
                             MaterialName = MatProp,
                             Point = point3Ds
