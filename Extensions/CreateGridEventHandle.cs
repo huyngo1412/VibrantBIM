@@ -48,14 +48,14 @@ namespace VibrantBIM.Extensions
                             Autodesk.Revit.DB.Grid lineGrid = Autodesk.Revit.DB.Grid.Create(_document, geomLine);
                             if (null == lineGrid)
                             {
-                                throw new Exception("Tạo mới lưới thất bại.");
+                                throw new Exception("Grid Line creation failed");
                             }
                             lineGrid.Name = Grid.Name;
                         }
                         catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                         {
                             Message = exceptionCanceled.Message;
-                            MessageBox.Show("Đã xảy ra lỗi : " + Message);
+                            MessageBox.Show("Error : " + Message);
                             if (trans.HasStarted())
                             {
                                 trans.RollBack();
@@ -64,7 +64,7 @@ namespace VibrantBIM.Extensions
                         catch (Exception ex)
                         {
                             Message = ex.Message;
-                            MessageBox.Show("Đã xảy ra lỗi : " + Message);
+                            MessageBox.Show("Error : " + Message);
                             if (trans.HasStarted())
                             {
                                 trans.RollBack();
@@ -77,7 +77,8 @@ namespace VibrantBIM.Extensions
             }
             catch (Exception ex)
             {
-                TaskDialog.Show("Đã xảy ra lỗi", ex.Message);
+                Message = ex.Message;
+                MessageBox.Show("Error : " + Message);
                 _taskCompletionSource.SetResult(false);
             }
         }

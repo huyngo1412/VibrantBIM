@@ -107,7 +107,7 @@ namespace VibrantBIM.ViewModels
                 _importModelETABSView.Close();
                 ProgressWindow _loadingView = new ProgressWindow();
                 _loadingView.Show();
-                _container = CXVCruid.ReadFile(CXVCruid.FilePathCXV);
+                _container = XMLCRUID.ReadFile(XMLCRUID.FilePathXML);
                 if (_importModelETABSView.chk_GridLine.IsChecked == true)
                 {
                     _gridEventhandler.SetDataContainer(_container);
@@ -144,7 +144,7 @@ namespace VibrantBIM.ViewModels
                 if (OpenEDB.ShowDialog() == true)
                 {
                     string filename = OpenEDB.FileName;               
-                    _container = CXVCruid.ReadFile(filename);               
+                    _container = XMLCRUID.ReadFile(filename);               
                     _importModelETABSView.tb_PathEDB.Text = filename;
                     _importModelETABSView.chk_Beam.Content = _importModelETABSView.chk_Beam.Content + " " + "(" + _container.Beams.Count() + ")";
                     _importModelETABSView.chk_Column.Content = _importModelETABSView.chk_Column.Content + " " + "(" + _container.Columns.Count() + ")";

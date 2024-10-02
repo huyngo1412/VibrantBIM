@@ -1,5 +1,5 @@
-﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Structure;
+﻿using Autodesk.Revit.DB.Structure;
+using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
@@ -11,13 +11,13 @@ using VibrantBIM.ViewModels;
 
 namespace VibrantBIM.Extensions
 {
-    public class CreateColumnEventHandle : IExternalEventHandler
+    public class CreatFloorEventHandle : IExternalEventHandler
     {
         private Document _document;
         private DataContainer _container;
         private static TaskCompletionSource<bool> _taskCompletionSource = new TaskCompletionSource<bool>();
         public static Task<bool> Task => _taskCompletionSource.Task;
-        public CreateColumnEventHandle(Document document)
+        public CreatFloorEventHandle(Document document)
         {
             _document = document;
         }
@@ -33,7 +33,7 @@ namespace VibrantBIM.Extensions
                 XmlDocument _xmlDocument = new XmlDocument();
                 _xmlDocument.Load(XMLCRUID.FilePathXML);
                 FilteredElementCollector collector = new FilteredElementCollector(_document);
-                collector.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralColumns);
+                collector.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_Floors);
 
                 FilteredElementCollector colLev = new FilteredElementCollector(_document);
                 colLev.WhereElementIsNotElementType().OfCategory(BuiltInCategory.INVALID).OfClass(typeof(Level));
@@ -47,10 +47,10 @@ namespace VibrantBIM.Extensions
                         levels.Add(itemLevel);
                     }
                 }
-                using (Transaction transaction = new Transaction(_document, "Tạo cột"))
+                using (Transaction transaction = new Transaction(_document, "Create Floor"))
                 {
                     transaction.Start();
-                    for (int i = 0; i < _container.Columns.Count; i++)
+                    for (int i = 0; i < _container.Floors.Count; i++)
                     {
 
                         XYZ Start = new XYZ(_container.Columns[i].FirstPoint.X, _container.Columns[i].FirstPoint.Y, _container.Columns[i].FirstPoint.Z);
@@ -61,10 +61,10 @@ namespace VibrantBIM.Extensions
                         {
                             FamilySymbol gotSymbol = collector.Where(x => x.Name == _container.Columns[i].RevitFamily).FirstOrDefault() as FamilySymbol;
                             gotSymbol.Activate();
-                            if(gotSymbol == null)
+                            if (gotSymbol == null)
                             {
                                 throw new Exception("Create a new column (" + _container.Columns[i].Name + ") false");
-                            }    
+                            }
                             FamilyInstance instance = _document.Create.NewFamilyInstance(columnLine, gotSymbol,
                                                                                         level, StructuralType.Column);
                             XMLCRUID.UpdateFile(ref _xmlDocument, "//Columns/Column", _container.Columns[i].Name, "Name", "ElementID", instance.Id.ToString());

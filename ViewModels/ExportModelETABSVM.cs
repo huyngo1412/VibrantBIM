@@ -152,7 +152,7 @@ namespace VibrantBIM.ViewModels
                 if (saveFileDialog.ShowDialog() == true)
                 {
                     savedFilePath = saveFileDialog.FileName;
-                    CXVCruid.FilePathCXV = saveFileDialog.FileName;
+                    XMLCRUID.FilePathXML = saveFileDialog.FileName;
                     TextBlock textBlock = p as TextBlock;
                     textBlock.Text = savedFilePath;
                     ConvertModel = true;
@@ -178,7 +178,7 @@ namespace VibrantBIM.ViewModels
                     dataContainer.Stories = new ObservableCollection<Story>(GetStoryETABS().ToList());
                     dataContainer.Floors = new ObservableCollection<Models.AreaDesignOrientation.Floor>(GetFloorETABS().ToList());
                     dataContainer.Walls = new ObservableCollection<Models.AreaDesignOrientation.Wall>(GetWallETABS().ToList());
-                    CXVCruid.CreateFile(dataContainer, savedFilePath);
+                    XMLCRUID.CreateFile(dataContainer, savedFilePath);
                 }
                 else
                 {
@@ -231,8 +231,6 @@ namespace VibrantBIM.ViewModels
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
                 if (TypeFrame.ToString() == "Column")
                 {
-                    //ret = _SapModel.Results.FrameForce(FrameName[i], eItemTypeElm.ObjectElm, ref NumberResults, ref Obj, ref ObjSta, ref Elm, ref ElmSta, ref LoadCase, ref StepType, ref StepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
-
                     ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Column column = new Column()
                     {
@@ -287,8 +285,9 @@ namespace VibrantBIM.ViewModels
                         {
                             Name = WallName,
                             Thickness = Thickness,
-                            MaterialName = MatProp,
-                            Point = point3Ds
+                            PropName = PropName,
+                            Point = point3Ds,
+                            RevitFamily = "",
                         };
                         yield return wall;
                     }
@@ -329,8 +328,10 @@ namespace VibrantBIM.ViewModels
                         {
                             Name = SlabName,
                             Thickness = Thickness,
-                            MaterialName = MatProp,
-                            Point = point3Ds
+                            PropName = PropName,
+                            Point = point3Ds,
+                            RevitFamily = "",
+                            
                         };
                         yield return floor;
                     }        

@@ -33,7 +33,7 @@ namespace VibrantBIM.Extensions
             try
             {
                 XmlDocument _xmlDocument = new XmlDocument();
-                _xmlDocument.Load(CXVCruid.FilePathCXV);
+                _xmlDocument.Load(XMLCRUID.FilePathXML);
                 Level level = _document.ActiveView.GenLevel;
                 FilteredElementCollector collector = new FilteredElementCollector(_document);
                 collector.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
@@ -55,7 +55,7 @@ namespace VibrantBIM.Extensions
                             }    
                             FamilyInstance instance = _document.Create.NewFamilyInstance(beamLine, gotSymbol,
                                                                                         level, StructuralType.Beam);
-                            CXVCruid.UpdateFile(ref _xmlDocument, "//Beams/Beam", _container.Beams[i].Name, "Name", "ElementID", instance.Id.ToString());
+                            XMLCRUID.UpdateFile(ref _xmlDocument, "//Beams/Beam", _container.Beams[i].Name, "Name", "ElementID", instance.Id.ToString());
                         }
                         catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                         {
@@ -69,7 +69,7 @@ namespace VibrantBIM.Extensions
                     }
                     transaction.Commit();
                 }
-                _xmlDocument.Save(CXVCruid.FilePathCXV);
+                _xmlDocument.Save(XMLCRUID.FilePathXML);
                 _taskCompletionSource.SetResult(true);
             }
             catch (Exception ex)

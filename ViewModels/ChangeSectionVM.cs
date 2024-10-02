@@ -107,7 +107,7 @@ namespace VibrantBIM.ViewModels
             XmlDocument xmldoc = new XmlDocument();
             this._uidoc = doc;
             this._document = getdoc;
-            _dataContainer = (DataContainer)CXVCruid.ReadFile(CXVCruid.FilePathCXV);
+            _dataContainer = (DataContainer)XMLCRUID.ReadFile(XMLCRUID.FilePathXML);
             //Lọc dữ liệu dầm
             FilteredElementCollector collectorBeam = new FilteredElementCollector(_document);
             collectorBeam.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
@@ -168,8 +168,12 @@ namespace VibrantBIM.ViewModels
                 NodePath = "//Beams/Beam";
             if(TypeFrame.ToLower() == "column")
                 NodePath = "//Columns/Column";
+            if (TypeFrame.ToLower() == "floor")
+                NodePath = "//Floors/Floor";
+            if (TypeFrame.ToLower() == "wall")
+                NodePath = "//Walls/Wall";
             XmlDocument _xmlDocument = new XmlDocument();
-            _xmlDocument.Load(CXVCruid.FilePathCXV);
+            _xmlDocument.Load(XMLCRUID.FilePathXML);
             foreach (var item in dataGrid.Items)
             {
                 DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromItem(item);
@@ -195,13 +199,13 @@ namespace VibrantBIM.ViewModels
                             {
                                 string RevitFamily = comboBox.SelectedValue.ToString();
                                 string EtasbSTName = textBlock.Text;
-                                CXVCruid.UpdateFile(ref _xmlDocument, NodePath, EtasbSTName, "PropName", "RevitFamily", RevitFamily);
+                                XMLCRUID.UpdateFile(ref _xmlDocument, NodePath, EtasbSTName, "PropName", "RevitFamily", RevitFamily);
                             }
                         }
                     }
                 }
             }
-            _xmlDocument.Save(CXVCruid.FilePathCXV);
+            _xmlDocument.Save(XMLCRUID.FilePathXML);
         }
         private T GetVisualChild<T>(Visual parent) where T : Visual
         {

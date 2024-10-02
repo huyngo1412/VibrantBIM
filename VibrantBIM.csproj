@@ -71,10 +71,11 @@
     <Compile Include="Extensions\Convert_Internal_Unit.cs" />
     <Compile Include="Extensions\CreateBeamEventHandle.cs" />
     <Compile Include="Extensions\CreateColumnEventHandle.cs" />
+    <Compile Include="Extensions\CreateFloorEvenHandle.cs" />
     <Compile Include="Extensions\CreateGridEventHandle.cs" />
     <Compile Include="Extensions\CreateLevelEventHandle.cs" />
     <Compile Include="Extensions\Get_SetShapeInstance.cs" />
-    <Compile Include="Extensions\CXVCruid.cs" />
+    <Compile Include="Extensions\XMLCRUID.cs" />
     <Compile Include="Models\AreaDesignOrientation\Floor.cs" />
     <Compile Include="Models\AreaDesignOrientation\Wall.cs" />
     <Compile Include="Models\Material\Concrete.cs" />
@@ -143,7 +144,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Abtract\Test.xml" />
     <Content Include="Assets\Buiding.png" />
     <Content Include="Assets\Folder.png" />
     <Content Include="Assets\Wref.jpg" />

@@ -58,7 +58,7 @@ namespace VibrantBIM.Extensions
                             Level level = Level.Create(_document, ConvertUnit.MmToFoot(_container.Stories[i].Elevation));
                             if (null == level)
                             {
-                                throw new Exception("Create a new level failed.");
+                                throw new Exception("Story creation failed.");
                             }
                             level.Name = _container.Stories[i].StoryName;
                             foreach (ViewFamilyType viewType in viewTypes)

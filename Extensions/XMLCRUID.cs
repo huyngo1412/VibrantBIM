@@ -12,9 +12,9 @@ using VibrantBIM.ViewModels;
 
 namespace VibrantBIM.Extensions
 {
-    public class CXVCruid
+    public class XMLCRUID
     {
-        public static string FilePathCXV = "";
+        public static string FilePathXML = "";
         /// <summary>
         /// 
         /// </summary>
@@ -52,11 +52,11 @@ namespace VibrantBIM.Extensions
         }
         public static DataContainer ReadFile(string FilePath)
         {
-            FilePathCXV = FilePath;
+            FilePathXML = FilePath;
             var xmlSerializer = new XmlSerializer(typeof(DataContainer));
             try
             {
-                using (TextReader reader = new StreamReader(FilePathCXV))
+                using (TextReader reader = new StreamReader(FilePathXML))
                 {
                     return (DataContainer)xmlSerializer.Deserialize(reader);
                 }
