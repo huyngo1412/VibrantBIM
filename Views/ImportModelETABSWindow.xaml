@@ -156,7 +156,7 @@
                                    Foreground="#FF4D8BED"></TextBlock>
                     </Border>
                     <Button Grid.Column="1"
-                        Content="Import XML"
+                        Content="Import"
                         Margin="5"
                         x:Name="btn_ImportEDB"
                         Command="{Binding ImportEDB}"></Button>
@@ -236,7 +236,7 @@
                         <Button Grid.Column="0"
                             Grid.Row="1"
                             Width="100"
-                            Content="Columns Sections"
+                            Content="Column Sections"
                             x:Name="btn_ColumnSection"
                             Command="{Binding ChangeSectionColumn}"></Button>
                         <Button Grid.Column="1"

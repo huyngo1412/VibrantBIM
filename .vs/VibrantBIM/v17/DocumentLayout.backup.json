@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\DOTNET\\VibrantBIM\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\abtract\\ishapetypeframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:abtract\\ishapetypeframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\createmodelrevit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:createmodelrevit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -71,19 +75,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "IShapeTypeFrame.cs",
+              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Abtract\\IShapeTypeFrame.cs",
+              "RelativeDocumentMoniker": "Abtract\\IShapeTypeFrame.cs",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Abtract\\IShapeTypeFrame.cs",
+              "RelativeToolTip": "Abtract\\IShapeTypeFrame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T08:26:24.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "CreateModelRevit.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\CreateModelRevit.cs",
               "RelativeDocumentMoniker": "CreateModelRevit.cs",
-              "ToolTip": "D:\\DOTNET\\VibrantBIM\\CreateModelRevit.cs*",
-              "RelativeToolTip": "CreateModelRevit.cs*",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAcwB8AAAAVAAAAAAAAAA==",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\CreateModelRevit.cs",
+              "RelativeToolTip": "CreateModelRevit.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAcwB8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T08:25:34.559Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FrameSTColumnWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\FrameSTColumnWindow.xaml",
               "RelativeDocumentMoniker": "Views\\FrameSTColumnWindow.xaml",
@@ -95,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ImportModelETABSWindow.xaml.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\ImportModelETABSWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\ImportModelETABSWindow.xaml.cs",
@@ -108,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ImportModelETABSWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\ImportModelETABSWindow.xaml",
               "RelativeDocumentMoniker": "Views\\ImportModelETABSWindow.xaml",
@@ -120,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "App.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\App.cs",
               "RelativeDocumentMoniker": "App.cs",
@@ -133,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "cPlugin.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\cPlugin.cs",
               "RelativeDocumentMoniker": "cPlugin.cs",
@@ -146,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ModelBase.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ModelBase.cs",
               "RelativeDocumentMoniker": "ViewModels\\ModelBase.cs",
@@ -159,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "cPluginEtabsWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\cPluginEtabsWindow.xaml",
               "RelativeDocumentMoniker": "Views\\cPluginEtabsWindow.xaml",
@@ -171,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ImportModelETABSVM.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ImportModelETABSVM.cs",
               "RelativeDocumentMoniker": "ViewModels\\ImportModelETABSVM.cs",
@@ -184,7 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ImportEDBWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\ImportEDBWindow.xaml",
               "RelativeDocumentMoniker": "Views\\ImportEDBWindow.xaml",
@@ -196,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Story.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\Story.cs",
               "RelativeDocumentMoniker": "Models\\Story.cs",
@@ -208,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Wall.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\AreaDesignOrientation\\Wall.cs",
               "RelativeDocumentMoniker": "Models\\AreaDesignOrientation\\Wall.cs",
@@ -220,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ExportModelETABSVM.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ExportModelETABSVM.cs",
               "RelativeDocumentMoniker": "ViewModels\\ExportModelETABSVM.cs",
@@ -233,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Floor.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\AreaDesignOrientation\\Floor.cs",
               "RelativeDocumentMoniker": "Models\\AreaDesignOrientation\\Floor.cs",
