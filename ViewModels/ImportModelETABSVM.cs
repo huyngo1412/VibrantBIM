@@ -77,31 +77,7 @@ namespace VibrantBIM.ViewModels
         {
             this._uidoc = doc;
             this._document = getdoc;
-            _container = new DataContainer();
-            //if (_gridEventhandler == null || _externalEventGrid == null)
-            //{
-            //    _gridEventhandler = new CreateGridEventHandle(_document);
-            //    _externalEventGrid = ExternalEvent.Create(_gridEventhandler);
-            //}
-            //if (_levelEventhandler == null || _externalEventLevel == null)
-            //{
-            //    _levelEventhandler = new CreateLevelEventHandle(_document);
-            //    _externalEventLevel = ExternalEvent.Create(_levelEventhandler);
-            //}
-            //if (_columnEventhandler == null || _externalEventColumn == null)
-            //{
-            //    _columnEventhandler = new CreateColumnEventHandle(_document);
-            //    _externalEventColumn = ExternalEvent.Create(_columnEventhandler);
-            //}
-            //if (_beamEventhandler == null || _externalEventBeam == null)
-            //{
-            //    _beamEventhandler = new CreateBeamEventHandle(_document);
-            //    _externalEventBeam = ExternalEvent.Create(_beamEventhandler);
-            //}
-            //if(_floorEventhandler == null || _externalEventFloor == null)
-            //{
-
-            //}    
+            _container = new DataContainer();   
             EnsureEventHandler(ref _gridEventhandler, ref _externalEventGrid, _document => new CreateGridEventHandle(_document));
             EnsureEventHandler(ref _levelEventhandler, ref _externalEventLevel, _document => new CreateLevelEventHandle(_document));
             EnsureEventHandler(ref _columnEventhandler, ref _externalEventColumn, _document => new CreateColumnEventHandle(_document));
@@ -128,26 +104,6 @@ namespace VibrantBIM.ViewModels
                 ProgressWindow _loadingView = new ProgressWindow();
                 _loadingView.Show();
                 _container = XMLCRUID.ReadFile(XMLCRUID.FilePathXML);
-                //if (_importModelETABSView.chk_GridLine.IsChecked == true)
-                //{
-                //    _gridEventhandler.SetDataContainer(_container);
-                //    _externalEventGrid.Raise();
-                //}
-                //if (_importModelETABSView.chk_Level.IsChecked == true)
-                //{
-                //    _levelEventhandler.SetDataContainer(_container);
-                //    _externalEventLevel.Raise();
-                //}
-                //if (_importModelETABSView.chk_Column.IsChecked == true)
-                //{
-                //    _columnEventhandler.SetDataContainer(_container);
-                //    _externalEventColumn.Raise();
-                //}
-                //if (_importModelETABSView.chk_Beam.IsChecked == true)
-                //{
-                //    _beamEventhandler.SetDataContainer(_container);
-                //    _externalEventBeam.Raise();
-                //}
                 HandleEvents();
                 await CreateGridEventHandle.Task;
                 await CreateLevelEventHandle.Task;

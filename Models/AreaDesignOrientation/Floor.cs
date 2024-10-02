@@ -45,6 +45,17 @@ namespace VibrantBIM.Models.AreaDesignOrientation
                 _revitFamily = value;
             }
         }
+        [XmlElement("StoryName")]
+        private string _storyName;
+        public string StoryName
+        {
+            get { return _storyName; }
+            set
+            {
+                _storyName = value;
+                OnPropertyChanged(nameof(StoryName));
+            }
+        }
         [XmlElement("Thickness")]
         private double _thickNess;
         public double Thickness

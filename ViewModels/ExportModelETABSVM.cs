@@ -318,10 +318,14 @@ namespace VibrantBIM.ViewModels
                         _SapModel.AreaObj.GetPoints(SlabName, ref NumberPoint, ref pointNames);
                         ret = _SapModel.PropArea.GetSlab(PropName, ref SlabType,ref ShellType, ref MatProp, ref Thickness,ref Color, ref Notes, ref GUI);
                         Point3D[] point3Ds = new Point3D[pointNames.Length];//Khởi tạo giá trị point của slab
+                        double maxEleOfSlab = -1e11;
+                        string storyName = null;
                         for (int j = 0; j < pointNames.Length; j++)
                         {
                             double x = 0, y = 0, z = 0;
                             _SapModel.PointObj.GetCoordCartesian(pointNames[j], ref x, ref y, ref z);//Lấy giá trị x,y,z với mỗi namepoint
+                            maxEleOfSlab = Math.Max(maxEleOfSlab, y);
+                            storyName = dataContainer.Stories.Where(s => Math.Abs(s.Elevation - maxEleOfSlab) < 0.1).Select(s => s.StoryName).FirstOrDefault(); 
                             point3Ds[j] = new Point3D(x, y, z);
                         }
                         Models.AreaDesignOrientation.Floor floor = new Models.AreaDesignOrientation.Floor()
@@ -331,7 +335,7 @@ namespace VibrantBIM.ViewModels
                             PropName = PropName,
                             Point = point3Ds,
                             RevitFamily = "",
-                            
+                            StoryName = storyName
                         };
                         yield return floor;
                     }        
