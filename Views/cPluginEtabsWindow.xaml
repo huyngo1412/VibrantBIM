@@ -13,7 +13,7 @@
             SizeToContent="WidthAndHeight"
         Closed="cPluginEtabs_Closed">
     <Grid Height="80"
-      Width="400">
+      Width="350">
         <Grid.Resources>
             <Style TargetType="Button">
                 <Setter Property="Effect">
@@ -36,21 +36,23 @@
         </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderBrush="#FF5791ED" BorderThickness="1" CornerRadius="0" Margin="10,10,-5,10">
+        <Border BorderBrush="#FF5791ED" BorderThickness="1" CornerRadius="0" Margin="10,10,5,10">
             <TextBlock  x:Name="tb_Brose" Foreground="Black" Background="#FFEDE8E8"/>
         </Border>
         <Button Grid.Column="1"
             Grid.Row="0"
-            Content="Browse"
+            Width="45"
                 x:Name="btn_Browse"
                 Command="{Binding BrowseEDB}"
-                CommandParameter="{Binding ElementName=tb_Brose}"></Button>
+                CommandParameter="{Binding ElementName=tb_Brose}">
+            <Image Source="E:\ProjectAddin\VibrantBIM\Assets\Folder.png"></Image>
+        </Button>
         <StackPanel Grid.Row="1"
                 Margin="0,-5,0,0"
                 Grid.Column="0"

@@ -44,11 +44,6 @@ namespace VibrantBIM.ViewModels
         private static CreateBeamEventHandle _beamEventhandler;
         #endregion
         private DataContainer _container;
-        private int countLevel { get; set; }
-        private int countGrid { get; set; }
-        private int countBeam { get; set; }
-        private int countColumn { get; set; }
-        private int countSlab { get; set; }
 
         private ImportModelETABSWindow _importModelETABSView;
         public ImportModelETABSWindow ImportModelETABSView
@@ -149,16 +144,14 @@ namespace VibrantBIM.ViewModels
                 if (OpenEDB.ShowDialog() == true)
                 {
                     string filename = OpenEDB.FileName;               
-                    _container = CXVCruid.ReadFile(filename);
-                    countBeam = _container.Beams.Count();
-                    countColumn = _container.Columns.Count();
-                    countGrid = _container.GridLines.Count();
-                    countLevel = _container.Stories.Count;
+                    _container = CXVCruid.ReadFile(filename);               
                     _importModelETABSView.tb_PathEDB.Text = filename;
-                    _importModelETABSView.chk_Beam.Content = _importModelETABSView.chk_Beam.Content + " " + "(" + countBeam.ToString() + ")";
-                    _importModelETABSView.chk_Column.Content = _importModelETABSView.chk_Column.Content + " " + "(" + countColumn.ToString() + ")";
-                    _importModelETABSView.chk_GridLine.Content = _importModelETABSView.chk_GridLine.Content + " " + "(" + countGrid.ToString() + ")";
-                    _importModelETABSView.chk_Level.Content = _importModelETABSView.chk_Level.Content + " " + "(" + countLevel.ToString() + ")";
+                    _importModelETABSView.chk_Beam.Content = _importModelETABSView.chk_Beam.Content + " " + "(" + _container.Beams.Count() + ")";
+                    _importModelETABSView.chk_Column.Content = _importModelETABSView.chk_Column.Content + " " + "(" + _container.Columns.Count() + ")";
+                    _importModelETABSView.chk_GridLine.Content = _importModelETABSView.chk_GridLine.Content + " " + "(" + _container.GridLines.Count() + ")";
+                    _importModelETABSView.chk_Level.Content = _importModelETABSView.chk_Level.Content + " " + "(" + _container.Stories.Count() + ")";
+                    _importModelETABSView.chk_Floor.Content = _importModelETABSView.chk_Floor.Content + " " + "(" + _container.Floors.Count() + ")";
+                    _importModelETABSView.chk_Wall.Content = _importModelETABSView.chk_Wall.Content + " " + "(" + _container.Walls.Count() + ")";
                 };
             });
         }

@@ -159,7 +159,7 @@
                         Content="Import"
                         Margin="5"
                         x:Name="btn_ImportEDB"
-                        Command="{Binding ImportEDB}"></Button>
+                        Command="{Binding ImportModelETABS}"></Button>
                 </Grid>
                 <GroupBox Grid.Row="1"
                       Header="Information Objects">
@@ -201,7 +201,7 @@
                             Content="Floors"
                             Grid.Row="1"
                             Grid.Column="1"
-                              x:Name="chk_Slab">
+                              x:Name="chk_Floor">
                         </CheckBox>
                         <CheckBox Style="{DynamicResource CheckBoxInformation}" 
                             Content="Walls"
