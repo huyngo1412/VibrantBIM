@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VibrantBIM</RootNamespace>
     <AssemblyName>VibrantBIM</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -87,8 +87,8 @@
     <Compile Include="Models\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ChangeSectionVM.cs" />
-    <Compile Include="ViewModels\ExportEDBVM.cs" />
-    <Compile Include="ViewModels\ImportEDBVM.cs" />
+    <Compile Include="ViewModels\ExportModelETABSVM.cs" />
+    <Compile Include="ViewModels\ImportModelETABSVM.cs" />
     <Compile Include="ViewModels\ModelBase.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\cPluginEtabsWindow.xaml.cs">
@@ -102,6 +102,9 @@
     </Compile>
     <Compile Include="Views\ImportEDBWindow.xaml.cs">
       <DependentUpon>ImportEDBWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImportModelETABSWindow.xaml.cs">
+      <DependentUpon>ImportModelETABSWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProgressWindow.xaml.cs">
       <DependentUpon>ProgressWindow.xaml</DependentUpon>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ImportEDBWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImportModelETABSWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

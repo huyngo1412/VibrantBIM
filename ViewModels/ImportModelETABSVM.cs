@@ -24,7 +24,7 @@ using System.Xml.Linq;
 namespace VibrantBIM.ViewModels
 {
     
-    public class ImportEDBVM
+    public class ImportModelETABSVM
     {
         #region Revit
         private UIDocument _uidoc;
@@ -50,29 +50,29 @@ namespace VibrantBIM.ViewModels
         private int countColumn { get; set; }
         private int countSlab { get; set; }
 
-        private ImportEDBWindow _importEDBView;
-        public ImportEDBWindow ImportEDBView
+        private ImportModelETABSWindow _importModelETABSView;
+        public ImportModelETABSWindow ImportModelETABSView
         {
             get
             {
-                if (_importEDBView == null)
+                if (_importModelETABSView == null)
                 {
-                    _importEDBView = new ImportEDBWindow() { DataContext = this };
+                    _importModelETABSView = new ImportModelETABSWindow() { DataContext = this };
                 }
-                return _importEDBView;
+                return _importModelETABSView;
             }
             set
             {
-                _importEDBView = value;
+                _importModelETABSView = value;
             }
         }
         #region ICommand
-        public ICommand ImportEDB { get; set; }
+        public ICommand ImportModelETABS { get; set; }
         public ICommand ChangeSectionBeam { get; set; }
         public ICommand ChangeSectionColumn { get;set; }
         public ICommand CreateProject { get; set; }
         #endregion
-        public ImportEDBVM(UIDocument doc, Document getdoc)
+        public ImportModelETABSVM(UIDocument doc, Document getdoc)
         {
             this._uidoc = doc;
             this._document = getdoc;
@@ -109,26 +109,26 @@ namespace VibrantBIM.ViewModels
             });
             CreateProject = new RelayCommand<object>((p) => true, async (p) =>
             {
-                ImportEDBView.Close();
+                _importModelETABSView.Close();
                 ProgressWindow _loadingView = new ProgressWindow();
                 _loadingView.Show();
                 _container = CXVCruid.ReadFile(CXVCruid.FilePathCXV);
-                if (_importEDBView.chk_GridLine.IsChecked == true)
+                if (_importModelETABSView.chk_GridLine.IsChecked == true)
                 {
                     _gridEventhandler.SetDataContainer(_container);
                     _externalEventGrid.Raise();
                 }
-                if (_importEDBView.chk_Level.IsChecked == true)
+                if (_importModelETABSView.chk_Level.IsChecked == true)
                 {
                     _levelEventhandler.SetDataContainer(_container);
                     _externalEventLevel.Raise();
                 }
-                if (_importEDBView.chk_Column.IsChecked == true)
+                if (_importModelETABSView.chk_Column.IsChecked == true)
                 {
                     _columnEventhandler.SetDataContainer(_container);
                     _externalEventColumn.Raise();
                 }
-                if (_importEDBView.chk_Beam.IsChecked == true)
+                if (_importModelETABSView.chk_Beam.IsChecked == true)
                 {
                     _beamEventhandler.SetDataContainer(_container);
                     _externalEventBeam.Raise();
@@ -140,11 +140,11 @@ namespace VibrantBIM.ViewModels
                 _loadingView.Close();
                 
             });
-            ImportEDB = new RelayCommand<object>((p) => true, p =>
+            ImportModelETABS = new RelayCommand<object>((p) => true, p =>
             {
                 OpenFileDialog OpenEDB = new OpenFileDialog();
                 OpenEDB.InitialDirectory = "C:\\";
-                OpenEDB.Filter = " (*.cxv)|*.cxv|All Files (*.*)|*.*";
+                OpenEDB.Filter = " (*.xml)|*.xml|All Files (*.*)|*.*";
                 OpenEDB.Multiselect = true;
                 if (OpenEDB.ShowDialog() == true)
                 {
@@ -154,11 +154,11 @@ namespace VibrantBIM.ViewModels
                     countColumn = _container.Columns.Count();
                     countGrid = _container.GridLines.Count();
                     countLevel = _container.Stories.Count;
-                    _importEDBView.tb_PathEDB.Text = filename;
-                    _importEDBView.chk_Beam.Content = _importEDBView.chk_Beam.Content + " " + "(" + countBeam.ToString() + ")";
-                    _importEDBView.chk_Column.Content = _importEDBView.chk_Column.Content + " " + "(" + countColumn.ToString() + ")";
-                    _importEDBView.chk_GridLine.Content = _importEDBView.chk_GridLine.Content + " " + "(" + countGrid.ToString() + ")";
-                    _importEDBView.chk_Level.Content = _importEDBView.chk_Level.Content + " " + "(" + countLevel.ToString() + ")";
+                    _importModelETABSView.tb_PathEDB.Text = filename;
+                    _importModelETABSView.chk_Beam.Content = _importModelETABSView.chk_Beam.Content + " " + "(" + countBeam.ToString() + ")";
+                    _importModelETABSView.chk_Column.Content = _importModelETABSView.chk_Column.Content + " " + "(" + countColumn.ToString() + ")";
+                    _importModelETABSView.chk_GridLine.Content = _importModelETABSView.chk_GridLine.Content + " " + "(" + countGrid.ToString() + ")";
+                    _importModelETABSView.chk_Level.Content = _importModelETABSView.chk_Level.Content + " " + "(" + countLevel.ToString() + ")";
                 };
             });
         }

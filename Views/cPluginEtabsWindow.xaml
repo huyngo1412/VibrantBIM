@@ -57,7 +57,7 @@
                 Grid.ColumnSpan="2"
                 Orientation="Horizontal"
                 HorizontalAlignment="Center">
-            <Button x:Name="btn_Export" Click ="btn_Export_Click"  Command="{Binding ExportEDB}" Margin="0,0,10,0"  Content="Export"></Button>
+            <Button x:Name="btn_Export" Click ="btn_Export_Click"  Command="{Binding ExportXML}" Margin="0,0,10,0"  Content="Export"></Button>
             <Button Margin="10,0,-0.3,0"  Content="Cancel"></Button>
         </StackPanel>
     </Grid>

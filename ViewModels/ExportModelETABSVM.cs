@@ -35,7 +35,7 @@ namespace VibrantBIM.ViewModels
         public ObservableCollection<Models.AreaDesignOrientation.Floor> Floors = new ObservableCollection<Models.AreaDesignOrientation.Floor>();
         public ObservableCollection<Models.AreaDesignOrientation.Wall> Walls = new ObservableCollection<Models.AreaDesignOrientation.Wall>();
     }
-    public class ExportEDBVM
+    public class ExportModelETABSVM
     {
         #region Etabs
         private cSapModel _SapModel { get; set; }
@@ -135,8 +135,9 @@ namespace VibrantBIM.ViewModels
         #endregion
         DataContainer dataContainer = new DataContainer();
         public ICommand BrowseEDB { get; set; }
-        public ICommand ExportEDB { get;set; }
-        public ExportEDBVM(ref cSapModel _sapModel, ref cOAPI _etabsObject) {
+        public ICommand ExportXML { get;set; }
+        bool ConvertModel = false;
+        public ExportModelETABSVM(ref cSapModel _sapModel, ref cOAPI _etabsObject) {
             this._SapModel = _sapModel;
             this._EtabsObject = _etabsObject;
             string savedFilePath = "";
@@ -146,16 +147,25 @@ namespace VibrantBIM.ViewModels
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.InitialDirectory = "C:\\";
-                saveFileDialog.Filter = "Text files (*.cxv)|*.cxv|All files (*.*)|*.*";
+                saveFileDialog.Filter = "Text files (*.xml)|*.xml|All files (*.*)|*.*";
                 saveFileDialog.Title = "Save your file";
                 if (saveFileDialog.ShowDialog() == true)
                 {
                     savedFilePath = saveFileDialog.FileName;
                     CXVCruid.FilePathCXV = saveFileDialog.FileName;
+                    TextBlock textBlock = p as TextBlock;
+                    textBlock.Text = savedFilePath;
+                    ConvertModel = true;
+                }
+            });
+            ExportXML = new RelayCommand<object>((p)=>true,(p)=>
+            {
+                if(ConvertModel)
+                {
                     ret = _SapModel.FrameObj.GetAllFrames(ref NumberNameFrame, ref FrameName, ref PropName, ref StoryName, ref PointName1, ref PointName2,
                          ref Point1X, ref Point1Y, ref Point1Z, ref Point2X, ref Point2Y, ref Point2Z, ref Angle,
                          ref Offset1X, ref Offset2X, ref Offset1Y, ref Offset2Y, ref Offset1Z, ref Offset2Z, ref CardinalPoint, csys);// Lấy toàn bộ thông tin của các đối tượng khung
-                    ret = _SapModel.AreaObj.GetAllAreas(ref NumberNameArea, ref AreaName, ref TypeAreaArray, ref NumberBoundaryPts, ref PointDelimiter, 
+                    ret = _SapModel.AreaObj.GetAllAreas(ref NumberNameArea, ref AreaName, ref TypeAreaArray, ref NumberBoundaryPts, ref PointDelimiter,
                         ref PointNames, ref PointX, ref PointY, ref PointZ);// Lấy toàn bộ thông tin các đối tượng Floor, Brace,...
                     ret = _SapModel.GridSys.GetNameList(ref _numberNames, ref _gridNames);//Lấy thông tin Grid System
                     ret = _SapModel.GridSys.GetGridSys_2(_gridNames.FirstOrDefault(), ref Xo, ref Yo, ref RZ, ref GridSysType, ref NumXLines, ref NumYLines, ref GridLineIDX, ref GridLineIDY, ref OrdinateX, ref OrdinateY,
@@ -163,22 +173,17 @@ namespace VibrantBIM.ViewModels
                     ret = _SapModel.Story.GetStories(ref NumberStories, ref StoryNames, ref StoryElevations, ref StoryHeights, ref IsMasterStory,
                        ref SimilarToStory, ref SpliceAbove, ref SpliceHeight);//Lấy dữ liệu tầng
                     dataContainer.Columns = new ObservableCollection<Column>(GetColumnETABS().ToList());
-                    dataContainer.Beams = new ObservableCollection<Beam>(GetBeamEDB().ToList());
+                    dataContainer.Beams = new ObservableCollection<Beam>(GetBeamETABS().ToList());
                     dataContainer.GridLines = new ObservableCollection<GridLine>(GetGridETABS().ToList());
                     dataContainer.Stories = new ObservableCollection<Story>(GetStoryETABS().ToList());
                     dataContainer.Floors = new ObservableCollection<Models.AreaDesignOrientation.Floor>(GetFloorETABS().ToList());
                     dataContainer.Walls = new ObservableCollection<Models.AreaDesignOrientation.Wall>(GetWallETABS().ToList());
-                    TextBlock textBlock = p as TextBlock;
-                    if(textBlock != null )
-                    {
-                        textBlock.Text = savedFilePath;
-                    }    
+                    CXVCruid.CreateFile(dataContainer, savedFilePath);
                 }
-            });
-            ExportEDB = new RelayCommand<object>((p)=>true,(p)=>
-            {
-                CXVCruid.CreateFile(dataContainer, savedFilePath);
-         
+                else
+                {
+                    MessageBox.Show("You need to configure the file storage location.");
+                }
             });
         }
         private IEnumerable<GridLine> GetGridETABS()
@@ -332,7 +337,7 @@ namespace VibrantBIM.ViewModels
                 }
             }    
         }
-        private IEnumerable<Beam> GetBeamEDB() 
+        private IEnumerable<Beam> GetBeamETABS() 
         {
             for (int i = 0; i < FrameName.Length; i++)
             {

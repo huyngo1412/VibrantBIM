@@ -25,12 +25,12 @@ namespace VibrantBIM
            
             try
             {
-                var vm = new ImportEDBVM(_uidoc, _document);
+                var vm = new ImportModelETABSVM(_uidoc, _document);
                 Thread newWindowThread = new Thread(() =>
                 {                   
-                    vm.ImportEDBView.Dispatcher.Invoke(() =>
+                    vm.ImportModelETABSView.Dispatcher.Invoke(() =>
                     {
-                        vm.ImportEDBView.ShowDialog();
+                        vm.ImportModelETABSView.ShowDialog();
                     });
                  
                     Dispatcher.Run();

@@ -13,6 +13,6 @@ namespace VibrantBIM.Abtract
     {
         void GetSection(cSapModel _SapModel, string ProName);
         void Rectangular(cSapModel _SapModel, string ProName);
-        //void GetMaterial();
+        //void GetMaterial(cSapModel _SapModel, string ProName);
     }
 }
