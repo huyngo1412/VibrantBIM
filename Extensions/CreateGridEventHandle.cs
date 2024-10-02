@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using VibrantBIM.Abtract;
 using VibrantBIM.ViewModels;
 
 namespace VibrantBIM.Extensions
 {
-    public class CreateGridEventHandle : IExternalEventHandler
+    public class CreateGridEventHandle : IExternalEventHandler, ISetData
     {
         private Document _document;
         private DataContainer _container;

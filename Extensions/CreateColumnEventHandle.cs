@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using VibrantBIM.Abtract;
 using VibrantBIM.ViewModels;
 
 namespace VibrantBIM.Extensions
 {
-    public class CreateColumnEventHandle : IExternalEventHandler
+    public class CreateColumnEventHandle : IExternalEventHandler, ISetData
     {
         private Document _document;
         private DataContainer _container;

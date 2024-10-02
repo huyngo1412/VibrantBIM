@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
+using VibrantBIM.Abtract;
 using VibrantBIM.ViewModels;
 
 namespace VibrantBIM.Extensions
 {
-    public class CreateBeamEventHandle : IExternalEventHandler
+    public class CreateBeamEventHandle : IExternalEventHandler, ISetData
     {
         private Document _document;
         private DataContainer _container;

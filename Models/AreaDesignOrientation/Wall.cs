@@ -66,5 +66,15 @@ namespace VibrantBIM.Models.AreaDesignOrientation
                 _Point = value;
             }
         }
+        [XmlElement("ElementID")]
+        private string _elementID;
+        public string ElementID
+        {
+            get { return _elementID; }
+            set
+            {
+                _elementID = value;
+            }
+        }
     }
 }

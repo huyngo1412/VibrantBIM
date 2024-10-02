@@ -232,7 +232,8 @@
                             Grid.Row="0"
                             Width="100"
                             Content="Floor Sections"
-                            x:Name="btn_SlabSection"></Button>
+                            x:Name="btn_SlabSection"
+                                Command="{Binding ChangeSectionFloor}"></Button>
                         <Button Grid.Column="0"
                             Grid.Row="1"
                             Width="100"

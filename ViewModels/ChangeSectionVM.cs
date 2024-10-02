@@ -67,6 +67,18 @@ namespace VibrantBIM.ViewModels
                 _lstframeSTColumn = value;
             }
         }
+        private List<FrameST> _lstSTFloor = new List<FrameST>();
+        public List<FrameST> LstSTFloor
+        {
+            get
+            {
+                return _lstSTFloor;
+            }
+            set
+            {
+                _lstSTFloor = value;
+            }
+        }
         private FrameSTBeamWindow _frameSTBeamView;
         public FrameSTBeamWindow FrameSTBeamView
         {
@@ -99,51 +111,35 @@ namespace VibrantBIM.ViewModels
                 _frameSTColumnView = value;
             }
         }
+        private STFloorWindow _sTFloorView;
+        public STFloorWindow STFloorView
+        {
+            get
+            {
+                if (_sTFloorView == null)
+                {
+                    _sTFloorView = new STFloorWindow() { DataContext = this };
+                }
+                return _sTFloorView;
+            }
+            set
+            {
+                _sTFloorView = value;
+            }
+        }
 
         public ICommand ChangeSectionBeam { get; set; }
         public ICommand ChangeSectionColumn { get; set; }
+        public ICommand ChangeSectionFloor { get; set; }
         public ChangeSectionVM(UIDocument doc, Document getdoc)
         {
             XmlDocument xmldoc = new XmlDocument();
             this._uidoc = doc;
             this._document = getdoc;
             _dataContainer = (DataContainer)XMLCRUID.ReadFile(XMLCRUID.FilePathXML);
-            //Lọc dữ liệu dầm
-            FilteredElementCollector collectorBeam = new FilteredElementCollector(_document);
-            collectorBeam.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
-            List<string> Beamrevitfamilyname = collectorBeam.Select(x=>x.Name).ToList();
-            List<string> etabsSTBeam = new List<string>();
-            foreach (var item in _dataContainer.Beams)
-            {
-                if(!etabsSTBeam.Contains(item.PropName))
-                {
-                    etabsSTBeam.Add(item.PropName);
-                }    
-            }
-            foreach (var item in etabsSTBeam)
-            {
-                FrameST frameST = new FrameST()
-                { EtabsSTName = item, RevitFamilyName = Beamrevitfamilyname };
-                _lstframeSTBeam.Add(frameST);
-            }
-            //Lọc dữ liệu cột
-            FilteredElementCollector collectorColumn = new FilteredElementCollector(_document);
-            collectorColumn.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralColumns);
-            List<string> Columnrevitfamilyname = collectorColumn.Select(x => x.Name).ToList();
-            List<string> etabsSTColumn = new List<string>();
-            foreach (var item in _dataContainer.Columns)
-            {
-                if (!etabsSTColumn.Contains(item.PropName))
-                {
-                    etabsSTColumn.Add(item.PropName);
-                }
-            }
-            foreach (var item in etabsSTColumn)
-            {
-                FrameST frameST = new FrameST()
-                { EtabsSTName = item, RevitFamilyName = Columnrevitfamilyname };
-                _lstframeSTColumn.Add(frameST);
-            }
+            FilterBeamData();
+            FilterColumnData();
+            FilterFloorData();
             ChangeSectionBeam = new RelayCommand<object>((p) => true, (p) =>
             {
                 DataGrid dataGrid = p as DataGrid;
@@ -158,6 +154,14 @@ namespace VibrantBIM.ViewModels
                 if (dataGrid != null)
                 {
                     UpdateSection(dataGrid, "Column");
+                }
+            });
+            ChangeSectionFloor = new RelayCommand<object>((p) => true, (p) =>
+            {
+                DataGrid dataGrid = p as DataGrid;
+                if (dataGrid != null)
+                {
+                    UpdateSection(dataGrid, "Floor");
                 }
             });
         }
@@ -206,6 +210,69 @@ namespace VibrantBIM.ViewModels
                 }
             }
             _xmlDocument.Save(XMLCRUID.FilePathXML);
+        }
+        private void FilterBeamData()
+        {
+            //Lọc dữ liệu dầm
+            FilteredElementCollector collectorBeam = new FilteredElementCollector(_document);
+            collectorBeam.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
+            List<string> Beamrevitfamilyname = collectorBeam.Select(x => x.Name).ToList();
+            List<string> etabsSTBeam = new List<string>();
+            foreach (var item in _dataContainer.Beams)
+            {
+                if (!etabsSTBeam.Contains(item.PropName))
+                {
+                    etabsSTBeam.Add(item.PropName);
+                }
+            }
+            foreach (var item in etabsSTBeam)
+            {
+                FrameST frameST = new FrameST()
+                { EtabsSTName = item, RevitFamilyName = Beamrevitfamilyname };
+                _lstframeSTBeam.Add(frameST);
+            }
+        }
+        private void FilterColumnData()
+        {
+            //Lọc dữ liệu cột
+            FilteredElementCollector collectorColumn = new FilteredElementCollector(_document);
+            collectorColumn.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralColumns);
+            List<string> Columnrevitfamilyname = collectorColumn.Select(x => x.Name).ToList();
+            List<string> etabsSTColumn = new List<string>();
+            foreach (var item in _dataContainer.Columns)
+            {
+                if (!etabsSTColumn.Contains(item.PropName))
+                {
+                    etabsSTColumn.Add(item.PropName);
+                }
+            }
+            foreach (var item in etabsSTColumn)
+            {
+                FrameST frameST = new FrameST()
+                { EtabsSTName = item, RevitFamilyName = Columnrevitfamilyname };
+                _lstframeSTColumn.Add(frameST);
+            }
+        }
+        private void FilterFloorData()
+        {
+            //Lọc dữ liệu sàn
+            FilteredElementCollector collectorFloor = new FilteredElementCollector(_document);
+            collectorFloor.OfClass(typeof(FloorType)).OfCategory(BuiltInCategory.OST_Floors);
+            List<string> Floorrevitfamilyname = collectorFloor.Select(x => x.Name).ToList();
+            List<string> EtabsSTFloor = new List<string>();
+            foreach (var item in _dataContainer.Floors)
+            {
+                if (!EtabsSTFloor.Contains(item.PropName))
+                {
+                    EtabsSTFloor.Add(item.PropName);
+                }
+            }
+            foreach (var item in EtabsSTFloor)
+            {
+                FrameST frameST = new FrameST()
+                { EtabsSTName = item, RevitFamilyName = Floorrevitfamilyname };
+                _lstSTFloor.Add(frameST);
+            }
         }
         private T GetVisualChild<T>(Visual parent) where T : Visual
         {
