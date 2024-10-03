@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Xml;
 using VibrantBIM.Abtract;
 using VibrantBIM.ViewModels;
@@ -33,35 +34,38 @@ namespace VibrantBIM.Extensions
                 XmlDocument _xmlDocument = new XmlDocument();
                 _xmlDocument.Load(XMLCRUID.FilePathXML);
                 FilteredElementCollector collector = new FilteredElementCollector(_document);
-                collector.OfClass(typeof(Wall)).OfCategory(BuiltInCategory.OST_Walls);
-
-                FilteredElementCollector colLev = new FilteredElementCollector(_document).OfClass(typeof(Level));
-
-
+                collector.OfClass(typeof(WallType)).OfCategory(BuiltInCategory.OST_Walls);
                 using (Transaction transaction = new Transaction(_document, "Create Wall"))
                 {
                     transaction.Start();
                     for (int i = 0; i < _container.Walls.Count; i++)
                     {
-                        IList<Curve> profile = new List<Curve>();
+                        List<Curve> profile = new List<Curve>();
                         for (int j = 0; j < _container.Walls[i].Point.Count() - 1; j++)
                         {
                             XYZ FirstPoint1 = new XYZ(_container.Walls[i].Point[j].X, _container.Walls[i].Point[j].Y, _container.Walls[i].Point[j].Z);
                             XYZ LastPoint1 = new XYZ(_container.Walls[i].Point[j + 1].X, _container.Walls[i].Point[j + 1].Y, _container.Walls[i].Point[j+1].Z);
-                            profile.Append(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint1), ConvertUnit.MmToFoot(LastPoint1)));
+                            profile.Add(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint1), ConvertUnit.MmToFoot(LastPoint1)));
                         }
                         int count = _container.Walls[i].Point.Count();
                         XYZ FirstPoint2 = new XYZ(_container.Walls[i].Point[count - 1].X, _container.Walls[i].Point[count - 1].Y, _container.Walls[i].Point[count - 1].Z);
                         XYZ LastPoint2 = new XYZ(_container.Walls[i].Point[0].X, _container.Walls[i].Point[0].Y, _container.Walls[i].Point[0].Z);
-                        profile.Append(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint2), ConvertUnit.MmToFoot(LastPoint2)));
+                        profile.Add(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint2), ConvertUnit.MmToFoot(LastPoint2)));
+                        //MessageBox.Show(profile.Count().ToString());
                         try
                         {
-                            XYZ normal = new XYZ(0, 1, 0);
-                            Level level = colLev.Where(x => x.Name == _container.Walls[i].StoryName).FirstOrDefault() as Level;
+
+                            Level baseLevel = new FilteredElementCollector(_document).OfClass(typeof(Level)).Cast<Level>().FirstOrDefault(lv => lv.Name.Equals(_container.Walls[i].StoryName));
                             WallType wallType = collector.Where(x => x.Name == _container.Walls[i].RevitFamily).FirstOrDefault() as WallType;
-                            Autodesk.Revit.DB.Wall wall = Autodesk.Revit.DB.Wall.Create(_document, profile, wallType.Id, level.Id, true, normal);
+                            Autodesk.Revit.DB.Wall wall = Autodesk.Revit.DB.Wall.Create(_document, profile, wallType.Id, baseLevel.Id, true);
+                            Parameter baseOffsetParam = wall.get_Parameter(BuiltInParameter.WALL_BASE_OFFSET);
                             
-                            XMLCRUID.UpdateFile(ref _xmlDocument, "//Walls/Wall", _container.Walls[i].Name, "Name", "ElementID", wall.Id.ToString());
+                            if (baseOffsetParam != null )
+                            {
+                                baseOffsetParam.Set(ConvertUnit.MmToFoot(0)); // Thiết lập chiều cao của tường (đơn vị là feet hoặc mét, tùy thuộc vào thiết lập Revit)
+                            }
+                            
+                            //XMLCRUID.UpdateFile(ref _xmlDocument, "//Walls/Wall", _container.Walls[i].Name, "Name", "ElementID", wall.Id.ToString());
                         }
                         catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                         {
