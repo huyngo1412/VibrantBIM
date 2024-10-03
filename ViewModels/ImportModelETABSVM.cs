@@ -47,6 +47,9 @@ namespace VibrantBIM.ViewModels
 
         private  ExternalEvent _externalEventFloor;
         private  CreateFloorEventHandle _floorEventhandler;
+
+        private ExternalEvent _externalEventWall;
+        private CreateWallEventHandle _wallEventhandler;
         #endregion
         private DataContainer _container;
 
@@ -71,6 +74,7 @@ namespace VibrantBIM.ViewModels
         public ICommand ChangeSectionBeam { get; set; }
         public ICommand ChangeSectionColumn { get;set; }
         public ICommand ChangeSectionFloor { get; set; }
+        public ICommand ChangeSectionWall { get; set; }
         public ICommand CreateProject { get; set; }
         #endregion
         public ImportModelETABSVM(UIDocument doc, Document getdoc)
@@ -83,6 +87,7 @@ namespace VibrantBIM.ViewModels
             EnsureEventHandler(ref _columnEventhandler, ref _externalEventColumn, _document => new CreateColumnEventHandle(_document));
             EnsureEventHandler(ref _beamEventhandler, ref _externalEventBeam, _document => new CreateBeamEventHandle(_document));
             EnsureEventHandler(ref _floorEventhandler, ref _externalEventFloor, _document => new CreateFloorEventHandle(_document));
+            EnsureEventHandler(ref _wallEventhandler, ref _externalEventWall, _document => new CreateWallEventHandle(_document));
             ChangeSectionBeam = new RelayCommand<object>((p) => true, (p) =>
             {
                 var vm = new ChangeSectionVM(doc, getdoc );
@@ -98,6 +103,11 @@ namespace VibrantBIM.ViewModels
                 var vm = new ChangeSectionVM(doc, getdoc);
                 vm.STFloorView.ShowDialog();
             });
+            ChangeSectionWall = new RelayCommand<object>((p) => true, (p) =>
+            {
+                var vm = new ChangeSectionVM(doc, getdoc);
+                vm.STWallView.ShowDialog();
+            });
             CreateProject = new RelayCommand<object>((p) => true, async (p) =>
             {
                 _importModelETABSView.Close();
@@ -110,6 +120,7 @@ namespace VibrantBIM.ViewModels
                 await CreateColumnEventHandle.Task;
                 await CreateBeamEventHandle.Task;
                 await CreateFloorEventHandle.Task;
+                await CreateWallEventHandle.Task;
                 _loadingView.Close();
                 
             });
@@ -141,7 +152,6 @@ namespace VibrantBIM.ViewModels
                 externalEvent = ExternalEvent.Create(eventHandler);
             }
         }
-
         private void RaiseEventIfChecked<T>(bool? isChecked, T handler, ref ExternalEvent externalEvent) where T : class, ISetData
         {
             if (isChecked == true)
@@ -156,7 +166,6 @@ namespace VibrantBIM.ViewModels
 
                     throw;
                 }
-                
             }
         }
         private void HandleEvents()
@@ -167,8 +176,7 @@ namespace VibrantBIM.ViewModels
             RaiseEventIfChecked(_importModelETABSView.chk_Column.IsChecked, _columnEventhandler, ref _externalEventColumn);
             RaiseEventIfChecked(_importModelETABSView.chk_Beam.IsChecked, _beamEventhandler,ref _externalEventBeam);
             RaiseEventIfChecked(_importModelETABSView.chk_Floor.IsChecked, _floorEventhandler, ref _externalEventFloor);
+            RaiseEventIfChecked(_importModelETABSView.chk_Wall.IsChecked, _wallEventhandler, ref _externalEventWall);
         }
-
-
     }
 }

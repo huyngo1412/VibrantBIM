@@ -18,11 +18,15 @@ namespace VibrantBIM.Views
     /// <summary>
     /// Interaction logic for STWallWindow.xaml
     /// </summary>
-    public partial class STWallWindow : UserControl
+    public partial class STWallWindow : Window
     {
         public STWallWindow()
         {
             InitializeComponent();
+        }
+        private void btn_CreateProject_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

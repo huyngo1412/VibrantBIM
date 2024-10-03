@@ -12,6 +12,7 @@ using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -279,11 +280,15 @@ namespace VibrantBIM.ViewModels
                         _SapModel.AreaObj.GetPoints(AreaName[i], ref NumberPoint, ref PointNames);
                         _SapModel.PropArea.GetWall(PropName, ref WallType, ref ShellType, ref MatProp, ref Thickness, ref Color, ref Notes, ref GUI);
                         Point3D[] point3Ds = new Point3D[PointNames.Length];//Khởi tạo giá trị point của wall
+                        double minEleOfWall = 1e11;
+                        string storyName = null;
                         for (int j = 0; j < PointNames.Length; j++)
                         {
                             double x = 0, y = 0, z = 0;
                             _SapModel.PointObj.GetCoordCartesian(PointNames[j], ref x, ref y, ref z);//Lấy giá trị x,y,z với mỗi namepoint
                             point3Ds[j] = new Point3D(x, y, z);
+                            minEleOfWall = Math.Min(minEleOfWall, z);
+                            storyName = dataContainer.Stories.Where(s => Math.Abs(s.Elevation - minEleOfWall) < 0.1).Select(s => s.StoryName).FirstOrDefault();
                         }
                         Models.AreaDesignOrientation.Wall wall = new Models.AreaDesignOrientation.Wall()
                         {
@@ -292,6 +297,7 @@ namespace VibrantBIM.ViewModels
                             PropName = PropName,
                             Point = point3Ds,
                             RevitFamily = "",
+                            StoryName = storyName
                         };
                         yield return wall;
                     }
@@ -322,16 +328,17 @@ namespace VibrantBIM.ViewModels
                         _SapModel.AreaObj.GetPoints(SlabName, ref NumberPoint, ref pointNames);
                         ret = _SapModel.PropArea.GetSlab(PropName, ref SlabType,ref ShellType, ref MatProp, ref Thickness,ref Color, ref Notes, ref GUI);
                         Point3D[] point3Ds = new Point3D[pointNames.Length];//Khởi tạo giá trị point của slab
-                        double maxEleOfSlab = -1e11;
+                        double maxEleOfWall = -1e11;
                         string storyName = null;
                         for (int j = 0; j < pointNames.Length; j++)
                         {
                             double x = 0, y = 0, z = 0;
                             _SapModel.PointObj.GetCoordCartesian(pointNames[j], ref x, ref y, ref z);//Lấy giá trị x,y,z với mỗi namepoint
-                            maxEleOfSlab = Math.Max(maxEleOfSlab, y);
-                            storyName = dataContainer.Stories.Where(s => Math.Abs(s.Elevation - maxEleOfSlab) < 0.1).Select(s => s.StoryName).FirstOrDefault(); 
+                            maxEleOfWall = Math.Max(maxEleOfWall, z);
+                            storyName = dataContainer.Stories.Where(s => Math.Abs(s.Elevation - maxEleOfWall) < 0.1).Select(s => s.StoryName).FirstOrDefault(); 
                             point3Ds[j] = new Point3D(x, y, z);
                         }
+
                         Models.AreaDesignOrientation.Floor floor = new Models.AreaDesignOrientation.Floor()
                         {
                             Name = SlabName,
@@ -353,8 +360,6 @@ namespace VibrantBIM.ViewModels
                 ret = _SapModel.FrameObj.GetDesignOrientation(FrameName[i], ref TypeFrame);
                 if (TypeFrame.ToString() == "Beam" )
                 {
-                    //ret = _SapModel.Results.FrameForce(FrameName[i], eItemTypeElm.ObjectElm, ref NumberResults, ref Obj, ref ObjSta, ref Elm, ref ElmSta, ref LoadCase, ref StepType, ref StepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
-
                     ret = _SapModel.PropFrame.GetTypeOAPI(PropName[i], ref PropTypeOAPI);
                     Beam beam = new Beam()
                     {

@@ -58,15 +58,17 @@ namespace VibrantBIM.Extensions
                         int count = _container.Floors[i].Point.Count();
                         XYZ FirstPoint2 = new XYZ(_container.Floors[i].Point[count-1].X, _container.Floors[i].Point[count-1].Y, _container.Floors[i].Point[count-1].Z);
                         XYZ LastPoint2 = new XYZ(_container.Floors[i].Point[0].X, _container.Floors[i].Point[0].Y, _container.Floors[i].Point[0].Z);
-                        profile.Append(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint2), ConvertUnit.MmToFoot(LastPoint2)));
-
-                        Level level = colLev.FirstElement() as Level;
-                        FloorType floorType = collector.Where(x => x.Name == _container.Floors[i].RevitFamily).FirstOrDefault() as FloorType;
-                        Autodesk.Revit.DB.Floor floor = Autodesk.Revit.DB.Floor.Create(_document, new List<CurveLoop> { profile }, floorType.Id, level.Id);
-                        XMLCRUID.UpdateFile(ref _xmlDocument, "//Floors/Floor", _container.Floors[i].Name, "Name", "ElementID", floor.Id.ToString());
+                        profile.Append(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint2), ConvertUnit.MmToFoot(LastPoint2)));  
                         try
                         {
-                            
+                            Level level = colLev.Where(x => x.Name == _container.Floors[i].StoryName).FirstOrDefault() as Level;
+                            if(level == null)
+                            {
+                                MessageBox.Show("Sai rồi");
+                            }
+                            FloorType floorType = collector.Where(x => x.Name == _container.Floors[i].RevitFamily).FirstOrDefault() as FloorType;
+                            Autodesk.Revit.DB.Floor floor = Autodesk.Revit.DB.Floor.Create(_document, new List<CurveLoop> { profile }, floorType.Id, level.Id);
+                            //XMLCRUID.UpdateFile(ref _xmlDocument, "//Floors/Floor", _container.Floors[i].Name, "Name", "ElementID", floor.Id.ToString());
                         }
                         catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                         {
@@ -78,7 +80,7 @@ namespace VibrantBIM.Extensions
                                 transaction.RollBack();
                             }
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
                             Message = ex.Message;
                             MessageBox.Show("Error", ex.Message);

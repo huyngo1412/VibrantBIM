@@ -47,3 +47,7 @@ E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ImportModelETABSWindow.g.cs
 E:\ProjectAddin\VibrantBIM\obj\Debug\Views\ImportModelETABSWindow.baml
 D:\DOTNET\VibrantBIM\obj\Debug\Views\STFloorWindow.g.cs
 D:\DOTNET\VibrantBIM\obj\Debug\Views\STFloorWindow.baml
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\STFloorWindow.g.cs
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\STWallWindow.g.cs
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\STFloorWindow.baml
+E:\ProjectAddin\VibrantBIM\obj\Debug\Views\STWallWindow.baml

@@ -68,7 +68,7 @@ namespace VibrantBIM.Extensions
                             }    
                             FamilyInstance instance = _document.Create.NewFamilyInstance(columnLine, gotSymbol,
                                                                                         level, StructuralType.Column);
-                            XMLCRUID.UpdateFile(ref _xmlDocument, "//Columns/Column", _container.Columns[i].Name, "Name", "ElementID", instance.Id.ToString());
+                            //XMLCRUID.UpdateFile(ref _xmlDocument, "//Columns/Column", _container.Columns[i].Name, "Name", "ElementID", instance.Id.ToString());
                         }
                         catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                         {

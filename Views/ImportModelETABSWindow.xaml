@@ -244,6 +244,7 @@
                             Grid.Row="1"
                             Width="100"
                             Content="Wall Sections"
+                                Command="{Binding ChangeSectionWall}"
                             x:Name="btn_WallSection"></Button>
                     </Grid>
                 </GroupBox>
