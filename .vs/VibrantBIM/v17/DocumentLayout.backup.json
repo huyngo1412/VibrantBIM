@@ -3,16 +3,68 @@
   "WorkspaceRootPath": "D:\\DOTNET\\VibrantBIM\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\extensions\\createwalleventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createwalleventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\get_setshapeinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\get_setshapeinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\createfloorevenhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createfloorevenhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\viewmodels\\importmodeletabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\createleveleventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createleveleventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\viewmodels\\importmodeletabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:viewmodels\\importmodeletabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\views\\importmodeletabswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:views\\importmodeletabswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\viewmodels\\exportmodeletabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:viewmodels\\exportmodeletabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\createcolumneventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createcolumneventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\createbeameventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createbeameventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\convert_internal_unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\convert_internal_unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\xmlcruid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\xmlcruid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\models\\material\\concrete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:models\\material\\concrete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\abtract\\isetdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:abtract\\isetdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\viewmodels\\changesectionvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:viewmodels\\changesectionvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\createmodelrevit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:createmodelrevit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\cplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:cplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\viewmodels\\modelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:viewmodels\\modelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\Models\\AreaDesignOrientation\\Floor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,59 +75,39 @@
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:Models\\AreaDesignOrientation\\Wall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\models\\framedesignorientation\\beam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\convertunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\convertunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\Models\\Story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:Models\\Story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\models\\framedesignorientation\\beam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:models\\framedesignorientation\\beam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\views\\importmodeletabswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:views\\importmodeletabswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\creategrideventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\creategrideventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\createbeameventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createbeameventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|VibrantBIM||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\createcolumneventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createcolumneventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\views\\stfloorwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:views\\stfloorwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\viewmodels\\changesectionvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:viewmodels\\changesectionvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\viewmodels\\exportmodeletabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:viewmodels\\exportmodeletabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\views\\stfloorwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:views\\stfloorwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\abtract\\isetdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:abtract\\isetdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\get_setshapeinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\get_setshapeinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\extensions\\createleveleventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:extensions\\createleveleventhandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\abtract\\ishapetypeframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:abtract\\ishapetypeframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\createmodelrevit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:createmodelrevit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\app.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,10 +126,6 @@
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:views\\framestbeamwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\viewmodels\\modelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:viewmodels\\modelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\views\\framestcolumnwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:views\\framestcolumnwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -108,81 +136,133 @@
     {
       "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\views\\importmodeletabswindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:views\\importmodeletabswindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\cplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:cplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|D:\\DOTNET\\VibrantBIM\\Models\\Story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|solutionrelative:Models\\Story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5268A369-C0C8-4453-87CB-6256FC930B77}|VibrantBIM.csproj|d:\\dotnet\\vibrantbim\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|6185191f-1008-4fb2-a715-3a4e4f27e610"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 256,
+      "VerticalTabListWidth": 253,
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Beam.cs",
-              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\FrameDesignOrientation\\Beam.cs",
-              "RelativeDocumentMoniker": "Models\\FrameDesignOrientation\\Beam.cs",
-              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Models\\FrameDesignOrientation\\Beam.cs",
-              "RelativeToolTip": "Models\\FrameDesignOrientation\\Beam.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAmwHsAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "Concrete.cs",
+              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\Material\\Concrete.cs",
+              "RelativeDocumentMoniker": "Models\\Material\\Concrete.cs",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Models\\Material\\Concrete.cs",
+              "RelativeToolTip": "Models\\Material\\Concrete.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T15:14:37.443Z",
+              "WhenOpened": "2024-10-03T07:50:00.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateWallEventHandle.cs",
+              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateWallEventHandle.cs",
+              "RelativeDocumentMoniker": "Extensions\\CreateWallEventHandle.cs",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateWallEventHandle.cs",
+              "RelativeToolTip": "Extensions\\CreateWallEventHandle.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAIwGQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-03T07:49:11.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "XMLCRUID.cs",
+              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\XMLCRUID.cs",
+              "RelativeDocumentMoniker": "Extensions\\XMLCRUID.cs",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\XMLCRUID.cs",
+              "RelativeToolTip": "Extensions\\XMLCRUID.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T17:44:30.503Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "Convert_Internal_Unit.cs",
+              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\Convert_Internal_Unit.cs",
+              "RelativeDocumentMoniker": "Extensions\\Convert_Internal_Unit.cs",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\Convert_Internal_Unit.cs",
+              "RelativeToolTip": "Extensions\\Convert_Internal_Unit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T17:42:48.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ConvertUnit.cs",
+              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\ConvertUnit.cs",
+              "RelativeDocumentMoniker": "Extensions\\ConvertUnit.cs",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\ConvertUnit.cs",
+              "RelativeToolTip": "Extensions\\ConvertUnit.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T17:42:42.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Beam.cs",
+              "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\FrameDesignOrientation\\Beam.cs",
+              "RelativeDocumentMoniker": "Models\\FrameDesignOrientation\\Beam.cs",
+              "ToolTip": "D:\\DOTNET\\VibrantBIM\\Models\\FrameDesignOrientation\\Beam.cs",
+              "RelativeToolTip": "Models\\FrameDesignOrientation\\Beam.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwFMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T15:14:37.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "VibrantBIM",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\VibrantBIM.csproj",
               "RelativeDocumentMoniker": "VibrantBIM.csproj",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\VibrantBIM.csproj",
               "RelativeToolTip": "VibrantBIM.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-02T15:10:32.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T15:10:32.569Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 5,
               "Title": "ExportModelETABSVM.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ExportModelETABSVM.cs",
               "RelativeDocumentMoniker": "ViewModels\\ExportModelETABSVM.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ExportModelETABSVM.cs",
               "RelativeToolTip": "ViewModels\\ExportModelETABSVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAAE4BAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T14:57:11.995Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 1,
               "Title": "Get_SetShapeInstance.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\Get_SetShapeInstance.cs",
               "RelativeDocumentMoniker": "Extensions\\Get_SetShapeInstance.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\Get_SetShapeInstance.cs",
               "RelativeToolTip": "Extensions\\Get_SetShapeInstance.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T14:47:10.65Z"
+              "WhenOpened": "2024-10-02T14:47:10.65Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 11,
               "Title": "ISetData.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Abtract\\ISetData.cs",
               "RelativeDocumentMoniker": "Abtract\\ISetData.cs",
@@ -190,11 +270,12 @@
               "RelativeToolTip": "Abtract\\ISetData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T14:43:30.349Z"
+              "WhenOpened": "2024-10-02T14:43:30.349Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "FrameSTBeamWindow.xaml.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\FrameSTBeamWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\FrameSTBeamWindow.xaml.cs",
@@ -206,20 +287,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ChangeSectionVM.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ChangeSectionVM.cs",
               "RelativeDocumentMoniker": "ViewModels\\ChangeSectionVM.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ChangeSectionVM.cs",
               "RelativeToolTip": "ViewModels\\ChangeSectionVM.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAqwNEAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAANcAAAAAAAAAAAAAABkBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T13:32:07.756Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 30,
               "Title": "FrameSTBeamWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\FrameSTBeamWindow.xaml",
               "RelativeDocumentMoniker": "Views\\FrameSTBeamWindow.xaml",
@@ -230,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 25,
               "Title": "STFloorWindow.xaml.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\STFloorWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\STFloorWindow.xaml.cs",
@@ -238,36 +319,35 @@
               "RelativeToolTip": "Views\\STFloorWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T13:30:19.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T13:30:19.215Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 24,
               "Title": "STFloorWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\STFloorWindow.xaml",
               "RelativeDocumentMoniker": "Views\\STFloorWindow.xaml",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Views\\STFloorWindow.xaml",
               "RelativeToolTip": "Views\\STFloorWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-02T13:30:13.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T13:30:13.526Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 3,
               "Title": "CreateLevelEventHandle.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateLevelEventHandle.cs",
               "RelativeDocumentMoniker": "Extensions\\CreateLevelEventHandle.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateLevelEventHandle.cs",
               "RelativeToolTip": "Extensions\\CreateLevelEventHandle.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAqwBsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwBoAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T13:17:31.606Z"
+              "WhenOpened": "2024-10-02T13:17:31.606Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 22,
               "Title": "CreateGridEventHandle.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateGridEventHandle.cs",
               "RelativeDocumentMoniker": "Extensions\\CreateGridEventHandle.cs",
@@ -275,12 +355,11 @@
               "RelativeToolTip": "Extensions\\CreateGridEventHandle.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T12:52:05.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T12:52:05.087Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "CreateColumnEventHandle.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateColumnEventHandle.cs",
               "RelativeDocumentMoniker": "Extensions\\CreateColumnEventHandle.cs",
@@ -293,13 +372,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "CreateFloorEvenHandle.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateFloorEvenHandle.cs",
               "RelativeDocumentMoniker": "Extensions\\CreateFloorEvenHandle.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateFloorEvenHandle.cs",
               "RelativeToolTip": "Extensions\\CreateFloorEvenHandle.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAAD8AAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAwwGoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T12:28:47.653Z",
               "EditorCaption": ""
@@ -312,14 +391,14 @@
               "RelativeDocumentMoniker": "Extensions\\CreateBeamEventHandle.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Extensions\\CreateBeamEventHandle.cs",
               "RelativeToolTip": "Extensions\\CreateBeamEventHandle.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T12:28:46.443Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 26,
               "Title": "IShapeTypeFrame.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Abtract\\IShapeTypeFrame.cs",
               "RelativeDocumentMoniker": "Abtract\\IShapeTypeFrame.cs",
@@ -331,19 +410,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 13,
               "Title": "CreateModelRevit.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\CreateModelRevit.cs",
               "RelativeDocumentMoniker": "CreateModelRevit.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\CreateModelRevit.cs",
               "RelativeToolTip": "CreateModelRevit.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAcwB8AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAqwB8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T08:25:34.559Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 31,
               "Title": "FrameSTColumnWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\FrameSTColumnWindow.xaml",
               "RelativeDocumentMoniker": "Views\\FrameSTColumnWindow.xaml",
@@ -354,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 33,
               "Title": "ImportModelETABSWindow.xaml.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\ImportModelETABSWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\ImportModelETABSWindow.xaml.cs",
@@ -366,19 +445,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 21,
               "Title": "ImportModelETABSWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\ImportModelETABSWindow.xaml",
               "RelativeDocumentMoniker": "Views\\ImportModelETABSWindow.xaml",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Views\\ImportModelETABSWindow.xaml",
               "RelativeToolTip": "Views\\ImportModelETABSWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-02T08:11:05.105Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T08:11:05.105Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 27,
               "Title": "App.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\App.cs",
               "RelativeDocumentMoniker": "App.cs",
@@ -390,7 +468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 14,
               "Title": "cPlugin.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\cPlugin.cs",
               "RelativeDocumentMoniker": "cPlugin.cs",
@@ -402,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 15,
               "Title": "ModelBase.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ModelBase.cs",
               "RelativeDocumentMoniker": "ViewModels\\ModelBase.cs",
@@ -414,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 28,
               "Title": "cPluginEtabsWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\cPluginEtabsWindow.xaml",
               "RelativeDocumentMoniker": "Views\\cPluginEtabsWindow.xaml",
@@ -425,20 +503,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ImportModelETABSVM.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ImportModelETABSVM.cs",
               "RelativeDocumentMoniker": "ViewModels\\ImportModelETABSVM.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\ViewModels\\ImportModelETABSVM.cs",
               "RelativeToolTip": "ViewModels\\ImportModelETABSVM.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAAAJoAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAAAJwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T08:02:37.001Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 32,
               "Title": "ImportEDBWindow.xaml",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Views\\ImportEDBWindow.xaml",
               "RelativeDocumentMoniker": "Views\\ImportEDBWindow.xaml",
@@ -449,41 +527,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 19,
               "Title": "Story.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\Story.cs",
               "RelativeDocumentMoniker": "Models\\Story.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Models\\Story.cs",
               "RelativeToolTip": "Models\\Story.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T08:01:14.779Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "Wall.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\AreaDesignOrientation\\Wall.cs",
               "RelativeDocumentMoniker": "Models\\AreaDesignOrientation\\Wall.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Models\\AreaDesignOrientation\\Wall.cs",
               "RelativeToolTip": "Models\\AreaDesignOrientation\\Wall.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAcwD8AAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAcwD8AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T08:01:14.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T08:01:14.874Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 16,
               "Title": "Floor.cs",
               "DocumentMoniker": "D:\\DOTNET\\VibrantBIM\\Models\\AreaDesignOrientation\\Floor.cs",
               "RelativeDocumentMoniker": "Models\\AreaDesignOrientation\\Floor.cs",
               "ToolTip": "D:\\DOTNET\\VibrantBIM\\Models\\AreaDesignOrientation\\Floor.cs",
               "RelativeToolTip": "Models\\AreaDesignOrientation\\Floor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwDkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T08:01:14.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T08:01:14.886Z"
             }
           ]
         }

@@ -211,67 +211,136 @@ namespace VibrantBIM.ViewModels
             }
             _xmlDocument.Save(XMLCRUID.FilePathXML);
         }
-        private void FilterBeamData()
+        //private void FilterBeamData()
+        //{
+        //    //Lọc dữ liệu dầm
+        //    FilteredElementCollector collectorBeam = new FilteredElementCollector(_document);
+        //    collectorBeam.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
+        //    List<string> Beamrevitfamilyname = collectorBeam.Select(x => x.Name).ToList();
+        //    List<string> etabsSTBeam = new List<string>();
+        //    foreach (var item in _dataContainer.Beams)
+        //    {
+        //        if (!etabsSTBeam.Contains(item.PropName))
+        //        {
+        //            etabsSTBeam.Add(item.PropName);
+        //        }
+        //    }
+        //    foreach (var item in etabsSTBeam)
+        //    {
+        //        FrameST frameST = new FrameST()
+        //        { EtabsSTName = item, RevitFamilyName = Beamrevitfamilyname };
+        //        _lstframeSTBeam.Add(frameST);
+        //    }
+        //}
+        //private void FilterColumnData()
+        //{
+        //    //Lọc dữ liệu cột
+        //    FilteredElementCollector collectorColumn = new FilteredElementCollector(_document);
+        //    collectorColumn.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralColumns);
+        //    List<string> Columnrevitfamilyname = collectorColumn.Select(x => x.Name).ToList();
+        //    List<string> etabsSTColumn = new List<string>();
+        //    foreach (var item in _dataContainer.Columns)
+        //    {
+        //        if (!etabsSTColumn.Contains(item.PropName))
+        //        {
+        //            etabsSTColumn.Add(item.PropName);
+        //        }
+        //    }
+        //    foreach (var item in etabsSTColumn)
+        //    {
+        //        FrameST frameST = new FrameST()
+        //        { EtabsSTName = item, RevitFamilyName = Columnrevitfamilyname };
+        //        _lstframeSTColumn.Add(frameST);
+        //    }
+        //}
+        //private void FilterFloorData()
+        //{
+        //    //Lọc dữ liệu sàn
+        //    FilteredElementCollector collectorFloor = new FilteredElementCollector(_document);
+        //    collectorFloor.OfClass(typeof(FloorType)).OfCategory(BuiltInCategory.OST_Floors);
+        //    List<string> Floorrevitfamilyname = collectorFloor.Select(x => x.Name).ToList();
+        //    List<string> EtabsSTFloor = new List<string>();
+        //    foreach (var item in _dataContainer.Floors)
+        //    {
+        //        if (!EtabsSTFloor.Contains(item.PropName))
+        //        {
+        //            EtabsSTFloor.Add(item.PropName);
+        //        }
+        //    }
+        //    foreach (var item in EtabsSTFloor)
+        //    {
+        //        FrameST frameST = new FrameST()
+        //        { EtabsSTName = item, RevitFamilyName = Floorrevitfamilyname };
+        //        _lstSTFloor.Add(frameST);
+        //    }
+        //}
+        //private void FilterWallData()
+        //{
+        //    //Lọc dữ liệu tường
+        //    FilteredElementCollector collectorFloor = new FilteredElementCollector(_document);
+        //    collectorFloor.OfClass(typeof(Wall)).OfCategory(BuiltInCategory.OST_Walls);
+        //    List<string> Floorrevitfamilyname = collectorFloor.Select(x => x.Name).ToList();
+        //    List<string> EtabsSTFloor = new List<string>();
+        //    foreach (var item in _dataContainer.Walls)
+        //    {
+        //        if (!EtabsSTFloor.Contains(item.PropName))
+        //        {
+        //            EtabsSTFloor.Add(item.PropName);
+        //        }
+        //    }
+        //    foreach (var item in EtabsSTFloor)
+        //    {
+        //        FrameST frameST = new FrameST()
+        //        { EtabsSTName = item, RevitFamilyName = Floorrevitfamilyname };
+        //        _lstSTFloor.Add(frameST);
+        //    }
+        //}
+        public void FilterBeamData()
         {
-            //Lọc dữ liệu dầm
-            FilteredElementCollector collectorBeam = new FilteredElementCollector(_document);
-            collectorBeam.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralFraming);
-            List<string> Beamrevitfamilyname = collectorBeam.Select(x => x.Name).ToList();
-            List<string> etabsSTBeam = new List<string>();
-            foreach (var item in _dataContainer.Beams)
-            {
-                if (!etabsSTBeam.Contains(item.PropName))
-                {
-                    etabsSTBeam.Add(item.PropName);
-                }
-            }
-            foreach (var item in etabsSTBeam)
-            {
-                FrameST frameST = new FrameST()
-                { EtabsSTName = item, RevitFamilyName = Beamrevitfamilyname };
-                _lstframeSTBeam.Add(frameST);
-            }
+            FilterData<FamilySymbol>(
+                BuiltInCategory.OST_StructuralFraming,
+                _dataContainer.Beams.Select(b => b.PropName),
+                _lstframeSTBeam
+            );
         }
-        private void FilterColumnData()
+        public void FilterColumnData()
         {
-            //Lọc dữ liệu cột
-            FilteredElementCollector collectorColumn = new FilteredElementCollector(_document);
-            collectorColumn.OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_StructuralColumns);
-            List<string> Columnrevitfamilyname = collectorColumn.Select(x => x.Name).ToList();
-            List<string> etabsSTColumn = new List<string>();
-            foreach (var item in _dataContainer.Columns)
-            {
-                if (!etabsSTColumn.Contains(item.PropName))
-                {
-                    etabsSTColumn.Add(item.PropName);
-                }
-            }
-            foreach (var item in etabsSTColumn)
-            {
-                FrameST frameST = new FrameST()
-                { EtabsSTName = item, RevitFamilyName = Columnrevitfamilyname };
-                _lstframeSTColumn.Add(frameST);
-            }
+            FilterData<FamilySymbol>(
+                BuiltInCategory.OST_StructuralColumns,
+                _dataContainer.Columns.Select(c => c.PropName),
+                _lstframeSTColumn
+            );
         }
-        private void FilterFloorData()
+        public void FilterFloorData()
         {
-            //Lọc dữ liệu sàn
-            FilteredElementCollector collectorFloor = new FilteredElementCollector(_document);
-            collectorFloor.OfClass(typeof(FloorType)).OfCategory(BuiltInCategory.OST_Floors);
-            List<string> Floorrevitfamilyname = collectorFloor.Select(x => x.Name).ToList();
-            List<string> EtabsSTFloor = new List<string>();
-            foreach (var item in _dataContainer.Floors)
-            {
-                if (!EtabsSTFloor.Contains(item.PropName))
-                {
-                    EtabsSTFloor.Add(item.PropName);
-                }
-            }
-            foreach (var item in EtabsSTFloor)
+            FilterData<FloorType>(
+                BuiltInCategory.OST_Floors,
+                _dataContainer.Floors.Select(f => f.PropName),
+                _lstSTFloor
+            );
+        }
+        public void FilterWallData()
+        {
+            FilterData<Wall>(
+                BuiltInCategory.OST_Walls,
+                _dataContainer.Walls.Select(w => w.PropName),
+                _lstSTFloor 
+            );
+        }
+        private void FilterData<T>(BuiltInCategory category, IEnumerable<string> etabsData, List<FrameST> resultList) where T : Element
+        {
+            FilteredElementCollector collector = new FilteredElementCollector(_document);
+            collector.OfClass(typeof(T)).OfCategory(category);
+            List<string> revitFamilyNames = collector.Select(x => x.Name).ToList();
+            List<string> uniqueEtabsData = etabsData.Distinct().ToList();
+            foreach (var item in uniqueEtabsData)
             {
                 FrameST frameST = new FrameST()
-                { EtabsSTName = item, RevitFamilyName = Floorrevitfamilyname };
-                _lstSTFloor.Add(frameST);
+                {
+                    EtabsSTName = item,
+                    RevitFamilyName = revitFamilyNames
+                };
+                resultList.Add(frameST);
             }
         }
         private T GetVisualChild<T>(Visual parent) where T : Visual

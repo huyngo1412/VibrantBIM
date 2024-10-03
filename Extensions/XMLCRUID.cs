@@ -29,7 +29,7 @@ namespace VibrantBIM.Extensions
             }
             MessageBox.Show("Export Successful");
         }
-        public static void UpdateFile(ref XmlDocument xmlDocument/*, string filename*/,string XPath, string check,string NodeCheck,string NodeEdit,string value)
+        public static void UpdateFile(ref XmlDocument xmlDocument,string XPath, string check,string NodeCheck,string NodeEdit,string value)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace VibrantBIM.Extensions
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi" + ex.Message);
+                MessageBox.Show("Error : " + ex.Message);
             }
             
         }

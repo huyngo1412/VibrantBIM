@@ -75,6 +75,7 @@
     <Compile Include="Extensions\CreateFloorEvenHandle.cs" />
     <Compile Include="Extensions\CreateGridEventHandle.cs" />
     <Compile Include="Extensions\CreateLevelEventHandle.cs" />
+    <Compile Include="Extensions\CreateWallEventHandle.cs" />
     <Compile Include="Extensions\Get_SetShapeInstance.cs" />
     <Compile Include="Extensions\XMLCRUID.cs" />
     <Compile Include="Models\AreaDesignOrientation\Floor.cs" />
@@ -114,6 +115,9 @@
     <Compile Include="Views\STFloorWindow.xaml.cs">
       <DependentUpon>STFloorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\STWallWindow.xaml.cs">
+      <DependentUpon>STWallWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="VibrantBIM.Addin">
@@ -146,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\STFloorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\STWallWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

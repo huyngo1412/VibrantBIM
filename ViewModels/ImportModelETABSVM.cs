@@ -146,12 +146,22 @@ namespace VibrantBIM.ViewModels
         {
             if (isChecked == true)
             {
-                handler.SetDataContainer(_container);
-                externalEvent.Raise();
+                try
+                {
+                    handler.SetDataContainer(_container);
+                    externalEvent.Raise();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
             }
         }
         private void HandleEvents()
         {
+            
             RaiseEventIfChecked(_importModelETABSView.chk_GridLine.IsChecked, _gridEventhandler, ref _externalEventGrid);
             RaiseEventIfChecked(_importModelETABSView.chk_Level.IsChecked, _levelEventhandler, ref _externalEventLevel);
             RaiseEventIfChecked(_importModelETABSView.chk_Column.IsChecked, _columnEventhandler, ref _externalEventColumn);

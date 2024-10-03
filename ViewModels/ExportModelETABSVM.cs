@@ -157,10 +157,14 @@ namespace VibrantBIM.ViewModels
                     textBlock.Text = savedFilePath;
                     ConvertModel = true;
                 }
+                else
+                {
+                    ConvertModel = false;
+                }    
             });
             ExportXML = new RelayCommand<object>((p)=>true,(p)=>
             {
-                if(ConvertModel)
+                if (ConvertModel && savedFilePath != null)
                 {
                     ret = _SapModel.FrameObj.GetAllFrames(ref NumberNameFrame, ref FrameName, ref PropName, ref StoryName, ref PointName1, ref PointName2,
                          ref Point1X, ref Point1Y, ref Point1Z, ref Point2X, ref Point2Y, ref Point2Z, ref Angle,

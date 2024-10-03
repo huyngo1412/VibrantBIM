@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 71372399765
 3-429285864
-37-846815186
+381763651920
 19-160036242
 Views\cPluginEtabsWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\FrameSTColumnWindow.xaml;Views\ImportEDBWindow.xaml;Views\ImportModelETABSWindow.xaml;Views\ProgressWindow.xaml;Views\STFloorWindow.xaml;
 
-False
+True
 

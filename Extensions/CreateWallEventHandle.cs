@@ -1,28 +1,23 @@
-﻿using Autodesk.Revit.DB.Structure;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
-using VibrantBIM.ViewModels;
-using System.Windows.Documents;
-using System.Windows.Controls;
-using VibrantBIM.Models.AreaDesignOrientation;
-using VibrantBIM.Abtract;
 using System.Windows;
-
+using System.Xml;
+using VibrantBIM.Abtract;
+using VibrantBIM.ViewModels;
 namespace VibrantBIM.Extensions
 {
-    public class CreateFloorEventHandle : IExternalEventHandler, ISetData
+    public class CreateWWallEventHandle : IExternalEventHandler, ISetData
     {
         private Document _document;
         private DataContainer _container;
         private static TaskCompletionSource<bool> _taskCompletionSource = new TaskCompletionSource<bool>();
         public static Task<bool> Task => _taskCompletionSource.Task;
-        public CreateFloorEventHandle(Document document)
+        public CreateWWallEventHandle(Document document)
         {
             _document = document;
         }
@@ -38,35 +33,33 @@ namespace VibrantBIM.Extensions
                 XmlDocument _xmlDocument = new XmlDocument();
                 _xmlDocument.Load(XMLCRUID.FilePathXML);
                 FilteredElementCollector collector = new FilteredElementCollector(_document);
-                collector.OfClass(typeof(FloorType)).OfCategory(BuiltInCategory.OST_Floors);
+                collector.OfClass(typeof(Wall)).OfCategory(BuiltInCategory.OST_Walls);
 
                 FilteredElementCollector colLev = new FilteredElementCollector(_document).OfClass(typeof(Level));
 
 
-                using (Transaction transaction = new Transaction(_document, "Create Floor"))
+                using (Transaction transaction = new Transaction(_document, "Create Wall"))
                 {
                     transaction.Start();
                     for (int i = 0; i < _container.Floors.Count; i++)
                     {
-                        CurveLoop profile = new CurveLoop();
-                        for (int j = 0; j < _container.Floors[i].Point.Count() - 1 ; j++)
+                        IList<Curve> profile = new List<Curve>();
+                        for (int j = 0; j < _container.Floors[i].Point.Count() - 1; j++)
                         {
                             XYZ FirstPoint1 = new XYZ(_container.Floors[i].Point[j].X, _container.Floors[i].Point[j].Y, _container.Floors[i].Point[j].Z);
-                            XYZ LastPoint1 = new XYZ(_container.Floors[i].Point[j+1].X, _container.Floors[i].Point[j+1].Y, _container.Floors[i].Point[j+1].Z);
+                            XYZ LastPoint1 = new XYZ(_container.Floors[i].Point[j + 1].X, _container.Floors[i].Point[j + 1].Y, _container.Floors[i].Point[j + 1].Z);
                             profile.Append(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint1), ConvertUnit.MmToFoot(LastPoint1)));
                         }
                         int count = _container.Floors[i].Point.Count();
-                        XYZ FirstPoint2 = new XYZ(_container.Floors[i].Point[count-1].X, _container.Floors[i].Point[count-1].Y, _container.Floors[i].Point[count-1].Z);
+                        XYZ FirstPoint2 = new XYZ(_container.Floors[i].Point[count - 1].X, _container.Floors[i].Point[count - 1].Y, _container.Floors[i].Point[count - 1].Z);
                         XYZ LastPoint2 = new XYZ(_container.Floors[i].Point[0].X, _container.Floors[i].Point[0].Y, _container.Floors[i].Point[0].Z);
                         profile.Append(Line.CreateBound(ConvertUnit.MmToFoot(FirstPoint2), ConvertUnit.MmToFoot(LastPoint2)));
-
-                        Level level = colLev.FirstElement() as Level;
-                        FloorType floorType = collector.Where(x => x.Name == _container.Floors[i].RevitFamily).FirstOrDefault() as FloorType;
-                        Autodesk.Revit.DB.Floor floor = Autodesk.Revit.DB.Floor.Create(_document, new List<CurveLoop> { profile }, floorType.Id, level.Id);
-                        XMLCRUID.UpdateFile(ref _xmlDocument, "//Floors/Floor", _container.Floors[i].Name, "Name", "ElementID", floor.Id.ToString());
                         try
                         {
-                            
+                            Level level = colLev.FirstElement() as Level;
+                            WallType wallType = collector.Where(x => x.Name == _container.Walls[i].RevitFamily).FirstOrDefault() as WallType;
+                            Autodesk.Revit.DB.Wall floor = Autodesk.Revit.DB.Wall.Create(_document, profile, wallType.Id, level.Id, true);
+                            XMLCRUID.UpdateFile(ref _xmlDocument, "//Walls/Wall", _container.Floors[i].Name, "Name", "ElementID", floor.Id.ToString());
                         }
                         catch (Autodesk.Revit.Exceptions.ArgumentException exceptionCanceled)
                         {
@@ -78,7 +71,17 @@ namespace VibrantBIM.Extensions
                                 transaction.RollBack();
                             }
                         }
-                        catch(Exception ex)
+                        catch (Autodesk.Revit.Exceptions.InvalidOperationException exceptionCanceled)
+                        {
+                            Message = exceptionCanceled.Message;
+                            MessageBox.Show("Error", exceptionCanceled.Message);
+                            _taskCompletionSource.SetResult(false);
+                            if (transaction.HasStarted())
+                            {
+                                transaction.RollBack();
+                            }
+                        }
+                        catch (Exception ex)
                         {
                             Message = ex.Message;
                             MessageBox.Show("Error", ex.Message);
@@ -96,7 +99,7 @@ namespace VibrantBIM.Extensions
             }
             catch (Exception ex)
             {
-                TaskDialog.Show("Error", ex.Message);
+                MessageBox.Show("Error", ex.Message);
                 _taskCompletionSource.SetResult(false);
             }
         }
@@ -104,5 +107,5 @@ namespace VibrantBIM.Extensions
         {
             return "";
         }
-    }
+    } 
 }
