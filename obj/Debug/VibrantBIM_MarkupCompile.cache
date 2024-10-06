@@ -4,7 +4,7 @@
 library
 C#
 .cs
-E:\ProjectAddin\VibrantBIM\obj\Debug\
+D:\DOTNET\VibrantBIM\obj\Debug\
 VibrantBIM
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 8-838027550
 3-429285864
-39-1266511033
-19-222100150
+40655267088
+19-160036242
 Views\cPluginEtabsWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\FrameSTColumnWindow.xaml;Views\ImportEDBWindow.xaml;Views\ImportModelETABSWindow.xaml;Views\ProgressWindow.xaml;Views\STFloorWindow.xaml;Views\STWallWindow.xaml;
 
-False
+True
 

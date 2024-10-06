@@ -41,7 +41,7 @@ namespace VibrantBIM.Views {
     public partial class FrameSTColumnWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 37 "..\..\..\Views\FrameSTColumnWindow.xaml"
+        #line 40 "..\..\..\Views\FrameSTColumnWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.DataGrid Dg_FrameSection;
         
@@ -49,7 +49,7 @@ namespace VibrantBIM.Views {
         #line hidden
         
         
-        #line 63 "..\..\..\Views\FrameSTColumnWindow.xaml"
+        #line 66 "..\..\..\Views\FrameSTColumnWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btn_CreateProject;
         
@@ -57,7 +57,7 @@ namespace VibrantBIM.Views {
         #line hidden
         
         
-        #line 65 "..\..\..\Views\FrameSTColumnWindow.xaml"
+        #line 68 "..\..\..\Views\FrameSTColumnWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btn_Cancel;
         
@@ -100,7 +100,7 @@ namespace VibrantBIM.Views {
             case 2:
             this.btn_CreateProject = ((System.Windows.Controls.Button)(target));
             
-            #line 63 "..\..\..\Views\FrameSTColumnWindow.xaml"
+            #line 66 "..\..\..\Views\FrameSTColumnWindow.xaml"
             this.btn_CreateProject.Click += new System.Windows.RoutedEventHandler(this.btn_CreateProject_Click);
             
             #line default

@@ -89,6 +89,12 @@
     <Compile Include="Models\GridLine.cs" />
     <Compile Include="Models\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\ComboboxStyles.xaml.cs">
+      <DependentUpon>ComboboxStyles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resource\Styles.xaml.cs">
+      <DependentUpon>Styles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ChangeSectionVM.cs" />
     <Compile Include="ViewModels\ExportModelETABSVM.cs" />
     <Compile Include="ViewModels\ImportModelETABSVM.cs" />
@@ -125,6 +131,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resource\ComboboxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\cPluginEtabsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

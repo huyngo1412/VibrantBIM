@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-8-838027550
+10-1010011585
 3-429285864
-40655267088
+42-650087417
 19-160036242
-Views\cPluginEtabsWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\FrameSTColumnWindow.xaml;Views\ImportEDBWindow.xaml;Views\ImportModelETABSWindow.xaml;Views\ProgressWindow.xaml;Views\STFloorWindow.xaml;Views\STWallWindow.xaml;
+Resource\ComboboxStyles.xaml;Resource\Styles.xaml;Views\cPluginEtabsWindow.xaml;Views\FrameSTBeamWindow.xaml;Views\FrameSTColumnWindow.xaml;Views\ImportEDBWindow.xaml;Views\ImportModelETABSWindow.xaml;Views\ProgressWindow.xaml;Views\STFloorWindow.xaml;Views\STWallWindow.xaml;
 
-True
+False
 

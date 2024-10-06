@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              WindowStyle="None"
              SizeToContent ="WidthAndHeight">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/VibrantBIM;component/Resource/Styles.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid Width="610"
    Height="300">
         <Grid.Resources>
@@ -48,7 +51,7 @@
                 <DataGridTemplateColumn Width="280"  Header="Revit Family Name">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox x:Name="Cb_RVTFamily" ItemsSource="{Binding RevitFamilyName}"></ComboBox>
+                            <ComboBox x:Name="Cb_RVTFamily" ItemsSource="{Binding RevitFamilyName}" Style="{StaticResource ComboBoxStyle}"></ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
